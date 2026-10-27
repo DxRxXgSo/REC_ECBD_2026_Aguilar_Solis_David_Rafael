@@ -1,0 +1,173 @@
+{
+  "schema_version": "1.0",
+  "run": {
+    "timestamp_local": "2026-10-27T00:35:52.341286-06:00",
+    "command": "\"C:\\Users\\rafle\\Documents\\REC_ECBD_2026_Aguilar_Solis_David_Rafael\\.venv-unit2\\Scripts\\python.exe\" src/verify_unit_ii.py",
+    "project_root": "C:\\Users\\rafle\\Documents\\REC_ECBD_2026_Aguilar_Solis_David_Rafael",
+    "python_version": "3.12.14",
+    "verifier_sha256": "5a6eeb8187e070ebd758f959f04cf728bb67ca5426e17840dcd080ea4b94d732",
+    "exit_code": 0
+  },
+  "environment": {
+    "pandas": "3.1.0",
+    "numpy": "2.5.4",
+    "matplotlib": "3.11.2",
+    "notebook_format": "5.11.1"
+  },
+  "integrity": {
+    "raw_path": "data\\raw\\ObesityDataSet_raw_and_data_sinthetic.csv",
+    "raw_sha256_before": "28b6991062855d3d15642e38b1aa9d1b32fb7abbb5abf5b096f1868cd706154b",
+    "raw_sha256_after": "28b6991062855d3d15642e38b1aa9d1b32fb7abbb5abf5b096f1868cd706154b",
+    "processed_sha256": "64418dcf666d49d832d07fe53dbfd9415662f2537502fde60e8dbe55b8f5218d"
+  },
+  "dataset": {
+    "processed_rows": 2111,
+    "processed_columns": 17,
+    "missing_values": 0,
+    "exact_duplicates_preserved": 24,
+    "class_count": 7,
+    "notebook_code_cells": 5,
+    "notebook_errors": 0
+  },
+  "commands": [
+    {
+      "name": "unit_ii_tests",
+      "command": "C:\\Users\\rafle\\Documents\\REC_ECBD_2026_Aguilar_Solis_David_Rafael\\.venv-unit2\\Scripts\\python.exe -m unittest discover -s tests/unit_ii -v",
+      "exit_code": 0,
+      "stdout_tail": "",
+      "stderr_tail": "test_corrupt_category_fails (test_pipeline.UnitIIPipelineTests.test_corrupt_category_fails) ... ok\ntest_full_source_schema_types_and_duplicate_count (test_pipeline.UnitIIPipelineTests.test_full_source_schema_types_and_duplicate_count) ... ok\ntest_malformed_row_fails_controlled (test_pipeline.UnitIIPipelineTests.test_malformed_row_fails_controlled) ... ok\ntest_missing_input_fails_controlled (test_pipeline.UnitIIPipelineTests.test_missing_input_fails_controlled) ... ok\ntest_processed_values_match_source_exactly (test_pipeline.UnitIIPipelineTests.test_processed_values_match_source_exactly) ... ok\ntest_valid_input_preserves_rows_and_is_idempotent (test_pipeline.UnitIIPipelineTests.test_valid_input_preserves_rows_and_is_idempotent) ... ok\ntest_wrong_columns_fail (test_pipeline.UnitIIPipelineTests.test_wrong_columns_fail) ... ok\ntest_dictionary_covers_all_source_fields_and_documents_source (test_sql_design.DataMartScriptTests.test_dictionary_covers_all_source_fields_and_documents_source) ... ok\ntest_load_is_validated_transactional_and_non_destructive_to_schema (test_sql_design.DataMartScriptTests.test_load_is_validated_transactional_and_non_destructive_to_schema) ... ok\ntest_read_only_validation_and_dashboard_queries_exist (test_sql_design.DataMartScriptTests.test_read_only_validation_and_dashboard_queries_exist) ... ok\ntest_schema_has_primary_key_dimension_and_fact_relationship (test_sql_design.DataMartScriptTests.test_schema_has_primary_key_dimension_and_fact_relationship) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 0.045s\n\nOK\n"
+    },
+    {
+      "name": "etl",
+      "command": "C:\\Users\\rafle\\Documents\\REC_ECBD_2026_Aguilar_Solis_David_Rafael\\.venv-unit2\\Scripts\\python.exe src/unit_ii.py",
+      "exit_code": 0,
+      "stdout_tail": "{\n  \"executed_at_utc\": \"2026-10-27T06:35:43.280757+00:00\",\n  \"command\": \"python src/unit_ii.py\",\n  \"input_path\": \"C:\\\\Users\\\\rafle\\\\Documents\\\\REC_ECBD_2026_Aguilar_Solis_David_Rafael\\\\data\\\\raw\\\\ObesityDataSet_raw_and_data_sinthetic.csv\",\n  \"input_sha256_bytes\": \"28b6991062855d3d15642e38b1aa9d1b32fb7abbb5abf5b096f1868cd706154b\",\n  \"output_path\": \"C:\\\\Users\\\\rafle\\\\Documents\\\\REC_ECBD_2026_Aguilar_Solis_David_Rafael\\\\data\\\\processed\\\\obesity_unit_ii.csv\",\n  \"output_sha256_bytes\": \"64418dcf666d49d832d07fe53dbfd9415662f2537502fde60e8dbe55b8f5218d\",\n  \"python_version\": \"3.12.14\",\n  \"pandas_version\": \"3.1.0\",\n  \"numpy_version\": \"2.5.4\",\n  \"rows_read\": 2111,\n  \"rows_preserved\": 2111,\n  \"rows_excluded\": 0,\n  \"source_values_equal\": true,\n  \"columns\": [\n    \"Gender\",\n    \"Age\",\n    \"Height\",\n    \"Weight\",\n    \"family_history_with_overweight\",\n    \"FAVC\",\n    \"FCVC\",\n    \"NCP\",\n    \"CAEC\",\n    \"SMOKE\",\n    \"CH2O\",\n    \"SCC\",\n    \"FAF\",\n    \"TUE\",\n    \"CALC\",\n    \"MTRANS\",\n    \"NObeyesdad\"\n  ],\n  \"column_count\": 17,\n  \"missing_values\": 0,\n  \"exact_duplicate_rows_preserved\": 24,\n  \"transformations\": [\n    \"CSV serialization normalized to UTF-8/LF; no row filtering or feature recoding\"\n  ],\n  \"decision\": \"Preserve all 24 exact duplicates and all observed values; do not fit learned preprocessing in Unit II.\"\n}\n",
+      "stderr_tail": ""
+    },
+    {
+      "name": "notebook_execution",
+      "command": "C:\\Users\\rafle\\Documents\\REC_ECBD_2026_Aguilar_Solis_David_Rafael\\.venv-unit2\\Scripts\\python.exe src/execute_unit_ii_notebook.py",
+      "exit_code": 0,
+      "stdout_tail": "Notebook ejecutado: 5 celdas de código; errores: 0\n",
+      "stderr_tail": "C:\\Users\\rafle\\Documents\\REC_ECBD_2026_Aguilar_Solis_David_Rafael\\.venv-unit2\\Lib\\site-packages\\zmq\\_future.py:718: RuntimeWarning: Proactor event loop does not implement add_reader family of methods required for zmq. Registering an additional selector thread for add_reader support via tornado. Use `asyncio.set_event_loop_policy(WindowsSelectorEventLoopPolicy())` to avoid this warning.\n  self._get_loop()\n[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.\n"
+    },
+    {
+      "name": "unit_i_tests",
+      "command": "C:\\Users\\rafle\\Documents\\REC_ECBD_2026_Aguilar_Solis_David_Rafael\\.venv-unit2\\Scripts\\python.exe -m unittest discover -s docs/unidad_i/tests -v",
+      "exit_code": 0,
+      "stdout_tail": "",
+      "stderr_tail": "test_corrupt_docx_is_controlled (test_verificar_unidad_i.VerifierTests.test_corrupt_docx_is_controlled) ... ok\ntest_csv_missing_is_controlled (test_verificar_unidad_i.VerifierTests.test_csv_missing_is_controlled) ... ok\ntest_incorrect_columns_fail (test_verificar_unidad_i.VerifierTests.test_incorrect_columns_fail) ... ok\ntest_invalid_notebook_fails_without_exception (test_verificar_unidad_i.VerifierTests.test_invalid_notebook_fails_without_exception) ... ok\ntest_lf_variant_preserves_canonical_hash (test_verificar_unidad_i.VerifierTests.test_lf_variant_preserves_canonical_hash) ... ok\ntest_malformed_csv_syntax_fails (test_verificar_unidad_i.VerifierTests.test_malformed_csv_syntax_fails) ... ok\ntest_malformed_row_width_fails (test_verificar_unidad_i.VerifierTests.test_malformed_row_width_fails) ... ok\ntest_outdated_readme_fails (test_verificar_unidad_i.VerifierTests.test_outdated_readme_fails) ... ok\ntest_positive_fixture (test_verificar_unidad_i.VerifierTests.test_positive_fixture) ... ok\ntest_readme_missing_is_controlled (test_verificar_unidad_i.VerifierTests.test_readme_missing_is_controlled) ... ok\ntest_unverifiable_calendar_claim_fails (test_verificar_unidad_i.VerifierTests.test_unverifiable_calendar_claim_fails) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 1.400s\n\nOK\n"
+    },
+    {
+      "name": "unit_i_verifier",
+      "command": "C:\\Users\\rafle\\Documents\\REC_ECBD_2026_Aguilar_Solis_David_Rafael\\.venv-unit2\\Scripts\\python.exe docs/unidad_i/verificar_unidad_i.py --evidence docs/unidad_ii/evidencias/verificacion_unidad_i_regresion.json",
+      "exit_code": 0,
+      "stdout_tail": "nthetic.csv\", \"bytes\": 263646}}, {\"check\": \"csv_content_hash\", \"category\": \"technical\", \"status\": \"PASS\", \"details\": {\"sha256_local_bytes\": \"28b6991062855d3d15642e38b1aa9d1b32fb7abbb5abf5b096f1868cd706154b\", \"sha256_after_crlf_to_lf\": \"b62e1eb1c8c981379bee23e39e35683f5455683bd772dc722827158dde929a1f\", \"expected_canonical_sha256\": \"b62e1eb1c8c981379bee23e39e35683f5455683bd772dc722827158dde929a1f\", \"byte_length\": 263646, \"crlf_count\": 2112, \"lf_only_count\": 0, \"interpretation\": \"Se compara el hash can\\u00f3nico; el hash local conserva los finales de l\\u00ednea presentes.\"}}, {\"check\": \"csv_parse\", \"category\": \"technical\", \"status\": \"PASS\", \"details\": {\"parsed_rows_including_header\": 2112, \"encoding\": \"UTF-8\"}}, {\"check\": \"csv_header\", \"category\": \"technical\", \"status\": \"PASS\", \"details\": {\"column_count\": 17, \"expected_column_count\": 17, \"missing\": [], \"unexpected\": [], \"order_matches\": true}}, {\"check\": \"csv_record_count\", \"category\": \"technical\", \"status\": \"PASS\", \"details\": {\"records\": 2111, \"expected\": 2111}}, {\"check\": \"csv_row_width\", \"category\": \"technical\", \"status\": \"PASS\", \"details\": {\"width_counts\": {\"17\": 2111}, \"expected_width\": 17}}, {\"check\": \"csv_quality_counts\", \"category\": \"technical\", \"status\": \"PASS\", \"details\": {\"empty_cells\": 0, \"exact_duplicate_rows\": 24, \"expected_empty_cells\": 0, \"expected_exact_duplicate_rows\": 24}}, {\"check\": \"notebook_structure\", \"category\": \"technical\", \"status\": \"PASS\", \"details\": {\"nbformat\": 4, \"cell_count\": 3, \"code_cell_count\": 3, \"errors\": [], \"sha256_observed\": \"06ffa5be12ab00a41f1b445d66dc37ed817aec31d000e52a80adaef2be989a70\"}}, {\"check\": \"notebook_saved_outputs\", \"category\": \"technical\", \"status\": \"PASS\", \"details\": {\"code_cells_with_stored_outputs\": 3, \"stored_outputs_are_not_proof_of_authenticity\": true, \"notebook_executed_by_this_verifier\": false}}, {\"check\": \"notebook_matches_prior_observed_hash\", \"category\": \"technical\", \"status\": \"PASS\", \"details\": {\"sha256_observed\": \"06ffa5be12ab00a41f1b445d66dc37ed817aec31d000e52a80adaef2be989a70\", \"previously_recorded_sha256\": \"06ffa5be12ab00a41f1b445d66dc37ed817aec31d000e52a80adaef2be989a70\", \"claim\": \"Hash continuity only; it does not authenticate when or how saved outputs were produced.\"}}, {\"check\": \"global_rules_readable\", \"category\": \"technical\", \"status\": \"PASS\", \"details\": {\"path\": \"C:\\\\Users\\\\rafle\\\\Documents\\\\REC_ECBD_2026_Aguilar_Solis_David_Rafael\\\\docs\\\\sdd\\\\00_reglas_globales.md\", \"characters\": 4592}}, {\"check\": \"plan_markdown_readable\", \"category\": \"technical\", \"status\": \"PASS\", \"details\": {\"path\": \"C:\\\\Users\\\\rafle\\\\Documents\\\\REC_ECBD_2026_Aguilar_Solis_David_Rafael\\\\docs\\\\unidad_i\\\\planeacion_unidad_i.md\", \"characters\": 13440}}, {\"check\": \"readme_readable\", \"category\": \"technical\", \"status\": \"PASS\", \"details\": {\"path\": \"C:\\\\Users\\\\rafle\\\\Documents\\\\REC_ECBD_2026_Aguilar_Solis_David_Rafael\\\\README.md\", \"characters\": 6148}}, {\"check\": \"confirmed_calendar_source\", \"category\": \"technical\", \"status\": \"PASS\", \"details\": {\"unit_i_2026_10_02\": true, \"project_close_2026_11_20\": true, \"activity_0_25_or_28_september_preserved\": true}}, {\"check\": \"plan_calendar_coherence\", \"category\": \"academic\", \"status\": \"PASS\", \"details\": {\"unit_i_date_present\": true, \"project_close_present\": true, \"activity_0_both_dates_present\": true, \"stale_unknown_calendar_claims\": []}}, {\"check\": \"readme_calendar_coherence\", \"category\": \"documentation\", \"status\": \"PASS\", \"details\": {\"unit_i_conflicting_dates\": [], \"close_conflicting_dates\": [], \"stale_unknown_calendar_claims\": [], \"confirmed_close_in_readme\": true, \"unit_i_date_may_be_omitted_if_no_conflicting_claim\": true}}, {\"check\": \"docx_container_readable\", \"category\": \"technical\", \"status\": \"PASS\", \"details\": {\"zip_integrity\": true, \"document_xml_parseable\": true, \"visual_layout_checked\": false}}, {\"check\": \"reference_urls_syntactically_present\", \"category\": \"technical\", \"status\": \"PASS\", \"details\": {\"missing_urls\": [], \"malformed_urls\": [], \"network_reachability_or_academic_validity_checked\": false}}, {\"check\": \"required_document_paths\", \"category\": \"technical\", \"status\": \"PASS\", \"details\": {\"readme_references_plan\": true, \"markdown_exists\": true, \"docx_exists\": true}}], \"acceptance_criteria\": [{\"id\": \"AC-I01\", \"status\": \"NO VERIFICADO\", \"reason\": \"Requiere revisi\\u00f3n acad\\u00e9mica o visual.\"}, {\"id\": \"AC-I02\", \"status\": \"NO VERIFICADO\", \"reason\": \"Requiere revisi\\u00f3n acad\\u00e9mica o visual.\"}, {\"id\": \"AC-I03\", \"status\": \"NO VERIFICADO\", \"reason\": \"Requiere revisi\\u00f3n acad\\u00e9mica o visual.\"}, {\"id\": \"AC-I04\", \"status\": \"NO VERIFICADO\", \"reason\": \"Requiere revisi\\u00f3n acad\\u00e9mica o visual.\"}, {\"id\": \"AC-I05\", \"status\": \"NO VERIFICADO\", \"reason\": \"Requiere revisi\\u00f3n acad\\u00e9mica o visual.\"}, {\"id\": \"AC-I06\", \"status\": \"NO VERIFICADO\", \"reason\": \"Requiere revisi\\u00f3n acad\\u00e9mica o visual.\"}, {\"id\": \"AC-I07\", \"status\": \"NO VERIFICADO\", \"reason\": \"Requiere revisi\\u00f3n acad\\u00e9mica o visual.\"}, {\"id\": \"AC-I08\", \"status\": \"NO VERIFICADO\", \"reason\": \"Requiere revisi\\u00f3n acad\\u00e9mica o visual.\"}, {\"id\": \"AC-I10\", \"status\": \"NO VERIFICADO\", \"reason\": \"Requiere revisi\\u00f3n acad\\u00e9mica o visual.\"}, {\"id\": \"AC-I14\", \"status\": \"NO VERIFICADO\", \"reason\": \"Requiere revisi\\u00f3n acad\\u00e9mica o visual.\"}, {\"id\": \"AC-I09\", \"status\": \"PASS\", \"reason\": \"Calendario SDD y planeaci\\u00f3n deben coincidir; Actividad 0 conserva ambas fechas.\"}, {\"id\": \"AC-I11\", \"status\": \"PASS\", \"reason\": \"Se valida coherencia de calendario y rutas; la revisi\\u00f3n acad\\u00e9mica completa del README permanece manual.\"}, {\"id\": \"AC-I12\", \"status\": \"PASS\", \"reason\": \"Hash, lectura, encabezado, dimensiones, ancho uniforme y conteos b\\u00e1sicos.\"}, {\"id\": \"AC-I13\", \"status\": \"PASS\", \"reason\": \"Estructura, salidas guardadas y continuidad de hash; no autentica el origen hist\\u00f3rico.\"}], \"interpretation\": {\"technical_tests_do_not_replace_academic_or_visual_review\": true, \"stored_notebook_outputs_are_not_claimed_as_authentic_historical_execution\": true}}\n",
+      "stderr_tail": ""
+    },
+    {
+      "name": "git_diff_check",
+      "command": "git diff --check",
+      "exit_code": 0,
+      "stdout_tail": "",
+      "stderr_tail": "warning: in the working copy of 'data/processed/obesity_unit_ii.csv', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/unidad_ii/informe_unidad_ii.md', LF will be replaced by CRLF the next time Git touches it\n"
+    },
+    {
+      "name": "report_pdf_info",
+      "command": "C:\\Users\\rafle\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdfinfo.exe docs/unidad_ii/informe_unidad_ii.pdf",
+      "exit_code": 0,
+      "stdout_tail": "Creator:         MicrosoftÂ® Word para Microsoft 365\nProducer:        MicrosoftÂ® Word para Microsoft 365\nCreationDate:    Tue Oct 27 00:34:42 2026 Hora estándar central (México)\nModDate:         Tue Oct 27 00:34:42 2026 Hora estándar central (México)\nCustom Metadata: no\nMetadata Stream: yes\nTagged:          yes\nUserProperties:  no\nSuspects:        no\nForm:            none\nJavaScript:      no\nPages:           5\nEncrypted:       no\nPage size:       612 x 792 pts (letter)\nPage rot:        0\nFile size:       349783 bytes\nOptimized:       no\nPDF version:     1.7\n",
+      "stderr_tail": ""
+    }
+  ],
+  "unit_i_verifier_summary": {
+    "pass": 19,
+    "fail": 0,
+    "no_verificado": 0
+  },
+  "sql_server_probe": {
+    "name": "sql_server_probe_read_only",
+    "command": "\"C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\SQLCMD.EXE\" -S localhost -E -l 3 -Q \"SELECT @@SERVERNAME AS server_name;\"",
+    "exit_code": 1,
+    "stdout_tail": "",
+    "stderr_tail": "Sqlcmd: Error: Microsoft ODBC Driver 17 for SQL Server : Proveedor de canalizaciones con nombre: No se pudo abrir una conexiÃ³n con SQL Server [2]. .\nSqlcmd: Error: Microsoft ODBC Driver 17 for SQL Server : Ha finalizado el tiempo de espera de inicio de sesiÃ³n.\nSqlcmd: Error: Microsoft ODBC Driver 17 for SQL Server : Error relacionado con la red o especÃ­fico de instancia al establecer conexiÃ³n con el servidor SQL Server. El servidor no se encuentra o no estÃ¡ accesible. Compruebe si el nombre de la instancia es correcto y si SQL Server estÃ¡ configurado para permitir conexiones remotas. Para obtener mÃ¡s informaciÃ³n, vea los Libros en pantalla de SQL Server..\n"
+  },
+  "acceptance_criteria": [
+    {
+      "id": "AC-II01",
+      "status": "PASS",
+      "detail": "Raw SHA-256 before/after and known baseline."
+    },
+    {
+      "id": "AC-II02",
+      "status": "PASS",
+      "detail": "Processed CSV dimensions."
+    },
+    {
+      "id": "AC-II03",
+      "status": "PASS",
+      "detail": "Dictionary file present; academic interpretation remains subject to review."
+    },
+    {
+      "id": "AC-II04",
+      "status": "PASS",
+      "detail": "EDA notebook stored outputs and error scan."
+    },
+    {
+      "id": "AC-II05",
+      "status": "PASS",
+      "detail": "Three generated figures; chart outputs reviewed."
+    },
+    {
+      "id": "AC-II06",
+      "status": "PASS",
+      "detail": "Duplicates retained; no rows excluded."
+    },
+    {
+      "id": "AC-II07",
+      "status": "PASS",
+      "detail": "Unit II positive and negative test suite."
+    },
+    {
+      "id": "AC-II08",
+      "status": "PASS",
+      "detail": "ETL idempotence test and manifest hashes."
+    },
+    {
+      "id": "AC-II09",
+      "status": "PASS",
+      "detail": "Processed derivative validates, preserves rows, and matches source values exactly."
+    },
+    {
+      "id": "AC-II10",
+      "status": "PASS",
+      "detail": "SQL design files pass static tests."
+    },
+    {
+      "id": "AC-II11",
+      "status": "NO VERIFICADO",
+      "detail": "No local SQL Server instance accessible; SQL DDL/load not executed."
+    },
+    {
+      "id": "AC-II12",
+      "status": "PASS",
+      "detail": "Markdown, editable DOCX, Word-exported PDF; 5 pages rendered with Poppler and visually reviewed."
+    },
+    {
+      "id": "AC-II13",
+      "status": "PASS",
+      "detail": "Unit I regression tests and verifier."
+    },
+    {
+      "id": "AC-II14",
+      "status": "PASS",
+      "detail": "README links Unit II report and states SQL/academic limits."
+    }
+  ],
+  "human_review": {
+    "academic_acceptance": "PENDIENTE",
+    "teacher_identity": "PENDIENTE DE CONFIRMACIÓN",
+    "sql_server_execution": "NO VERIFICADO",
+    "visual_review": "5 páginas exportadas por Word y renderizadas con Poppler; inspección visual realizada. El render_docx no se pudo ejecutar porque LibreOffice no está instalado."
+  }
+}

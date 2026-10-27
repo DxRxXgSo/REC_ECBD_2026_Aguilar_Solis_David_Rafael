@@ -94,6 +94,10 @@ def process(source: Path, output: Path, manifest_path: Path, expected_rows: int 
     # Preserve all rows/values. CSV line endings and quoting are normalized only in the derivative.
     frame.to_csv(output, index=False, encoding="utf-8", lineterminator="\n", float_format="%.15g")
     processed = read_source(output, expected_rows=expected_rows)
+    try:
+        pd.testing.assert_frame_equal(frame, processed, check_exact=True, check_dtype=False)
+    except AssertionError as error:
+        raise DataValidationError("La serialización del CSV derivado alteró valores respecto de la fuente") from error
     output_hash = sha256(output)
     manifest: dict[str, Any] = {
         "executed_at_utc": datetime.now(timezone.utc).isoformat(),
@@ -108,6 +112,7 @@ def process(source: Path, output: Path, manifest_path: Path, expected_rows: int 
         "rows_read": len(frame),
         "rows_preserved": len(processed),
         "rows_excluded": 0,
+        "source_values_equal": True,
         "columns": list(processed.columns),
         "column_count": len(processed.columns),
         "missing_values": int(processed.isna().sum().sum()),

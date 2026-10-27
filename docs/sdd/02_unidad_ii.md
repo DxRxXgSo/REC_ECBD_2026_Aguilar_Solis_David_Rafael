@@ -6,6 +6,10 @@ Desarrollar una comprensión descriptiva del conjunto UCI de obesidad y un flujo
 
 El dataset de entrada es `data/raw/ObesityDataSet_raw_and_data_sinthetic.csv` (se conserva con ese nombre observado). Sólo las salidas derivadas se guardan bajo `data/processed/`. La ruta canónica escrita en reglas globales tiene una diferencia ortográfica; se registra aquí para evitar cambios o copias incorrectas.
 
+## Calendario
+
+La guía del curso fija revisión de Unidad II el 9 de octubre de 2026 y entrega el 16 de octubre de 2026, con ponderación de 15%. A la fecha de esta ejecución (27 de octubre de 2026), ambos hitos ya transcurrieron. Se conservan las fechas oficiales y no se afirma que la revisión o entrega hayan ocurrido; la evidencia del repositorio sólo permite fechar las actividades técnicas actuales.
+
 ## Requisitos
 
 - RF-II01: perfilar las 17 variables, tipos, dominios/categorías, distribuciones, faltantes, duplicados, anomalías y relaciones descriptivas.

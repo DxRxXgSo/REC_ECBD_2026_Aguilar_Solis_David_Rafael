@@ -1,5 +1,5 @@
 {
-  "executed_at_utc": "2026-10-27T06:09:51.269698+00:00",
+  "executed_at_utc": "2026-10-27T06:35:43.280757+00:00",
   "command": "python src/unit_ii.py",
   "input_path": "C:\\Users\\rafle\\Documents\\REC_ECBD_2026_Aguilar_Solis_David_Rafael\\data\\raw\\ObesityDataSet_raw_and_data_sinthetic.csv",
   "input_sha256_bytes": "28b6991062855d3d15642e38b1aa9d1b32fb7abbb5abf5b096f1868cd706154b",
@@ -11,6 +11,7 @@
   "rows_read": 2111,
   "rows_preserved": 2111,
   "rows_excluded": 0,
+  "source_values_equal": true,
   "columns": [
     "Gender",
     "Age",
