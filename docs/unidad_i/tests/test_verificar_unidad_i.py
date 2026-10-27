@@ -87,6 +87,20 @@ class VerifierTests(unittest.TestCase):
         self.assertEqual(csv_hash["status"], "PASS")
         self.assertEqual(csv_hash["details"]["sha256_after_crlf_to_lf"], csv_hash["details"]["expected_canonical_sha256"])
 
+    def test_notebook_crlf_variant_preserves_canonical_hash(self) -> None:
+        path = self.root / SOURCE_FILES[1]
+        notebook = path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+        path.write_bytes(notebook.replace(b"\n", b"\r\n"))
+        result, report = self.run_verifier()
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        checks = {item["check"]: item for item in report["checks"]}
+        notebook_hash = checks["notebook_matches_prior_observed_hash"]
+        self.assertEqual(notebook_hash["status"], "PASS")
+        self.assertNotEqual(
+            notebook_hash["details"]["sha256_observed"],
+            notebook_hash["details"]["sha256_after_line_ending_normalization"],
+        )
+
     def test_csv_missing_is_controlled(self) -> None:
         (self.root / SOURCE_FILES[0]).unlink()
         self.assert_controlled_failure("csv_readable")

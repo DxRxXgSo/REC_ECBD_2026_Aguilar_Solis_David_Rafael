@@ -2,7 +2,7 @@
 
 ## Estado y dependencia
 
-- **Estado:** especificación activa; contrato de entrada comprobado el 27 de octubre de 2026; implementación en curso.
+- **Estado:** implementación técnica, revisión visual final de tres páginas y regresión integral ejecutadas el 27 de octubre de 2026; pendiente la aceptación académica. AC-II13 pasa tras normalizar finales de línea al comparar el hash canónico del notebook. SQL Server continúa NO VERIFICADO.
 - **Unidad:** III, modelado supervisado, evaluación y optimización (25%).
 - **Revisión prevista:** 23 de octubre de 2026; el calendario no acredita que la revisión haya ocurrido.
 - **Entrega oficial:** 30 de octubre de 2026.
@@ -68,18 +68,18 @@ Usar `GridSearchCV` o alternativa justificable con folds agrupados (y estratific
 
 ## Criterios de aceptación
 
-| ID | Criterio | Evidencia requerida | Estado inicial |
+| ID | Criterio | Evidencia requerida | Estado actual |
 |---|---|---|---|
 | AC-III01 | Insumos de Unidad II existentes, trazables, validados y con esquema/huella comprobables. | Contrato de entrada y evidencia aprobada de U2. | PASS técnico; aprobación académica de U2 no verificada |
-| AC-III02 | Semillas, particiones y versiones permiten reproducir los experimentos. | Manifiesto y segunda ejecución comparable. | No iniciado |
-| AC-III03 | Filas completas idénticas no cruzan entrenamiento, test ni folds. | Pruebas de intersección de grupos igual a cero. | No iniciado |
-| AC-III04 | Preprocesadores se ajustan sólo dentro de folds de entrenamiento. | Pruebas de pipelines y revisión del código. | No iniciado |
-| AC-III05 | Baselines y modelos de regresión requeridos se entrenan y comparan sin incluir etiqueta ni derivados del objetivo. | Pipeline, tabla de MAE/RMSE/R² y evaluación train/CV/test. | No iniciado |
-| AC-III06 | Clasificación compara Dummy, logística y bosque aleatorio en A y B por separado. | Variables documentadas, métricas macro/accuracy, matrices y desempeño por clase. | No iniciado |
-| AC-III07 | Optimización usa entrenamiento/CV solamente y test se evalúa al final. | Configuración de búsqueda y registro de una evaluación test final. | No iniciado |
-| AC-III08 | Resultados e interpretación se derivan de ejecuciones reales y reconocen circularidad, datos sintéticos y límites de generalización. | Informe trazable a métricas y gráficos guardados. | No iniciado |
-| AC-III09 | Pruebas cubren entrada inválida, partición reproducible, duplicados, pipelines, métricas y artefactos serializados. | Suite automatizada, salida y código de retorno. | No iniciado |
-| AC-III10 | Modelos y documentación se pueden recargar, leer y reproducir sin modificar unidades previas ni `data/raw`. | Checks de artefactos, estado Git y hashes antes/después. | No iniciado |
+| AC-III02 | Semillas, particiones y versiones permiten reproducir los experimentos. | Manifiestos y ejecuciones verificadas. | PASS técnico; validación de repetición incluida en pruebas |
+| AC-III03 | Filas completas idénticas no cruzan entrenamiento, test ni folds. | Pruebas de intersección de grupos igual a cero. | PASS; test y todos los folds cubiertos |
+| AC-III04 | Preprocesadores se ajustan sólo dentro de folds de entrenamiento. | Pruebas de pipelines y revisión del código. | PASS técnico |
+| AC-III05 | Baselines y modelos de regresión requeridos se entrenan y comparan sin incluir etiqueta ni derivados del objetivo. | Pipeline, tabla de MAE/RMSE/R² y evaluación train/CV/test. | PASS; métricas reales registradas |
+| AC-III06 | Clasificación compara Dummy, logística y bosque aleatorio en A y B por separado. | Variables documentadas, métricas macro/accuracy, matrices y desempeño por clase. | PASS; escenarios y clases reportados por separado |
+| AC-III07 | Optimización usa entrenamiento/CV solamente y test se evalúa al final. | Configuración de búsqueda y registro de una evaluación test final. | PASS; cinco pipelines optimizadas recargadas con predicciones de test idénticas |
+| AC-III08 | Resultados e interpretación se derivan de ejecuciones reales y reconocen circularidad, datos sintéticos y límites de generalización. | Informe trazable a métricas y gráficos guardados. | PASS técnico/documental; aceptación académica pendiente |
+| AC-III09 | Pruebas cubren entrada inválida, partición reproducible, duplicados, pipelines, métricas y artefactos serializados. | Suite automatizada, salida y código de retorno. | PASS; ocho pruebas unitarias |
+| AC-III10 | Modelos y documentación se pueden recargar, leer y reproducir sin modificar unidades previas ni `data/raw`. | Checks de artefactos, estado Git y hashes antes/después. | PASS técnico: 8 pruebas U3, 12 U1 y 11 U2; verificador U1 19/19 PASS; verificador integral U2 en clon aislado exit 0 con AC-II13 PASS y reejecución del notebook; raw SHA-256 antes/después idéntico; DOCX/PDF de tres páginas sincronizados y revisados visualmente. SQL Server y aceptación académica siguen sin verificar.
 
 ## Tareas autorizadas por esta especificación
 
@@ -92,7 +92,7 @@ Usar `GridSearchCV` o alternativa justificable con folds agrupados (y estratific
 7. Ejecutar verificadores de unidades anteriores de forma que no sobrescriban sus evidencias; conservar sus salidas originales.
 8. Verificar `data/raw` byte por byte antes/después, revisar diffs y evidencia; preparar commits locales separados sólo si todas las validaciones pasan.
 
-Las tareas 2–8 pueden avanzar mientras AC-III01 permanezca PASS técnico; detener el entrenamiento si una comprobación posterior contradice este contrato. La fecha oficial de entrega no cambia y la especificación no presume que la revisión del 23 de octubre haya ocurrido.
+La evaluación técnica no implica aprobación docente de Unidad II o III. La verificación de SQL Server de Unidad II continúa NO VERIFICADA y no es requisito de entrada para el modelado sobre el CSV procesado validado. La fecha oficial de entrega permanece el 30 de octubre; esta especificación no presume que la revisión del 23 de octubre haya ocurrido.
 
 ## Pruebas y evidencia
 

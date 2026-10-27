@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "task": "SDD-U3-CIERRE",
+  "cause": "AC-II13 fell because the Windows checkout core.autocrlf=true rewrote the inspected notebook LF bytes as CRLF, while the Unit I verifier compared the raw observed hash to a canonical LF hash. Re-executing the notebook was not the cause; canonical notebook contents remained equal after newline normalization.",
+  "reproduction": {
+    "isolated_clone": "C:\\Users\\rafle\\AppData\\Local\\Temp\\ecbd-u2-readonly-c5b1615747f5444a994c7bd20a055528",
+    "git_core_autocrlf": "true",
+    "notebook_sha256_raw_crlf": "316bcf68723db02f16408d0ae6d2e41bb161b2822ae9078078efe778eefb08dd",
+    "notebook_sha256_after_crlf_to_lf": "06ffa5be12ab00a41f1b445d66dc37ed817aec31d000e52a80adaef2be989a70",
+    "expected_canonical_sha256": "06ffa5be12ab00a41f1b445d66dc37ed817aec31d000e52a80adaef2be989a70",
+    "failing_assertions": [
+      "test_lf_variant_preserves_canonical_hash: self.assertEqual(result.returncode, 0, result.stdout + result.stderr)",
+      "test_positive_fixture: verifier returned nonzero because notebook_matches_prior_observed_hash was FAIL"
+    ],
+    "old_suite_exit_code": 1,
+    "old_verifier_sha256": "5fbc4381184b4ee7feac186648a51c921d55a38e40f13b49ab7a7d18bc98b2f7"
+  },
+  "fix": {
+    "file": "docs/unidad_i/verificar_unidad_i.py",
+    "sha256": "d7102744a51d0051344961d826821b614e99774f009f3f577c9331a01e437649",
+    "change": "Record both local-byte and normalized notebook hashes; compare only canonical content hash and state that continuity does not authenticate saved outputs historically.",
+    "regression_test": "docs/unidad_i/tests/test_verificar_unidad_i.py::test_notebook_crlf_variant_preserves_canonical_hash",
+    "new_test_suite_exit_code": 0,
+    "new_test_count": 12
+  },
+  "resolution": {
+    "unit_ii_integrated_verifier_isolated_clone_exit_code": 0,
+    "AC-II13": "PASS",
+    "AC-II11": "NO VERIFICADO",
+    "raw_csv_sha256_before": "28b6991062855d3d15642e38b1aa9d1b32fb7abbb5abf5b096f1868cd706154b",
+    "raw_csv_sha256_after": "28b6991062855d3d15642e38b1aa9d1b32fb7abbb5abf5b096f1868cd706154b",
+    "raw_csv_unchanged": true
+  },
+  "limitations": "La evidencia completa del verificador U2 permanece sólo en el clon temporal porque su JSON contiene la ruta raíz temporal; no se copió como evidencia oficial del proyecto. SQL Server y aprobación docente no se simularon."
+}

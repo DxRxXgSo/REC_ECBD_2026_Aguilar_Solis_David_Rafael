@@ -1,0 +1,209 @@
+{
+  "schema_version": "1.1",
+  "task": "SDD-U3-CIERRE",
+  "run": {
+    "timestamp_local": "2026-10-27T08:32:19-06:00",
+    "timezone": "America/Mexico_City",
+    "project_root": "C:\\Users\\rafle\\Documents\\REC_ECBD_2026_Aguilar_Solis_David_Rafael",
+    "scope": "Cierre de Unidad III; no Unit IV/V, no push, data/raw read-only",
+    "commands": {
+      "unit_i_test_suite": {
+        "command": ".venv-unit2\\Scripts\\python.exe -m unittest discover -s docs\\unidad_i\\tests -v",
+        "exit_code": 0,
+        "tests": 12
+      },
+      "unit_ii_test_suite": {
+        "command": ".venv-unit2\\Scripts\\python.exe -m unittest discover -s tests\\unit_ii -v",
+        "exit_code": 0,
+        "tests": 11
+      },
+      "unit_iii_test_suite": {
+        "command": ".venv-unit2\\Scripts\\python.exe -m unittest discover -s tests\\unit_iii -v",
+        "exit_code": 0,
+        "tests": 8
+      },
+      "unit_i_integrated_verifier": {
+        "command": ".venv-unit2\\Scripts\\python.exe docs\\unidad_i\\verificar_unidad_i.py",
+        "exit_code": 0,
+        "pass": 19,
+        "fail": 0,
+        "no_verificado": 0,
+        "verifier_sha256": "d7102744a51d0051344961d826821b614e99774f009f3f577c9331a01e437649",
+        "evidence_path": "docs/unidad_i/evidencias/verificacion_unidad_i.json",
+        "evidence_sha256": "7b2063405aff03701b32cd336dd36c1544a76480aaff7db17c575f29889a05e2"
+      },
+      "unit_ii_integrated_verifier_isolated_clone": {
+        "command": "C:\\Users\\rafle\\Documents\\REC_ECBD_2026_Aguilar_Solis_David_Rafael\\.venv-unit2\\Scripts\\python.exe src\\verify_unit_ii.py",
+        "working_directory": "C:\\Users\\rafle\\AppData\\Local\\Temp\\ecbd-u2-readonly-c5b1615747f5444a994c7bd20a055528",
+        "exit_code": 0,
+        "unit_ii_tests_exit_code": 0,
+        "etl_exit_code": 0,
+        "notebook_execution_exit_code": 0,
+        "unit_i_tests_exit_code": 0,
+        "unit_i_verifier_exit_code": 0,
+        "git_diff_check_exit_code": 0,
+        "pdf_info_exit_code": 0,
+        "AC-II13": "PASS",
+        "AC-II11": "NO VERIFICADO",
+        "temporary_evidence": "C:\\Users\\rafle\\AppData\\Local\\Temp\\ecbd-u2-readonly-c5b1615747f5444a994c7bd20a055528\\docs\\unidad_ii\\evidencias\\verificacion_unidad_ii.json"
+      },
+      "git_diff_check": {
+        "command": "git diff --check",
+        "exit_code": 0,
+        "warning": "Git solo avisó normalización LF/CRLF al tocar archivos; no hubo whitespace errors."
+      },
+      "report_word_export": {
+        "method": "Microsoft Word > Imprimir > Microsoft Print to PDF",
+        "exit_code": 0,
+        "pages": 3,
+        "format": "A4"
+      },
+      "report_render_visual_review": {
+        "command": "pdftoppm -png -r 120 docs/unidad_iii/informe_unidad_iii.pdf docs/unidad_iii/evidencias/render/revision-cierre/pagina",
+        "exit_code": 0,
+        "pages_rendered": 3,
+        "all_pages_inspected": true,
+        "visual_status": "PASS"
+      },
+      "metrics_against_artifacts": {
+        "exit_code": 0,
+        "optimization_csv_rows": 5,
+        "markdown_docx_pdf_synchronized": true,
+        "all_tuned_metrics_match_optimization_csv": true,
+        "confusion_matrices_present": true,
+        "per_class_report_present": true,
+        "regression_chart_present": true,
+        "optimization_manifest_present": true,
+        "institutional_cover_fields_present": true
+      }
+    }
+  },
+  "input_integrity": {
+    "raw_path": "data/raw/ObesityDataSet_raw_and_data_sinthetic.csv",
+    "raw_sha256_before": "28b6991062855d3d15642e38b1aa9d1b32fb7abbb5abf5b096f1868cd706154b",
+    "raw_sha256_after": "28b6991062855d3d15642e38b1aa9d1b32fb7abbb5abf5b096f1868cd706154b",
+    "raw_unchanged": true,
+    "processed_path": "data/processed/obesity_unit_ii.csv",
+    "processed_sha256": "64418dcf666d49d832d07fe53dbfd9415662f2537502fde60e8dbe55b8f5218d",
+    "rows": 2111,
+    "columns": 17,
+    "missing_values": 0,
+    "exact_duplicate_rows": 24,
+    "target_classes": 7
+  },
+  "unit_iii_metrics_source": {
+    "path": "docs/unidad_iii/resultados/optimizacion_metricas_test.csv",
+    "sha256": "450c3f77e2e0c2f8423a5b810a9bce592e7e4a41864ee2d9db7dac631b840c85",
+    "rows": [
+      {
+        "task": "regression",
+        "scenario": "all_allowed_features",
+        "model": "RandomForestRegressor",
+        "best_params": "{\"model__max_depth\": null, \"model__min_samples_leaf\": 1, \"model__n_estimators\": 150}",
+        "cv_best_score": "8.962674027519768",
+        "test_mae": "4.750054950584512",
+        "test_rmse": "8.142817688444277",
+        "test_r2": "0.9004863050092439"
+      },
+      {
+        "task": "classification",
+        "scenario": "A",
+        "model": "LogisticRegression",
+        "best_params": "{\"model__C\": 10.0}",
+        "cv_best_score": "0.931011955509476",
+        "test_accuracy": "0.9620853080568721",
+        "test_precision_macro": "0.9634205337688533",
+        "test_recall_macro": "0.961340543476919",
+        "test_f1_macro": "0.9614890090397326"
+      },
+      {
+        "task": "classification",
+        "scenario": "A",
+        "model": "RandomForestClassifier",
+        "best_params": "{\"model__max_depth\": null, \"model__min_samples_leaf\": 1, \"model__n_estimators\": 100}",
+        "cv_best_score": "0.9326156163548687",
+        "test_accuracy": "0.9478672985781991",
+        "test_precision_macro": "0.9478273193891582",
+        "test_recall_macro": "0.9463269558680499",
+        "test_f1_macro": "0.9464802599279308"
+      },
+      {
+        "task": "classification",
+        "scenario": "B",
+        "model": "LogisticRegression",
+        "best_params": "{\"model__C\": 10.0}",
+        "cv_best_score": "0.5790511729809972",
+        "test_accuracy": "0.6374407582938388",
+        "test_precision_macro": "0.6260716133550838",
+        "test_recall_macro": "0.6308212375492646",
+        "test_f1_macro": "0.6089461712726865"
+      },
+      {
+        "task": "classification",
+        "scenario": "B",
+        "model": "RandomForestClassifier",
+        "best_params": "{\"model__max_depth\": null, \"model__min_samples_leaf\": 1, \"model__n_estimators\": 150}",
+        "cv_best_score": "0.8286907917925896",
+        "test_accuracy": "0.8696682464454977",
+        "test_precision_macro": "0.8664061712004699",
+        "test_recall_macro": "0.866938144485461",
+        "test_f1_macro": "0.8666092914570844"
+      }
+    ],
+    "optimization_manifest_sha256": "6d1a4bd8e3aeb677bf5485466f3c76d38ae092383df9158bf2b9ea06417836ad",
+    "selection_basis": "GridSearchCV uses grouped CV on training only; held-out test scored after the chosen configuration was fixed; see manifest."
+  },
+  "report": {
+    "markdown_path": "docs/unidad_iii/informe_unidad_iii.md",
+    "markdown_sha256": "5ff3a158d8d540bfffc0963875a6e535ead05bef6d2c8044fb5896a5b1d9f8c1",
+    "docx_path": "docs/unidad_iii/informe_unidad_iii.docx",
+    "docx_sha256": "3a43b7dec09a00f583a374bfd239ddcff877b8ee23c633a865733e22ef12062d",
+    "pdf_path": "docs/unidad_iii/informe_unidad_iii.pdf",
+    "pdf_sha256": "bb9480b1ac9b8c493408145dd22ff9d31e682bd0697e2237bad1e9f86f69524f",
+    "pdf_pages": 3,
+    "visual_review_images": [
+      "docs/unidad_iii/evidencias/render/revision-cierre/pagina-1.png",
+      "docs/unidad_iii/evidencias/render/revision-cierre/pagina-2.png",
+      "docs/unidad_iii/evidencias/render/revision-cierre/pagina-3.png"
+    ],
+    "word_export_confirmed": true
+  },
+  "artifacts": {
+    "unit_i_verifier_sha256": "d7102744a51d0051344961d826821b614e99774f009f3f577c9331a01e437649",
+    "unit_ii_verifier_sha256_in_isolated_clone": "06660275b96889cafd028b293e92c324690acc52bd1131dfc07e48c9a4299590",
+    "confusion_matrices": "docs/unidad_iii/figuras/clasificacion_matrices_confusion_base.png",
+    "per_class_report": "docs/unidad_iii/resultados/clasificacion_reporte_por_clase_base.json",
+    "regression_chart": "docs/unidad_iii/figuras/regresion_predicciones_test_base.png",
+    "rendered_pages": 3,
+    "unit_i_verification_evidence_sha256": "7b2063405aff03701b32cd336dd36c1544a76480aaff7db17c575f29889a05e2"
+  },
+  "acceptance": {
+    "AC-III01": "PASS técnico; aprobación académica de Unidad II no verificada",
+    "AC-III02": "PASS",
+    "AC-III03": "PASS",
+    "AC-III04": "PASS",
+    "AC-III05": "PASS",
+    "AC-III06": "PASS",
+    "AC-III07": "PASS",
+    "AC-III08": "PASS técnico/documental; aprobación docente pendiente",
+    "AC-III09": "PASS; 8 pruebas",
+    "AC-III10": "PASS técnico; verificaciones cruzadas U1/U2/U3, serialización y revisión visual final correctas; raw intacto"
+  },
+  "human_review": {
+    "academic_acceptance_unit_iii": "NO VERIFICADO",
+    "teacher_identity": "pendiente de confirmación",
+    "unit_ii_sql_server": "NO VERIFICADO",
+    "synthetic_data_generalization": "limitación documentada",
+    "scenario_a_label_circularity": "riesgo documentado"
+  },
+  "git": {
+    "four_prior_unit_iii_commits_preserved": [
+      "8398ced",
+      "3445c63",
+      "e1aad36",
+      "65c9266"
+    ],
+    "fifth_commit": "pending local review and commit",
+    "push": "NOT PERFORMED"
+  }
+}

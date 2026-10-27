@@ -10,7 +10,8 @@ from sklearn.dummy import DummyClassifier
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "src"))
 
-from unit_iii.data import DataContractError, EXPECTED_COLUMNS, split_indices, validate_input
+from unit_iii.data import (DataContractError, EXPECTED_COLUMNS, classification_cv,
+                           regression_cv, split_indices, validate_input)
 from unit_iii.pipelines import (CLASSIFICATION_A_FEATURES, CLASSIFICATION_B_FEATURES,
                                 REGRESSION_FEATURES, make_pipeline, make_preprocessor)
 
@@ -30,6 +31,14 @@ class ExperimentContractTests(unittest.TestCase):
         train2, test2, _ = split_indices(frame)
         self.assertTrue(np.array_equal(train, train2) and np.array_equal(test, test2))
         self.assertFalse(set(groups[train]).intersection(groups[test]))
+
+    def test_duplicate_groups_do_not_cross_any_training_cv_fold(self):
+        frame, _ = validate_input(ROOT)
+        train, _, groups = split_indices(frame)
+        X, y, fold_groups = frame.iloc[train], frame.iloc[train]["NObeyesdad"], groups[train]
+        for splitter in (regression_cv(fold_groups), classification_cv()):
+            for fit, validation in splitter.split(X, y, fold_groups):
+                self.assertFalse(set(fold_groups[fit]).intersection(fold_groups[validation]))
 
     def test_predictors_exclude_target_and_label_leakage(self):
         self.assertNotIn("Weight", REGRESSION_FEATURES)
@@ -59,6 +68,16 @@ class ExperimentContractTests(unittest.TestCase):
             joblib.dump(model, path)
             restored = joblib.load(path)
             self.assertTrue(np.array_equal(restored.predict(X), expected))
+
+    def test_generated_metrics_are_finite_for_each_task(self):
+        result_dir = ROOT / "docs/unidad_iii/resultados"
+        files = ["regresion_metricas_base.csv", "clasificacion_metricas_base.csv",
+                 "optimizacion_metricas_test.csv"]
+        for filename in files:
+            with self.subTest(filename=filename):
+                metrics = pd.read_csv(result_dir / filename).select_dtypes(include=["number"])
+                values = metrics.to_numpy(dtype=float)
+                self.assertTrue(np.isfinite(values[~np.isnan(values)]).all())
 
     def test_invalid_input_root_fails_as_controlled_contract_error(self):
         import tempfile

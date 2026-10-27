@@ -150,6 +150,7 @@ def build_report(project_root: Path, verifier_path: Path, command: str) -> dict[
     try:
         notebook_bytes = paths["notebook"].read_bytes()
         notebook_hash = sha256_bytes(notebook_bytes)
+        notebook_canonical_hash = sha256_bytes(notebook_bytes.replace(b"\r\n", b"\n").replace(b"\r", b"\n"))
         notebook = json.loads(notebook_bytes.decode("utf-8"))
         valid_structure = (notebook.get("nbformat") == 4 and isinstance(notebook.get("cells"), list))
         code_cells = [cell for cell in notebook.get("cells", []) if isinstance(cell, dict) and cell.get("cell_type") == "code"]
@@ -177,10 +178,11 @@ def build_report(project_root: Path, verifier_path: Path, command: str) -> dict[
                    {"code_cells_with_stored_outputs": saved_outputs,
                     "stored_outputs_are_not_proof_of_authenticity": True,
                     "notebook_executed_by_this_verifier": False})
-            baseline_matches = notebook_hash == PREVIOUSLY_RECORDED_NOTEBOOK_SHA256
+            baseline_matches = notebook_canonical_hash == PREVIOUSLY_RECORDED_NOTEBOOK_SHA256
             record("notebook_matches_prior_observed_hash", "PASS" if baseline_matches else "FAIL",
-                   {"sha256_observed": notebook_hash, "previously_recorded_sha256": PREVIOUSLY_RECORDED_NOTEBOOK_SHA256,
-                    "claim": "Hash continuity only; it does not authenticate when or how saved outputs were produced."})
+                   {"sha256_observed": notebook_hash, "sha256_after_line_ending_normalization": notebook_canonical_hash,
+                    "previously_recorded_canonical_sha256": PREVIOUSLY_RECORDED_NOTEBOOK_SHA256,
+                    "claim": "Canonical hash continuity only; line-ending changes are normalized and saved outputs are not authenticated historically."})
         else:
             record("notebook_saved_outputs", "NO VERIFICADO", "La estructura del notebook es inválida.")
             record("notebook_matches_prior_observed_hash", "NO VERIFICADO", "La estructura del notebook es inválida.")

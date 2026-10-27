@@ -41,6 +41,7 @@ def run_optimization(root: Path) -> dict[str, Any]:
 
     rows: list[dict[str, Any]] = []
     fitted_models: dict[str, Any] = {}
+    prediction_rows: dict[str, np.ndarray] = {}
     # Regression search uses only training rows and grouped CV. Test is first read
     # for scoring after GridSearchCV has selected/refit on the full training set.
     Xr = frame.iloc[train_index][REGRESSION_FEATURES]
@@ -54,6 +55,7 @@ def run_optimization(root: Path) -> dict[str, Any]:
     Xr_test = frame.iloc[test_index][REGRESSION_FEATURES]
     yr_test = frame.iloc[test_index]["Weight"]
     pred = regression_search.best_estimator_.predict(Xr_test)
+    prediction_rows["regression_randomforest_tuned"] = pred
     rows.append({
         "task": "regression", "scenario": "all_allowed_features", "model": "RandomForestRegressor",
         "best_params": json.dumps(regression_search.best_params_, sort_keys=True),
@@ -84,6 +86,7 @@ def run_optimization(root: Path) -> dict[str, Any]:
                                   classification_cv(), "f1_macro")
             test_pred = search.best_estimator_.predict(X_test)
             key = f"classification_{scenario}_{model_name.lower()}_tuned"
+            prediction_rows[key] = test_pred
             rows.append({
                 "task": "classification", "scenario": scenario, "model": model_name,
                 "best_params": json.dumps(search.best_params_, sort_keys=True),
@@ -99,10 +102,24 @@ def run_optimization(root: Path) -> dict[str, Any]:
     metrics = pd.DataFrame(rows)
     metrics_path = result_dir / "optimizacion_metricas_test.csv"
     metrics.to_csv(metrics_path, index=False, encoding="utf-8")
+    predictions_path = result_dir / "optimizacion_predicciones_test.csv"
+    prediction_table: dict[str, Any] = {
+        "row_index": test_index,
+        "weight_true": yr_test.to_numpy(),
+        "class_true": y.iloc[test_index].to_numpy(),
+    }
+    prediction_table.update(prediction_rows)
+    pd.DataFrame(prediction_table).to_csv(predictions_path, index=False, encoding="utf-8")
     model_hashes: dict[str, str] = {}
     for name, model in fitted_models.items():
         path = model_dir / f"{name}.joblib"
         joblib.dump(model, path, compress=3)
+        restored = joblib.load(path)
+        if not np.array_equal(restored.predict(
+            Xr_test if name == "regression_randomforest_tuned" else
+            frame.iloc[test_index][feature_columns("classification", name.split("_")[1])]
+        ), prediction_rows[name]):
+            raise RuntimeError(f"Predicciones distintas tras recargar {path.name}")
         model_hashes[path.name] = sha256(path)
     summary_path = result_dir / "optimizacion_manifest.json"
     summary = {
@@ -112,7 +129,10 @@ def run_optimization(root: Path) -> dict[str, Any]:
         "search_scope": "All GridSearchCV selection, refitting, and CV restricted to train. Reserved test evaluated once after each best model is fixed.",
         "regression_cv": "GroupKFold(5), selection metric negative RMSE",
         "classification_cv": "StratifiedGroupKFold(5), selection metric macro F1",
-        "metrics_sha256": sha256(metrics_path), "models": model_hashes,
+        "metrics_sha256": sha256(metrics_path),
+        "predictions_sha256": sha256(predictions_path),
+        "serialized_prediction_roundtrip": "PASS for all five tuned pipelines",
+        "models": model_hashes,
         "versions": {"python": __import__("platform").python_version(),
                      "pandas": pd.__version__, "numpy": np.__version__},
     }

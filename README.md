@@ -117,9 +117,9 @@ REC_ECBD_2026_Aguilar_Solis_David_Rafael/
 - [x] Dataset original almacenado en `data/raw`.
 - [x] Notebook `00_revision_inicial_dataset.ipynb`.
 - [x] Revisión inicial: dimensiones, faltantes y duplicados.
-- [x] **Unidad I:** documentación terminada y validación técnica interna PASS (11/11 pruebas; 19 verificaciones PASS, 0 FAIL). Véase [planeación de Unidad I](docs/unidad_i/planeacion_unidad_i.md). Entrega y aprobación docente no verificadas.
+- [x] **Unidad I:** documentación terminada y validación técnica interna PASS (12/12 pruebas; 19 verificaciones PASS, 0 FAIL). Véase [planeación de Unidad I](docs/unidad_i/planeacion_unidad_i.md). Entrega y aprobación docente no verificadas.
 - [ ] **Unidad II:** análisis EDA, diccionario, notebook, ETL y scripts de Data Mart preparados; 11 pruebas locales PASS y 19 verificaciones de Unidad I PASS. La creación/carga en SQL Server y la aceptación académica no están verificadas. Véase [informe](docs/unidad_ii/informe_unidad_ii.md), [diccionario](docs/unidad_ii/diccionario_datos.md) y [notebook EDA](notebooks/01_exploracion_datos.ipynb).
-- [ ] **Unidad III:** regresión, clasificación y evaluación pendientes.
+- [x] **Unidad III:** implementación técnica interna: regresión de `Weight`, clasificación A/B de `NObeyesdad`, validación agrupada, optimización y pruebas. La entrega y aceptación docente no están verificadas. Informe: [Markdown](docs/unidad_iii/informe_unidad_iii.md), [DOCX](docs/unidad_iii/informe_unidad_iii.docx), [PDF](docs/unidad_iii/informe_unidad_iii.pdf); evidencia técnica: [verificación U3](docs/unidad_iii/evidencias/verificacion_unidad_iii.json); especificación: [SDD-U3](docs/sdd/03_unidad_iii.md).
 - [ ] **Unidad IV:** clustering y PCA pendientes.
 - [ ] **Unidad V:** dashboard, storytelling, documentación final y defensa pendientes.
 

@@ -1,11 +1,11 @@
 {
   "schema_version": "2.0",
   "run": {
-    "timestamp_local": "2026-10-26T23:47:25-06:00",
-    "command": "'C:\\Users\\rafle\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe' 'C:\\Users\\rafle\\Documents\\REC_ECBD_2026_Aguilar_Solis_David_Rafael\\docs\\unidad_i\\verificar_unidad_i.py'",
+    "timestamp_local": "2026-10-27T08:30:43-06:00",
+    "command": "'C:\\Users\\rafle\\Documents\\REC_ECBD_2026_Aguilar_Solis_David_Rafael\\.venv-unit2\\Scripts\\python.exe' 'C:\\Users\\rafle\\Documents\\REC_ECBD_2026_Aguilar_Solis_David_Rafael\\docs\\unidad_i\\verificar_unidad_i.py'",
     "python_version": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
     "project_root": "C:\\Users\\rafle\\Documents\\REC_ECBD_2026_Aguilar_Solis_David_Rafael",
-    "verifier_sha256": "5fbc4381184b4ee7feac186648a51c921d55a38e40f13b49ab7a7d18bc98b2f7",
+    "verifier_sha256": "d7102744a51d0051344961d826821b614e99774f009f3f577c9331a01e437649",
     "exit_code": 0,
     "notebook_execution_performed": false
   },
@@ -118,8 +118,9 @@
       "status": "PASS",
       "details": {
         "sha256_observed": "06ffa5be12ab00a41f1b445d66dc37ed817aec31d000e52a80adaef2be989a70",
-        "previously_recorded_sha256": "06ffa5be12ab00a41f1b445d66dc37ed817aec31d000e52a80adaef2be989a70",
-        "claim": "Hash continuity only; it does not authenticate when or how saved outputs were produced."
+        "sha256_after_line_ending_normalization": "06ffa5be12ab00a41f1b445d66dc37ed817aec31d000e52a80adaef2be989a70",
+        "previously_recorded_canonical_sha256": "06ffa5be12ab00a41f1b445d66dc37ed817aec31d000e52a80adaef2be989a70",
+        "claim": "Canonical hash continuity only; line-ending changes are normalized and saved outputs are not authenticated historically."
       }
     },
     {
@@ -146,7 +147,7 @@
       "status": "PASS",
       "details": {
         "path": "C:\\Users\\rafle\\Documents\\REC_ECBD_2026_Aguilar_Solis_David_Rafael\\README.md",
-        "characters": 5815
+        "characters": 6591
       }
     },
     {

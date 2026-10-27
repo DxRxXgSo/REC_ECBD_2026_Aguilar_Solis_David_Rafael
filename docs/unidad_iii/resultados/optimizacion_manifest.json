@@ -2161,6 +2161,8 @@
   "regression_cv": "GroupKFold(5), selection metric negative RMSE",
   "classification_cv": "StratifiedGroupKFold(5), selection metric macro F1",
   "metrics_sha256": "450c3f77e2e0c2f8423a5b810a9bce592e7e4a41864ee2d9db7dac631b840c85",
+  "predictions_sha256": "b1307805c17ece43b6b287106a9c95a57b3df0af331236b75aa75ee5b1f218a2",
+  "serialized_prediction_roundtrip": "PASS for all five tuned pipelines",
   "models": {
     "regression_randomforest_tuned.joblib": "d62193f5f01d45da860f84d080e154d3b1e9f388c3818639496327edc2d44a9c",
     "classification_A_logisticregression_tuned.joblib": "be33ce8dfde8d5398e515b4142468fce598592a09ef3ce38d476df5c62cb9d32",
