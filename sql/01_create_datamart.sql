@@ -1,4 +1,7 @@
 /* Data Mart de Unidad II. Requiere SQL Server 2017+ para FORMAT='CSV'. */
+USE [REC_ECBD_Obesidad_2026];
+GO
+
 IF SCHEMA_ID(N'DM') IS NULL EXEC(N'CREATE SCHEMA DM');
 GO
 
@@ -40,25 +43,49 @@ BEGIN
     CREATE TABLE DM.FactObesityObservation (
         ObservationKey bigint IDENTITY(1,1) NOT NULL CONSTRAINT PK_FactObesityObservation PRIMARY KEY,
         Gender varchar(20) NOT NULL,
-        Age decimal(12,6) NOT NULL,
-        Height decimal(12,6) NOT NULL,
-        Weight decimal(12,6) NOT NULL,
+        Age float NOT NULL,
+        Height float NOT NULL,
+        Weight float NOT NULL,
         family_history_with_overweight varchar(10) NOT NULL,
         FAVC varchar(10) NOT NULL,
-        FCVC decimal(12,6) NOT NULL,
-        NCP decimal(12,6) NOT NULL,
+        FCVC float NOT NULL,
+        NCP float NOT NULL,
         CAEC varchar(20) NOT NULL,
         SMOKE varchar(10) NOT NULL,
-        CH2O decimal(12,6) NOT NULL,
+        CH2O float NOT NULL,
         SCC varchar(10) NOT NULL,
-        FAF decimal(12,6) NOT NULL,
-        TUE decimal(12,6) NOT NULL,
+        FAF float NOT NULL,
+        TUE float NOT NULL,
         CALC varchar(20) NOT NULL,
         MTRANS varchar(40) NOT NULL,
         ObesityLevelKey tinyint NOT NULL,
         CONSTRAINT FK_FactObesityObservation_DimObesityLevel
             FOREIGN KEY (ObesityLevelKey) REFERENCES DM.DimObesityLevel(ObesityLevelKey)
     );
+END;
+GO
+
+/* Migración segura desde la primera DDL decimal: sólo permite cambiar tipos si ambas
+   tablas analíticas siguen vacías; nunca redondea datos ya cargados. */
+IF EXISTS (
+    SELECT 1 FROM sys.columns
+    WHERE object_id = OBJECT_ID(N'DM.FactObesityObservation')
+      AND name IN (N'Age',N'Height',N'Weight',N'FCVC',N'NCP',N'CH2O',N'FAF',N'TUE')
+      AND system_type_id IN (106,108)
+)
+BEGIN
+    IF EXISTS (SELECT 1 FROM DM.FactObesityObservation)
+       OR EXISTS (SELECT 1 FROM DM.StgObesityObservation)
+        THROW 51010, 'No se cambia la precisión con tablas pobladas; requiere revisión manual.', 1;
+
+    ALTER TABLE DM.FactObesityObservation ALTER COLUMN Age float NOT NULL;
+    ALTER TABLE DM.FactObesityObservation ALTER COLUMN Height float NOT NULL;
+    ALTER TABLE DM.FactObesityObservation ALTER COLUMN Weight float NOT NULL;
+    ALTER TABLE DM.FactObesityObservation ALTER COLUMN FCVC float NOT NULL;
+    ALTER TABLE DM.FactObesityObservation ALTER COLUMN NCP float NOT NULL;
+    ALTER TABLE DM.FactObesityObservation ALTER COLUMN CH2O float NOT NULL;
+    ALTER TABLE DM.FactObesityObservation ALTER COLUMN FAF float NOT NULL;
+    ALTER TABLE DM.FactObesityObservation ALTER COLUMN TUE float NOT NULL;
 END;
 GO
 
