@@ -67,7 +67,7 @@ No son automatizables por completo: validez conceptual del diccionario, pertinen
 
 ## Dependencias con Unidad III
 
-La salida derivada conserva etiqueta, predictores, categorías y registros para regresión/clasificación. Los 24 duplicados deben agruparse al particionar para evitar que copias idénticas crucen train/test. Los pipelines de imputación, escalado, codificación, selección y balanceo pertenecen a Unidad III y se ajustarán sólo en entrenamiento.
+La salida derivada conserva etiqueta, predictores, categorías y registros para los modelos supervisados de Unidad III (regresión y clasificación). Los 24 duplicados deben agruparse al particionar para evitar que copias idénticas crucen train/test. Los pipelines de imputación, escalado, codificación, selección y balanceo pertenecen a Unidad III y se ajustarán sólo en entrenamiento.
 
 ## DoD
 
