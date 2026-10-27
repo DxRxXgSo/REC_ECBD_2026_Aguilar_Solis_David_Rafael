@@ -1,0 +1,292 @@
+{
+  "schema_version": "2.0",
+  "run": {
+    "timestamp_local": "2026-10-26T23:47:25-06:00",
+    "command": "'C:\\Users\\rafle\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe' 'C:\\Users\\rafle\\Documents\\REC_ECBD_2026_Aguilar_Solis_David_Rafael\\docs\\unidad_i\\verificar_unidad_i.py'",
+    "python_version": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "project_root": "C:\\Users\\rafle\\Documents\\REC_ECBD_2026_Aguilar_Solis_David_Rafael",
+    "verifier_sha256": "5fbc4381184b4ee7feac186648a51c921d55a38e40f13b49ab7a7d18bc98b2f7",
+    "exit_code": 0,
+    "notebook_execution_performed": false
+  },
+  "summary": {
+    "pass": 19,
+    "fail": 0,
+    "no_verificado": 0
+  },
+  "checks": [
+    {
+      "check": "csv_readable",
+      "category": "technical",
+      "status": "PASS",
+      "details": {
+        "path": "C:\\Users\\rafle\\Documents\\REC_ECBD_2026_Aguilar_Solis_David_Rafael\\data\\raw\\ObesityDataSet_raw_and_data_sinthetic.csv",
+        "bytes": 263646
+      }
+    },
+    {
+      "check": "csv_content_hash",
+      "category": "technical",
+      "status": "PASS",
+      "details": {
+        "sha256_local_bytes": "28b6991062855d3d15642e38b1aa9d1b32fb7abbb5abf5b096f1868cd706154b",
+        "sha256_after_crlf_to_lf": "b62e1eb1c8c981379bee23e39e35683f5455683bd772dc722827158dde929a1f",
+        "expected_canonical_sha256": "b62e1eb1c8c981379bee23e39e35683f5455683bd772dc722827158dde929a1f",
+        "byte_length": 263646,
+        "crlf_count": 2112,
+        "lf_only_count": 0,
+        "interpretation": "Se compara el hash canónico; el hash local conserva los finales de línea presentes."
+      }
+    },
+    {
+      "check": "csv_parse",
+      "category": "technical",
+      "status": "PASS",
+      "details": {
+        "parsed_rows_including_header": 2112,
+        "encoding": "UTF-8"
+      }
+    },
+    {
+      "check": "csv_header",
+      "category": "technical",
+      "status": "PASS",
+      "details": {
+        "column_count": 17,
+        "expected_column_count": 17,
+        "missing": [],
+        "unexpected": [],
+        "order_matches": true
+      }
+    },
+    {
+      "check": "csv_record_count",
+      "category": "technical",
+      "status": "PASS",
+      "details": {
+        "records": 2111,
+        "expected": 2111
+      }
+    },
+    {
+      "check": "csv_row_width",
+      "category": "technical",
+      "status": "PASS",
+      "details": {
+        "width_counts": {
+          "17": 2111
+        },
+        "expected_width": 17
+      }
+    },
+    {
+      "check": "csv_quality_counts",
+      "category": "technical",
+      "status": "PASS",
+      "details": {
+        "empty_cells": 0,
+        "exact_duplicate_rows": 24,
+        "expected_empty_cells": 0,
+        "expected_exact_duplicate_rows": 24
+      }
+    },
+    {
+      "check": "notebook_structure",
+      "category": "technical",
+      "status": "PASS",
+      "details": {
+        "nbformat": 4,
+        "cell_count": 3,
+        "code_cell_count": 3,
+        "errors": [],
+        "sha256_observed": "06ffa5be12ab00a41f1b445d66dc37ed817aec31d000e52a80adaef2be989a70"
+      }
+    },
+    {
+      "check": "notebook_saved_outputs",
+      "category": "technical",
+      "status": "PASS",
+      "details": {
+        "code_cells_with_stored_outputs": 3,
+        "stored_outputs_are_not_proof_of_authenticity": true,
+        "notebook_executed_by_this_verifier": false
+      }
+    },
+    {
+      "check": "notebook_matches_prior_observed_hash",
+      "category": "technical",
+      "status": "PASS",
+      "details": {
+        "sha256_observed": "06ffa5be12ab00a41f1b445d66dc37ed817aec31d000e52a80adaef2be989a70",
+        "previously_recorded_sha256": "06ffa5be12ab00a41f1b445d66dc37ed817aec31d000e52a80adaef2be989a70",
+        "claim": "Hash continuity only; it does not authenticate when or how saved outputs were produced."
+      }
+    },
+    {
+      "check": "global_rules_readable",
+      "category": "technical",
+      "status": "PASS",
+      "details": {
+        "path": "C:\\Users\\rafle\\Documents\\REC_ECBD_2026_Aguilar_Solis_David_Rafael\\docs\\sdd\\00_reglas_globales.md",
+        "characters": 4592
+      }
+    },
+    {
+      "check": "plan_markdown_readable",
+      "category": "technical",
+      "status": "PASS",
+      "details": {
+        "path": "C:\\Users\\rafle\\Documents\\REC_ECBD_2026_Aguilar_Solis_David_Rafael\\docs\\unidad_i\\planeacion_unidad_i.md",
+        "characters": 13440
+      }
+    },
+    {
+      "check": "readme_readable",
+      "category": "technical",
+      "status": "PASS",
+      "details": {
+        "path": "C:\\Users\\rafle\\Documents\\REC_ECBD_2026_Aguilar_Solis_David_Rafael\\README.md",
+        "characters": 5815
+      }
+    },
+    {
+      "check": "confirmed_calendar_source",
+      "category": "technical",
+      "status": "PASS",
+      "details": {
+        "unit_i_2026_10_02": true,
+        "project_close_2026_11_20": true,
+        "activity_0_25_or_28_september_preserved": true
+      }
+    },
+    {
+      "check": "plan_calendar_coherence",
+      "category": "academic",
+      "status": "PASS",
+      "details": {
+        "unit_i_date_present": true,
+        "project_close_present": true,
+        "activity_0_both_dates_present": true,
+        "stale_unknown_calendar_claims": []
+      }
+    },
+    {
+      "check": "readme_calendar_coherence",
+      "category": "documentation",
+      "status": "PASS",
+      "details": {
+        "unit_i_conflicting_dates": [],
+        "close_conflicting_dates": [],
+        "stale_unknown_calendar_claims": [],
+        "confirmed_close_in_readme": true,
+        "unit_i_date_may_be_omitted_if_no_conflicting_claim": true
+      }
+    },
+    {
+      "check": "docx_container_readable",
+      "category": "technical",
+      "status": "PASS",
+      "details": {
+        "zip_integrity": true,
+        "document_xml_parseable": true,
+        "visual_layout_checked": false
+      }
+    },
+    {
+      "check": "reference_urls_syntactically_present",
+      "category": "technical",
+      "status": "PASS",
+      "details": {
+        "missing_urls": [],
+        "malformed_urls": [],
+        "network_reachability_or_academic_validity_checked": false
+      }
+    },
+    {
+      "check": "required_document_paths",
+      "category": "technical",
+      "status": "PASS",
+      "details": {
+        "readme_references_plan": true,
+        "markdown_exists": true,
+        "docx_exists": true
+      }
+    }
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-I01",
+      "status": "NO VERIFICADO",
+      "reason": "Requiere revisión académica o visual."
+    },
+    {
+      "id": "AC-I02",
+      "status": "NO VERIFICADO",
+      "reason": "Requiere revisión académica o visual."
+    },
+    {
+      "id": "AC-I03",
+      "status": "NO VERIFICADO",
+      "reason": "Requiere revisión académica o visual."
+    },
+    {
+      "id": "AC-I04",
+      "status": "NO VERIFICADO",
+      "reason": "Requiere revisión académica o visual."
+    },
+    {
+      "id": "AC-I05",
+      "status": "NO VERIFICADO",
+      "reason": "Requiere revisión académica o visual."
+    },
+    {
+      "id": "AC-I06",
+      "status": "NO VERIFICADO",
+      "reason": "Requiere revisión académica o visual."
+    },
+    {
+      "id": "AC-I07",
+      "status": "NO VERIFICADO",
+      "reason": "Requiere revisión académica o visual."
+    },
+    {
+      "id": "AC-I08",
+      "status": "NO VERIFICADO",
+      "reason": "Requiere revisión académica o visual."
+    },
+    {
+      "id": "AC-I10",
+      "status": "NO VERIFICADO",
+      "reason": "Requiere revisión académica o visual."
+    },
+    {
+      "id": "AC-I14",
+      "status": "NO VERIFICADO",
+      "reason": "Requiere revisión académica o visual."
+    },
+    {
+      "id": "AC-I09",
+      "status": "PASS",
+      "reason": "Calendario SDD y planeación deben coincidir; Actividad 0 conserva ambas fechas."
+    },
+    {
+      "id": "AC-I11",
+      "status": "PASS",
+      "reason": "Se valida coherencia de calendario y rutas; la revisión académica completa del README permanece manual."
+    },
+    {
+      "id": "AC-I12",
+      "status": "PASS",
+      "reason": "Hash, lectura, encabezado, dimensiones, ancho uniforme y conteos básicos."
+    },
+    {
+      "id": "AC-I13",
+      "status": "PASS",
+      "reason": "Estructura, salidas guardadas y continuidad de hash; no autentica el origen histórico."
+    }
+  ],
+  "interpretation": {
+    "technical_tests_do_not_replace_academic_or_visual_review": true,
+    "stored_notebook_outputs_are_not_claimed_as_authentic_historical_execution": true
+  }
+}
