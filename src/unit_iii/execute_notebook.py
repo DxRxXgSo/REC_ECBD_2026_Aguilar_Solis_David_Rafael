@@ -34,10 +34,14 @@ def execute(root: Path, relative_path: str) -> int:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("notebook", choices=["regresion", "clasificacion"])
+    parser.add_argument("notebook", choices=["regresion", "clasificacion", "optimizacion"])
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[2]
-    relative = "notebooks/02_regresion.ipynb" if args.notebook == "regresion" else "notebooks/03_clasificacion.ipynb"
+    relative = {
+        "regresion": "notebooks/02_regresion.ipynb",
+        "clasificacion": "notebooks/03_clasificacion.ipynb",
+        "optimizacion": "notebooks/04_optimizacion.ipynb",
+    }[args.notebook]
     return execute(root, relative)
 
 
