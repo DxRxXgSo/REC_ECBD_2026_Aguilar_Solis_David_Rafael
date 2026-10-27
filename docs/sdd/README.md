@@ -6,10 +6,10 @@ Este directorio contiene las reglas persistentes de Spec-Driven Development y la
 
 | Archivo previsto | Unidad | Estado |
 |---|---|---|
-| `01_unidad_i.md` | Unidad I | Especificada; criterios pendientes de implementación y aceptación. |
-| `02_unidad_ii.md` | Unidad II | Reservada; aún no especificada. |
+| `01_unidad_i.md` | Unidad I | Especificada; documentación y validación técnica interna registradas; aprobación docente no verificada. |
+| `02_unidad_ii.md` | Unidad II | Especificada; desarrollo autorizado en curso. |
 | `03_unidad_iii.md` | Unidad III | Reservada; aún no especificada. |
 | `04_unidad_iv.md` | Unidad IV | Reservada; aún no especificada. |
 | `05_unidad_v.md` | Unidad V | Reservada; aún no especificada. |
 
-Los nombres reservados sólo preparan la estructura. No autorizan trabajo de las unidades II a V.
+Las especificaciones de unidades futuras no autorizan su implementación. Sólo se trabaja la unidad expresamente activa.
