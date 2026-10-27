@@ -37,9 +37,13 @@ No se ajustan imputadores, escaladores, codificadores, selección de variables n
 
 ## Data Mart SQL Server
 
-Los scripts diseñan `DM.DimObesityLevel`, staging y `DM.FactObesityObservation`, cuyo grano es un registro fuente; una clave sustituta conserva duplicados sin imponer unicidad falsa. La carga usa `BULK INSERT` CSV UTF-8, valida números y clase y reemplaza el contenido de la tabla de hechos dentro de una transacción. Se incluyen consultas de integridad y resúmenes descriptivos para el futuro dashboard.
+Los scripts crean la base `REC_ECBD_Obesidad_2026`, el esquema `DM`, `DM.DimObesityLevel`, staging y `DM.FactObesityObservation`; el grano del hecho es una fila fuente y su clave sustituta conserva repeticiones sin imponer unicidad falsa. La conexión real se hizo por autenticación integrada a `LAPTOP-O1T564Q8\SQLEXPRESS`, SQL Server 2025 RTM 17.0.1000.7 Express, con `sysadmin=1`. La base quedó `ONLINE`; la dimensión contiene siete categorías y la clave foránea está habilitada y confiable. `@@SERVERNAME` devolvió NULL, aunque `SERVERPROPERTY('ServerName')` identificó la instancia; esto se conserva como advertencia de configuración del nombre local, no se modificó metadato del servidor.
 
-La prueba de conexión con `sqlcmd` a `localhost` terminó con código 1 por falta de una instancia accesible. El diseño y los scripts se revisaron estáticamente; la creación/carga real y AC-II11 quedan **NO VERIFICADOS**. El servidor debe tener acceso de lectura al archivo y soportar la opción CSV de SQL Server 2017 o posterior.
+La primera ejecución de `sql/02_load_datamart.sql` cargó 2,111 observaciones en staging y hechos. La segunda ejecución fue idempotente: detectó multiconjuntos iguales y no insertó de nuevo. Ambos conteos finales son 2,111 y se conservan las 24 repeticiones exactas. La aserción de `sql/05_assert_datamart.sql` pasó: 7 categorías, 0 faltantes requeridos, 0 hechos huérfanos, 0 filas numéricas inválidas y 17 variables de origen cotejadas. Los conteos y promedios por categoría de Age, Height, Weight, FCVC y FAF coincidieron con Pandas con tolerancias absolutas y relativas de 1e-10; las consultas descriptivas también cubren NCP, CH2O, TUE, transporte y hábitos.
+
+La primera carga reveló que `TUE` y `FAF` contienen valores en notación científica, por ejemplo `7.3e-05` y `9.6e-05`; convertirlos a `decimal(12,6)` los volvía nulos y detenía la validación. Se corrigió la representación de medidas a `float`, compatible con los valores float64 del CSV y Pandas. La migración de un esquema previo se restringió a tablas vacías; no se alteró contenido poblado. SQL Server leyó el CSV procesado directamente mediante `BULK INSERT`; no se cambiaron permisos globales. La evidencia de conexión, comandos, códigos de salida, resultados y cotejo se conserva en `docs/unidad_ii/evidencias/verificacion_unidad_ii.json`.
+
+La ejecución técnica de AC-II11 queda **PASS**: la revalidación actual confirmó conexión, esquema, conteos, siete categorías, integridad referencial, aserciones y coincidencia fila a fila con el CSV procesado. La primera y segunda carga reales registradas conservaron 2,111 observaciones y demostraron idempotencia. Esto no equivale a aprobación docente ni aceptación académica. La fecha de ejecución fue el 27 de octubre de 2026; no se afirma que las fechas oficiales de revisión o entrega ya transcurridas se hayan cumplido. La revalidación final fue de sólo lectura y no repitió la carga.
 
 ## Reproducción
 
@@ -49,15 +53,19 @@ El entorno se fijó en `docs/unidad_ii/requirements.txt`. Desde la raíz del pro
 python -m unittest discover -s tests/unit_ii -v
 python src/unit_ii.py
 python src/execute_unit_ii_notebook.py
+python src/verify_unit_ii.py --sql-read-only
+python src/verify_unit_ii.py --closure-read-only
+python src/build_unit_ii_report.py
+python src/build_unit_ii_pdf.py
 ```
 
-El entorno utilizado y sus versiones, comandos, hashes, conteos y resultados se registran en `docs/unidad_ii/evidencias/verificacion_unidad_ii.json`. Unidad I también se vuelve a probar; sus documentos y el notebook inicial no se editan.
+El primer comando SQL de carga se ejecutó dos veces durante la carga real inicial. La opción `--sql-read-only` sólo consulta la instancia y no crea objetos ni vuelve a cargar filas. `--closure-read-only` ejecuta pruebas de regresión, el verificador de Unidad I y consultas SQL, sin correr ETL, cargas o notebooks. El DOCX se genera desde este Markdown con `python-docx`; el PDF se construye directamente desde el mismo Markdown con ReportLab 4.4.9, no se presenta como exportación de Word. Las versiones requeridas están en `docs/unidad_ii/requirements.txt`. El entorno utilizado y sus versiones, comandos, hashes, conteos y resultados se registran en `docs/unidad_ii/evidencias/verificacion_unidad_ii.json`. Unidad I también se vuelve a probar; sus documentos y el notebook inicial no se editan.
 
-La corrida registrada ejecutó 11 pruebas de Unidad II y 11 pruebas de Unidad I sin fallos; el verificador de Unidad I registró 19/19 PASS. El notebook ejecutó cinco celdas de código sin errores. La conexión local de SQL Server falló con código 1, por lo que creación y carga permanecen NO VERIFICADAS. La aprobación docente y la revisión académica independiente no se sustituyen por estos resultados técnicos.
+La corrida de cierre ejecutó 12 pruebas de Unidad I, 12 de Unidad II y 8 de Unidad III sin fallos; el verificador integral de Unidad I registró 19/19 PASS. En esta revalidación, el notebook se ejecutó en una copia temporal del proyecto con cinco celdas de código y generó las tres figuras; la copia temporal se descartó. Los hashes del notebook original, CSV raw y CSV procesado permanecieron idénticos. La revalidación SQL de sólo lectura terminó con código 0 y cotejó las 2,111 filas y sus 17 variables con el CSV procesado. La aprobación docente y la revisión académica independiente no se sustituyen por estos resultados técnicos.
 
 ## Limitaciones y conclusión
 
-La proporción sintética reportada por los autores limita la generalización a personas y contextos no representados. Las respuestas de hábitos son observacionales y no permiten inferir causalidad. Duplicados exactos y muestras sintéticas requieren cuidado al separar datos en Unidad III. Los extremos estadísticos se conservaron; no se dispone de identificador que permita reconstruir qué filas fueron sintéticas. La Unidad II cuenta con análisis y preparación técnica reproducibles, pero la carga en SQL Server y la aprobación académica requieren validación independiente.
+La proporción sintética reportada por los autores limita la generalización a personas y contextos no representados. Las respuestas de hábitos son observacionales y no permiten inferir causalidad. Duplicados exactos y muestras sintéticas requieren cuidado al separar datos en Unidad III. Los extremos estadísticos se conservaron; no se dispone de identificador que permita reconstruir qué filas fueron sintéticas. La carga y las consultas del Data Mart quedaron verificadas técnicamente en SQL Server; la aprobación docente y la aceptación académica requieren revisión independiente.
 
 ## Referencias
 

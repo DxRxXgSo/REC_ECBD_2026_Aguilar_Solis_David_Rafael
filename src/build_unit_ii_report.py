@@ -131,6 +131,10 @@ def build(root: Path) -> Path:
             "python src/unit_ii.py",
         }:
             paragraph.paragraph_format.keep_with_next = True
+        if line.startswith("La primera ejecución de `sql/02_load_datamart.sql`"):
+            paragraph.paragraph_format.keep_together = True
+        if line.startswith("La corrida de cierre ejecutó 12 pruebas de Unidad I"):
+            paragraph.paragraph_format.keep_together = True
         if add_figures and line.startswith("El análisis gráfico"):
             for filename, caption in figures:
                 paragraph = doc.add_paragraph()
