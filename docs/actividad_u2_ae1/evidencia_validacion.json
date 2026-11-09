@@ -1,6 +1,6 @@
 {
   "activity": "U2 AE1 — Exploración, clasificación y diagnóstico del conjunto de datos",
-  "run_timestamp_local": "2026-11-08T20:22:21-06:00",
+  "run_timestamp_local": "2026-11-08T20:52:24-06:00",
   "environment": {
     "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
     "pandas": "3.1.0",
@@ -92,13 +92,22 @@
     "raw_sha256_after": "28b6991062855d3d15642e38b1aa9d1b32fb7abbb5abf5b096f1868cd706154b"
   },
   "criteria_summary": {
-    "PASS": 18,
+    "PASS": 19,
     "FAIL": 0,
-    "NO VERIFICADO": 4,
-    "note": "Los criterios pendientes son regresión U3 bloqueada por Windows, publicación GitHub, Classroom y revisión/aceptación humana."
+    "NO VERIFICADO": 3,
+    "note": "Pendientes: prueba automatizada U3 bloqueada por Windows Application Control, entrega Classroom y revisión/aceptación humana."
   },
   "external_delivery": {
-    "github": "NO VERIFICADO; no se publicó porque la suite U3 quedó bloqueada.",
+    "github": {
+      "status": "PASS",
+      "verified_at": "2026-11-08T20:52:24-06:00",
+      "branch": "main",
+      "commit": "0c96c7da0bf33cdf162f2e014135d2e45722db47",
+      "notebook_blob": "f4e333aea6d65093cd362bd46213a6cd2b2ad67f",
+      "pdf_blob": "9512484b0182943101e9a3fbf941bdbd79524e5d",
+      "notebook_url": "https://github.com/DxRxXgSo/REC_ECBD_2026_Aguilar_Solis_David_Rafael/blob/main/notebooks/Aguilar_Solis_David_Rafael_U2_AE1_Exploracion.ipynb",
+      "pdf_url": "https://github.com/DxRxXgSo/REC_ECBD_2026_Aguilar_Solis_David_Rafael/blob/main/docs/Aguilar_Solis_David_Rafael_U2_AE1_Diagnostico.pdf"
+    },
     "classroom": "NO VERIFICADO; requiere entrega manual.",
     "teacher_acceptance": "NO VERIFICADO."
   },
@@ -111,7 +120,7 @@
     "README.md": "9c947d9b9f6c74befd88356f46773ab008a68f83769e9fbbb1f128054c4da3d8",
     "notebooks/Aguilar_Solis_David_Rafael_U2_AE1_Exploracion.ipynb": "75704c4be0be88d3c43d6ba629cd1946a1b096339d8bdca7502b0a7b831c4b30",
     "docs/Aguilar_Solis_David_Rafael_U2_AE1_Diagnostico.pdf": "fb9437673973761626039da322e04adee13610466206976d8838897d0e3771b0",
-    "docs/actividad_u2_ae1/matriz_cumplimiento.md": "506b68c4545861a378e0a934d0dba94f10092fbca59821510f7ec944bd64fb71",
+    "docs/actividad_u2_ae1/matriz_cumplimiento.md": "532660cd5785d122988f999f4183676b52ab939c60304972a19188fdf6f224a1",
     "src/build_u2_ae1_pdf.py": "98c94e0cd72eb7d3d1e31d0eab4603562d039e951253670bec0a5bc860142a69",
     "src/execute_u2_ae1_notebook.py": "f212324b871b098f6dac13ec563228e8b1d0f51c8c942f4129cb5463ae5bb71e",
     ".gitattributes": "f59c2299a606d6fc0b23823c9613abe3f6af97c4015af07d371c1684de4a927d"
@@ -146,10 +155,12 @@
     "branch": "main",
     "local_head": "318f7f9926848bf76f99c3911c12acf7cf8d93b5",
     "remote_main_at_check": "7a4a92f12bd909a55aba0770399b07f71d47d680",
-    "commit_created_for_ae1": false,
-    "push_performed": false,
-    "reason": "La verificación de regresión de Unidad III no pudo ejecutarse por bloqueo de DLL en Windows; se conserva todo el trabajo local sin publicar.",
-    "local_branch_ahead_of_remote": 13,
-    "remote_commit_is_ancestor_of_local_head": true
+    "commit_created_for_ae1": true,
+    "push_performed": true,
+    "reason": "Historial verificado como fast-forward; push normal completado y archivos confirmados mediante GitHub.",
+    "local_branch_ahead_of_remote": 0,
+    "remote_commit_is_ancestor_of_local_head": true,
+    "primary_ae1_commit": "0c96c7da0bf33cdf162f2e014135d2e45722db47",
+    "remote_head_after_push": "0c96c7da0bf33cdf162f2e014135d2e45722db47"
   }
 }

@@ -26,7 +26,7 @@
 | Notebook y PDF en las rutas requeridas | PASS | `notebooks/Aguilar_Solis_David_Rafael_U2_AE1_Exploracion.ipynb` y `docs/Aguilar_Solis_David_Rafael_U2_AE1_Diagnostico.pdf`. |
 | Pruebas de regresión de Unidades I y II | PASS | 12/12 pruebas de Unidad I y 12/12 de Unidad II. Verificador integral U1: 19 PASS, 0 FAIL, exit code 0; evidencia oficial previa preservada. |
 | Pruebas de regresión de Unidad III | NO VERIFICADO | La suite no pudo importar `scikit-learn`: Windows Application Control bloqueó `_sgd_fast`; ninguna prueba de Unidad III llegó a ejecutarse. No se alteraron modelos ni métricas. |
-| Publicación en GitHub de notebook y PDF | NO VERIFICADO | Los archivos son locales y no se ha confirmado publicación remota en esta ejecución. |
+| Publicación en GitHub de notebook y PDF | PASS | Verificado en `main` tras el push: [notebook](https://github.com/DxRxXgSo/REC_ECBD_2026_Aguilar_Solis_David_Rafael/blob/main/notebooks/Aguilar_Solis_David_Rafael_U2_AE1_Exploracion.ipynb) (blob `f4e333aea6d65093cd362bd46213a6cd2b2ad67f`) y [PDF](https://github.com/DxRxXgSo/REC_ECBD_2026_Aguilar_Solis_David_Rafael/blob/main/docs/Aguilar_Solis_David_Rafael_U2_AE1_Diagnostico.pdf) (blob `9512484b0182943101e9a3fbf941bdbd79524e5d`); coinciden con el árbol del commit publicado. |
 | Entrega manual en Classroom | NO VERIFICADO | Requiere acción del estudiante. No se afirma entrega. |
 | Defensa/revisión individual y aceptación docente | NO VERIFICADO | La elaboración del artefacto no acredita evaluación ni aprobación. |
 
