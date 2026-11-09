@@ -1,0 +1,155 @@
+{
+  "activity": "U2 AE1 — Exploración, clasificación y diagnóstico del conjunto de datos",
+  "run_timestamp_local": "2026-11-08T20:22:21-06:00",
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "pandas": "3.1.0",
+    "numpy": "2.5.4",
+    "matplotlib": "3.11.2",
+    "nbformat": "5.11.1",
+    "reportlab": "4.4.9",
+    "virtual_environment": "C:\\Users\\rafle\\Documents\\REC_ECBD_2026_Aguilar_Solis_David_Rafael\\.venv-unit2"
+  },
+  "source_data": {
+    "path": "data/raw/ObesityDataSet_raw_and_data_sinthetic.csv",
+    "expected_sha256": "28b6991062855d3d15642e38b1aa9d1b32fb7abbb5abf5b096f1868cd706154b",
+    "sha256_before": "28b6991062855d3d15642e38b1aa9d1b32fb7abbb5abf5b096f1868cd706154b",
+    "sha256_after": "28b6991062855d3d15642e38b1aa9d1b32fb7abbb5abf5b096f1868cd706154b",
+    "integrity": "PASS",
+    "rows": 2111,
+    "columns": 17,
+    "missing_cells": 0,
+    "exact_duplicate_rows": 24
+  },
+  "processed_data_preservation": {
+    "path": "data/processed/obesity_unit_ii.csv",
+    "sha256_before": "64418dcf666d49d832d07fe53dbfd9415662f2537502fde60e8dbe55b8f5218d",
+    "sha256_after": "64418dcf666d49d832d07fe53dbfd9415662f2537502fde60e8dbe55b8f5218d",
+    "unchanged": true
+  },
+  "notebook": {
+    "path": "notebooks/Aguilar_Solis_David_Rafael_U2_AE1_Exploracion.ipynb",
+    "sha256": "75704c4be0be88d3c43d6ba629cd1946a1b096339d8bdca7502b0a7b831c4b30",
+    "execution_command": ".venv-unit2\\Scripts\\python.exe src/execute_u2_ae1_notebook.py",
+    "code_cells": 20,
+    "executed_cells": 20,
+    "execution_errors": 0,
+    "stored_figure_outputs": 4,
+    "status": "PASS"
+  },
+  "pdf": {
+    "path": "docs/Aguilar_Solis_David_Rafael_U2_AE1_Diagnostico.pdf",
+    "sha256": "fb9437673973761626039da322e04adee13610466206976d8838897d0e3771b0",
+    "generation_command": ".venv-unit2\\Scripts\\python.exe src/build_u2_ae1_pdf.py",
+    "pages": 11,
+    "page_size": "A4",
+    "rendered_page_count": 11,
+    "all_pages_visually_reviewed": true,
+    "status": "PASS",
+    "render_warning": "Poppler informó fuentes de sustitución Symbol/ArialUnicode; el PDF se renderizó y las once páginas fueron inspeccionadas visualmente."
+  },
+  "project_tests": [
+    {
+      "suite": "Unidad I",
+      "command": ".venv-unit2\\Scripts\\python.exe -m unittest discover -s docs/unidad_i/tests -p test*.py -v",
+      "result": "PASS",
+      "passed": 12,
+      "failed": 0,
+      "exit_code": 0
+    },
+    {
+      "suite": "Unidad II",
+      "command": ".venv-unit2\\Scripts\\python.exe -m unittest discover -s tests/unit_ii -p test*.py -v",
+      "result": "PASS",
+      "passed": 12,
+      "failed": 0,
+      "exit_code": 0
+    },
+    {
+      "suite": "Unidad III",
+      "command": ".venv-unit2\\Scripts\\python.exe -m unittest discover -s tests/unit_iii -p test*.py -v",
+      "result": "NO VERIFICADO",
+      "passed": 0,
+      "failed": 0,
+      "exit_code": 1,
+      "blocker": "ImportError al cargar sklearn.linear_model._sgd_fast: Windows Application Control bloqueó la DLL; la prueba no llegó a ejecutarse."
+    }
+  ],
+  "integrated_verifier": {
+    "suite": "Unidad I",
+    "command": "verificar_unidad_i.py --project-root <repo> --evidence <TEMP>\\ae1-u1-verification.json",
+    "checks_passed": 19,
+    "checks_failed": 0,
+    "exit_code": 0,
+    "official_evidence_overwritten": false
+  },
+  "regression_integrity": {
+    "previous_unit_artifacts_compared": 17,
+    "changed_files": {},
+    "all_previous_unit_artifacts_unchanged": true,
+    "git_diff_check_exit_code": 0,
+    "raw_sha256_before": "28b6991062855d3d15642e38b1aa9d1b32fb7abbb5abf5b096f1868cd706154b",
+    "raw_sha256_after": "28b6991062855d3d15642e38b1aa9d1b32fb7abbb5abf5b096f1868cd706154b"
+  },
+  "criteria_summary": {
+    "PASS": 18,
+    "FAIL": 0,
+    "NO VERIFICADO": 4,
+    "note": "Los criterios pendientes son regresión U3 bloqueada por Windows, publicación GitHub, Classroom y revisión/aceptación humana."
+  },
+  "external_delivery": {
+    "github": "NO VERIFICADO; no se publicó porque la suite U3 quedó bloqueada.",
+    "classroom": "NO VERIFICADO; requiere entrega manual.",
+    "teacher_acceptance": "NO VERIFICADO."
+  },
+  "warnings": [
+    "Pytest no está instalado en el entorno; se ejecutaron las suites unittest existentes.",
+    "La suite de Unidad III no pudo cargar scikit-learn por bloqueo de DLL de Windows.",
+    "El renderizador PDF emitió advertencias de fuentes Symbol y ArialUnicode; inspección visual completada."
+  ],
+  "deliverable_sha256": {
+    "README.md": "9c947d9b9f6c74befd88356f46773ab008a68f83769e9fbbb1f128054c4da3d8",
+    "notebooks/Aguilar_Solis_David_Rafael_U2_AE1_Exploracion.ipynb": "75704c4be0be88d3c43d6ba629cd1946a1b096339d8bdca7502b0a7b831c4b30",
+    "docs/Aguilar_Solis_David_Rafael_U2_AE1_Diagnostico.pdf": "fb9437673973761626039da322e04adee13610466206976d8838897d0e3771b0",
+    "docs/actividad_u2_ae1/matriz_cumplimiento.md": "506b68c4545861a378e0a934d0dba94f10092fbca59821510f7ec944bd64fb71",
+    "src/build_u2_ae1_pdf.py": "98c94e0cd72eb7d3d1e31d0eab4603562d039e951253670bec0a5bc860142a69",
+    "src/execute_u2_ae1_notebook.py": "f212324b871b098f6dac13ec563228e8b1d0f51c8c942f4129cb5463ae5bb71e",
+    ".gitattributes": "f59c2299a606d6fc0b23823c9613abe3f6af97c4015af07d371c1684de4a927d"
+  },
+  "final_quality_gate": {
+    "unit_i_tests": {
+      "passed": 12,
+      "failed": 0,
+      "exit_code": 0
+    },
+    "unit_ii_tests": {
+      "passed": 12,
+      "failed": 0,
+      "exit_code": 0
+    },
+    "unit_iii_tests": {
+      "status": "NO VERIFICADO",
+      "exit_code": 1,
+      "blocker": "Windows Application Control blocked scikit-learn DLL _sgd_fast during test import."
+    },
+    "unit_i_integrated_verifier": {
+      "passed": 19,
+      "failed": 0,
+      "exit_code": 0,
+      "evidence_written_to_temporary_path": true
+    },
+    "git_diff_check_exit_code": 0,
+    "raw_sha256_after": "28b6991062855d3d15642e38b1aa9d1b32fb7abbb5abf5b096f1868cd706154b",
+    "processed_sha256_after": "64418dcf666d49d832d07fe53dbfd9415662f2537502fde60e8dbe55b8f5218d"
+  },
+  "git": {
+    "branch": "main",
+    "local_head": "318f7f9926848bf76f99c3911c12acf7cf8d93b5",
+    "remote_main_at_check": "7a4a92f12bd909a55aba0770399b07f71d47d680",
+    "commit_created_for_ae1": false,
+    "push_performed": false,
+    "reason": "La verificación de regresión de Unidad III no pudo ejecutarse por bloqueo de DLL en Windows; se conserva todo el trabajo local sin publicar.",
+    "local_branch_ahead_of_remote": 13,
+    "remote_commit_is_ancestor_of_local_head": true
+  }
+}
