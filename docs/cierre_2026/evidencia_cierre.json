@@ -118,5 +118,44 @@
     "teacher_identity": "Pending confirmation",
     "classroom_delivery": "NO VERIFICADO",
     "teacher_approval": "NO VERIFICADO"
+  },
+  "github_publication": {
+    "repository": "DxRxXgSo/REC_ECBD_2026_Aguilar_Solis_David_Rafael",
+    "branch": "main",
+    "push_exit_code": 0,
+    "remote_synced_after_push": true,
+    "pushed_commits": [
+      "ee5a09376346ab3e5e7a61b29ac7426eaa82efed",
+      "baf864315c3bb82aff7523fe2447292ae6d11262",
+      "a447fefe40ab6720eae87c89f4892d98e6a44112",
+      "fa3f7f80b230a4fb526f2ecbd988a7b638efd280"
+    ],
+    "verified_files": {
+      "notebooks/Aguilar_Solis_David_Rafael_U2_AE2_ETL.ipynb": {
+        "blob_sha": "73a3e7afa970ee2da898f3b6ebfe4130f2ed7125",
+        "url": "https://github.com/DxRxXgSo/REC_ECBD_2026_Aguilar_Solis_David_Rafael/blob/main/notebooks/Aguilar_Solis_David_Rafael_U2_AE2_ETL.ipynb"
+      },
+      "docs/Aguilar_Solis_David_Rafael_U2_AE2_PreparacionDatos.pdf": {
+        "blob_sha": "c2a6b6b6b9294ce82d8cc509d6c283c49637975b",
+        "url": "https://github.com/DxRxXgSo/REC_ECBD_2026_Aguilar_Solis_David_Rafael/blob/main/docs/Aguilar_Solis_David_Rafael_U2_AE2_PreparacionDatos.pdf"
+      },
+      "notebooks/Aguilar_Solis_David_Rafael_U3_AnalisisSupervisado.ipynb": {
+        "blob_sha": "fe733b78f3aa4e055d593065a0af69f4195d04ba",
+        "url": "https://github.com/DxRxXgSo/REC_ECBD_2026_Aguilar_Solis_David_Rafael/blob/main/notebooks/Aguilar_Solis_David_Rafael_U3_AnalisisSupervisado.ipynb"
+      },
+      "docs/Aguilar_Solis_David_Rafael_U3_Informe.pdf": {
+        "blob_sha": "81c0522480ea8f0d3b5103fb6e923dce53d0e96c",
+        "url": "https://github.com/DxRxXgSo/REC_ECBD_2026_Aguilar_Solis_David_Rafael/blob/main/docs/Aguilar_Solis_David_Rafael_U3_Informe.pdf"
+      },
+      "notebooks/Aguilar_Solis_David_Rafael_U4_AnalisisNoSupervisado.ipynb": {
+        "blob_sha": "c128a3f8b68b3d85bf2d2e3bdb2351997eee218f",
+        "url": "https://github.com/DxRxXgSo/REC_ECBD_2026_Aguilar_Solis_David_Rafael/blob/main/notebooks/Aguilar_Solis_David_Rafael_U4_AnalisisNoSupervisado.ipynb"
+      },
+      "docs/Aguilar_Solis_David_Rafael_U4_Informe.pdf": {
+        "blob_sha": "c024360ed1f819e7d78e087a48d4dd80873e0ac3",
+        "url": "https://github.com/DxRxXgSo/REC_ECBD_2026_Aguilar_Solis_David_Rafael/blob/main/docs/Aguilar_Solis_David_Rafael_U4_Informe.pdf"
+      }
+    },
+    "verification": "GitHub Contents API returned all seven requested paths; local Git blob hashes matched the six notebook/PDF remote blob SHAs."
   }
 }
