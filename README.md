@@ -117,12 +117,26 @@ REC_ECBD_2026_Aguilar_Solis_David_Rafael/
 - [x] Dataset original almacenado en `data/raw`.
 - [x] Notebook `00_revision_inicial_dataset.ipynb`.
 - [x] Revisión inicial: dimensiones, faltantes y duplicados.
-- [x] **Unidad I:** documentación terminada y validación técnica interna PASS (12/12 pruebas; 19 verificaciones PASS, 0 FAIL). Véase [planeación de Unidad I](docs/unidad_i/planeacion_unidad_i.md). Entrega y aprobación docente no verificadas.
+- [x] **Unidad I:** documentación y validación técnica interna anteriores PASS (12/12 pruebas; verificador 19/19). En regresión de esta misión, el árbol actual dio 9/12: tres fallas de continuidad de hash porque el notebook inicial ya tenía un cambio local de usuario en `execution_count`; la copia temporal con el blob de `HEAD` pasó 12/12. El notebook local se conserva intacto. Véase [planeación](docs/unidad_i/planeacion_unidad_i.md). Entrega y aprobación docente no verificadas.
 - [x] **Unidad II:** análisis EDA, diccionario, notebook, ETL y Data Mart ejecutados en SQL Server Express; 2,111 filas cargadas en staging y hechos, segunda carga idempotente, siete clases y cotejo fila a fila con el CSV procesado PASS. Pruebas de cierre: U1 12/12, U2 12/12 y U3 8/8; verificador U1 19/19 PASS. Esto registra validación técnica interna; entrega y aceptación docente no verificadas. Véase [informe](docs/unidad_ii/informe_unidad_ii.md), [guía SQL](docs/unidad_ii/guia_sql_server.md), [diccionario](docs/unidad_ii/diccionario_datos.md), [evidencia](docs/unidad_ii/evidencias/verificacion_unidad_ii.json) y [notebook EDA](notebooks/01_exploracion_datos.ipynb).
 - **Actividad U2 AE1 — Exploración, clasificación y diagnóstico:** artefactos integrados y ejecutados internamente. Notebook: [exploración](notebooks/Aguilar_Solis_David_Rafael_U2_AE1_Exploracion.ipynb); PDF: [diagnóstico](docs/Aguilar_Solis_David_Rafael_U2_AE1_Diagnostico.pdf); [matriz de cumplimiento](docs/actividad_u2_ae1/matriz_cumplimiento.md); [evidencia de validación](docs/actividad_u2_ae1/evidencia_validacion.json). El notebook ejecutó sus 20 celdas de código sin errores y el PDF de 11 páginas se renderizó y revisó visualmente. La entrega en Classroom, defensa individual y aceptación del profesor siguen pendientes de verificación.
 - [x] **Unidad III:** implementación técnica interna: regresión de `Weight`, clasificación A/B de `NObeyesdad`, validación agrupada, optimización y pruebas. La entrega y aceptación docente no están verificadas. Informe: [Markdown](docs/unidad_iii/informe_unidad_iii.md), [DOCX](docs/unidad_iii/informe_unidad_iii.docx), [PDF](docs/unidad_iii/informe_unidad_iii.pdf); evidencia técnica: [verificación U3](docs/unidad_iii/evidencias/verificacion_unidad_iii.json); especificación: [SDD-U3](docs/sdd/03_unidad_iii.md).
-- [ ] **Unidad IV:** clustering y PCA pendientes.
-- [ ] **Unidad V:** dashboard, storytelling, documentación final y defensa pendientes.
+- [x] **Unidad IV (avance técnico interno):** notebook reproducible de K-Means/PCA, 2/2 pruebas, asignaciones y modelos guardados, informe PDF de 4 páginas renderizado y revisado. Máximo Silhouette 0.1726 en k=9 (límite superior de rango); PCA 41.31% acumulado. Revisión y aceptación docente pendientes; entrega oficial 18/11 a las 12:00. Véase [informe](docs/Aguilar_Solis_David_Rafael_U4_Informe.pdf), [notebook](notebooks/Aguilar_Solis_David_Rafael_U4_AnalisisNoSupervisado.ipynb) y [evidencia](docs/unidad_iv/evidencias/verificacion_unidad_iv.json).
+- **Unidad II AE2 (avance técnico interno):** notebook de comparación, informe y diagrama; conserva los 2,111 valores y 24 duplicados, y consulta el Data Mart sin escribir. SQL observado: 2,111 staging/hechos y siete categorías. Entrega/aceptación no verificadas. Véase [notebook](notebooks/Aguilar_Solis_David_Rafael_U2_AE2_ETL.ipynb), [PDF](docs/Aguilar_Solis_David_Rafael_U2_AE2_PreparacionDatos.pdf) y [evidencia](docs/actividad_u2_ae2/evidencia_validacion.json).
+- **Unidad III (entregable consolidado):** pruebas actuales 8/8 PASS; el bloqueo `_sgd_fast` reportado antes no se reprodujo en esta revisión, sin cambios a seguridad. Se agregaron alias específicos de notebook e informe PDF, preservando informe y modelos previos. Entrega/aceptación docente no verificadas.
+- **Unidad V:** dashboard funcional Power BI **0% implementado/verificado**. No se detectó Power BI Desktop ni existe archivo PBIX; Power BI es requerido por la guía y no se sustituye sin autorización docente. Fuentes de datos/modelos están listas, pero no se cuentan como funcionalidad del dashboard. Storytelling final, revisión y defensa siguen pendientes.
+
+## Calendario actualizado de cierre
+
+Los dos programas oficiales de cierre/continuidad actualizan el calendario anterior: U2 AE2 13/11 (9 puntos), Unidad III 16/11 (25), Unidad IV 18/11 a las 12:00 (25), correcciones 19/11 y Unidad V/cierre 20/11 (15). La revisión integradora aparece el 17/11 en el programa continuo y el 18/11 en el de cierre; se conserva la discrepancia y se prepara para el 17/11. Las ponderaciones anteriores de Unidad I se conservan históricamente. Fechas pasadas no se presentan como entregas hechas. El docente está pendiente de confirmación.
+
+## Cierre y defensa
+
+- [Matriz integradora](docs/cierre_2026/matriz_cumplimiento.md): separa desarrollo, prueba, documentación, publicación y aceptación.
+- [Borrador de informe final](docs/Informe_Final_Borrador.md): integra U1–U4; no es el cierre de Unidad V.
+- [Guion breve de defensa](docs/cierre_2026/guion_defensa.md).
+- [Estado y backlog del dashboard Power BI](dashboard/README.md).
+- Actividad U2 AE1: Classroom, defensa y aceptación requieren confirmación manual; ver matriz AE1.
 
 ## Referencias principales
 

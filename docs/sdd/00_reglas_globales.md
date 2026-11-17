@@ -57,4 +57,19 @@ Estas fechas fueron confirmadas por el estudiante a partir de las guías del cur
 | 17 de noviembre de 2026 | Revisión de dashboard y presentación | — |
 | 20 de noviembre de 2026 | Unidad V y cierre | 15% |
 
-El 2 de octubre ya pasó según la fecha actual de referencia, 26 de octubre de 2026. No asumir que hubo entrega ni cambiar la fecha: reportar el estado real y pedir instrucciones si la fecha afecta el plan de recuperación.
+
+### Actualización oficial de programas de cierre (16 de noviembre de 2026)
+
+Los programas oficiales `Programa_Cierre_Recursamiento.pdf` y `Programa_Trabajo_Continuo_Recursamiento_ECBD.pdf` contienen calendario de cierre que actualiza los hitos de recuperación anteriores. Se conservan las fechas históricas de la tabla anterior; para el cierre integrador se usa:
+
+| Fecha | Hito | Ponderación |
+|---|---|---:|
+| 11 de noviembre de 2026 | Unidad II AE1 | 6 puntos |
+| 13 de noviembre de 2026 | Unidad II AE2 | 9 puntos |
+| 16 de noviembre de 2026 | Unidad III | 25 puntos |
+| 17 o 18 de noviembre de 2026 | Revisión integradora (discrepancia entre programas; preparar para el 17) | — |
+| 18 de noviembre de 2026, 12:00 | Unidad IV | 25 puntos |
+| 19 de noviembre de 2026 | Correcciones | — |
+| 20 de noviembre de 2026 | Unidad V y cierre | 15 puntos |
+
+Una guía solicita avance de dashboard de 50–70% y la otra 70%; para prepararse se adopta 70% funcional como mínimo. Power BI sigue siendo la herramienta exigida hasta confirmación docente escrita para una alternativa. Las fechas pasadas no acreditan entrega, defensa ni aprobación. Las ponderaciones del calendario original de Unidad I se conservan como antecedente y no se combinan aritméticamente con puntos de los programas de cierre.

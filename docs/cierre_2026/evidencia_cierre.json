@@ -1,0 +1,122 @@
+{
+  "task": "ECBD 2026 — cierre integrador y revisión 17/11",
+  "run": {
+    "timestamp_local": "2026-11-16T18:09:56-06:00",
+    "python": "3.12.14",
+    "virtual_environment": ".venv-unit2"
+  },
+  "raw_data": {
+    "path": "data/raw/ObesityDataSet_raw_and_data_sinthetic.csv",
+    "sha256_before": "28b6991062855d3d15642e38b1aa9d1b32fb7abbb5abf5b096f1868cd706154b",
+    "sha256_after": "28b6991062855d3d15642e38b1aa9d1b32fb7abbb5abf5b096f1868cd706154b",
+    "status": "PASS"
+  },
+  "processed_data": {
+    "path": "data/processed/obesity_unit_ii.csv",
+    "sha256_after": "64418dcf666d49d832d07fe53dbfd9415662f2537502fde60e8dbe55b8f5218d"
+  },
+  "tests": {
+    "unit_i_working_tree": {
+      "command": ".venv-unit2\\Scripts\\python.exe -m unittest discover -s docs/unidad_i/tests -p test*.py -v",
+      "passed": 9,
+      "failed": 3,
+      "exit_code": 1,
+      "cause": "Protected, pre-existing execution_count change in notebooks/00_revision_inicial_dataset.ipynb causes stored canonical SHA mismatch in AC-I13 and two line-ending regression cases."
+    },
+    "unit_i_git_head_baseline_temp": {
+      "command": "same Unit I suite in isolated temporary project; notebook bytes sourced from git show HEAD:path",
+      "passed": 12,
+      "failed": 0,
+      "exit_code": 0,
+      "original_workspace_notebook_modified": false
+    },
+    "unit_ii": {
+      "command": ".venv-unit2\\Scripts\\python.exe -m unittest discover -s tests/unit_ii -p test*.py -v",
+      "passed": 12,
+      "failed": 0,
+      "exit_code": 0
+    },
+    "unit_iii": {
+      "command": ".venv-unit2\\Scripts\\python.exe -m unittest discover -s tests/unit_iii -p test*.py -v",
+      "passed": 8,
+      "failed": 0,
+      "exit_code": 0,
+      "previous_sgd_fast_block_reproduced": false,
+      "security_policy_changed": false
+    },
+    "unit_iv": {
+      "command": ".venv-unit2\\Scripts\\python.exe -m unittest discover -s tests/unit_iv -p test*.py -v",
+      "passed": 2,
+      "failed": 0,
+      "exit_code": 0
+    }
+  },
+  "unit_i_integrated_verifier_current_tree": {
+    "command": ".venv-unit2\\Scripts\\python.exe docs/unidad_i/verificar_unidad_i.py --project-root <repo> --evidence .tmp/u1_closure_readonly.json",
+    "pass": 18,
+    "fail": 1,
+    "exit_code": 1,
+    "failing_check": "notebook_matches_prior_observed_hash / AC-I13",
+    "official_evidence_overwritten": false
+  },
+  "notebook_executions": [
+    {
+      "path": "notebooks/Aguilar_Solis_David_Rafael_U2_AE2_ETL.ipynb",
+      "sha256": "20ce7be79fa64c5f587be3a9cd1f879847f6203321c942407e4d06894e0c7c55",
+      "code_cells": 3,
+      "executed_code_cells": 3,
+      "errors": [],
+      "status": "PASS"
+    },
+    {
+      "path": "notebooks/Aguilar_Solis_David_Rafael_U3_AnalisisSupervisado.ipynb",
+      "sha256": "f9e8a1fcd975562da534ec57a091c2dbfefe268b4ce01867874dc1d0df839d5b",
+      "code_cells": 2,
+      "executed_code_cells": 2,
+      "errors": [],
+      "status": "PASS"
+    },
+    {
+      "path": "notebooks/Aguilar_Solis_David_Rafael_U4_AnalisisNoSupervisado.ipynb",
+      "sha256": "89ea10c8be63a8432867a6b54cb68a73ea1d57c132c36c811e6efeeb8e8d08ba",
+      "code_cells": 4,
+      "executed_code_cells": 4,
+      "errors": [],
+      "status": "PASS"
+    }
+  ],
+  "pdfs": {
+    "docs/Aguilar_Solis_David_Rafael_U2_AE2_PreparacionDatos.pdf": {
+      "sha256": "b96477584158c439b27e72261a4e2df857de7eb8ba562f7a3ffb02360c9d5faf",
+      "pages": 4,
+      "rendered_pages": 4,
+      "all_pages_visually_reviewed": true,
+      "status": "PASS"
+    },
+    "docs/Aguilar_Solis_David_Rafael_U3_Informe.pdf": {
+      "sha256": "cb01975f9bcf1265809270297c31eff0fbe755204ccae4fe0acd490f6c486497",
+      "pages": 4,
+      "rendered_pages": 4,
+      "all_pages_visually_reviewed": true,
+      "status": "PASS"
+    },
+    "docs/Aguilar_Solis_David_Rafael_U4_Informe.pdf": {
+      "sha256": "0b9dad29ec0e420695f442adbe99c45f31b9ec26e9d6a028926b5dede83495c3",
+      "pages": 4,
+      "rendered_pages": 4,
+      "all_pages_visually_reviewed": true,
+      "status": "PASS"
+    }
+  },
+  "dashboard": {
+    "power_bi_desktop_detected": false,
+    "pbix_present": false,
+    "functional_percent": 0,
+    "basis": "No Power BI report, pages or working interactive functionality verified; prepared data sources are not counted."
+  },
+  "academic_acceptance": {
+    "teacher_identity": "Pending confirmation",
+    "classroom_delivery": "NO VERIFICADO",
+    "teacher_approval": "NO VERIFICADO"
+  }
+}
