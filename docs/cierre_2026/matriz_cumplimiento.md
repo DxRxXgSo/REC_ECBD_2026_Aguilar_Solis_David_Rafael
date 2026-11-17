@@ -1,6 +1,6 @@
 # Matriz integradora de cumplimiento ECBD 2026
 
-**Corte técnico:** 16 de noviembre de 2026. **Docente:** pendiente de confirmación.
+**Corte técnico:** 17 de noviembre de 2026. **Docente:** Ing. Jose Luis Herrera Gallardo, MTI (identidad indicada por el estudiante; aceptación de entregables pendiente).
 Estados separados: **Desarrollado** (artefacto existe), **Probado** (ejecución técnica), **Documentado**, **Publicado** (verificado en remoto) y **Aceptación docente/Classroom** (no inferida).
 
 ## Calendario y fuentes
@@ -23,8 +23,8 @@ Los programas oficiales señalan U2 AE2 el 13/11 (9 puntos), U3 el 16/11 (25), U
 | U3 clasificación | Dummy/logística/RF en escenarios A/B, optimización y reportes base por clase | 8/8 tests; notebook de lectura ejecutado | métricas de CSV reales, informe y matrices base | entregables específicos verificados en `main` | No verificada |
 | U4 selección/justificación | K-Means sobre 8 predictores escalados; sin etiqueta durante ajuste | tests 2/2; notebook ejecutado; k=2–9 comparados | SDD, informe, tablas, figuras y JSON | [notebook](https://github.com/DxRxXgSo/REC_ECBD_2026_Aguilar_Solis_David_Rafael/blob/main/notebooks/Aguilar_Solis_David_Rafael_U4_AnalisisNoSupervisado.ipynb) y [PDF](https://github.com/DxRxXgSo/REC_ECBD_2026_Aguilar_Solis_David_Rafael/blob/main/docs/Aguilar_Solis_David_Rafael_U4_Informe.pdf) verificados en `main` | Revisión académica pendiente; plazo 18/11 12:00 |
 | U4 PCA e interpretación | PCA 2 componentes; etiqueta sólo post hoc | ejecución real, varianza PC1+PC2 41.31% | informe/notebook/evidencia | artefactos publicados en `main` | No verificada |
-| U5 dashboard Power BI | Paquete de preparación: consultas M, relaciones, medidas DAX y guía; Power BI Desktop inicia pero UI no es accesible a esta sesión; no hay PBIX | Contrato de datos local probado; consulta SQL de lectura observó 2,111 hechos/7 niveles; sensibilidad k documentada | `dashboard/powerbi/`, `src/powerbi_sources.py`, `tests/dashboard/`, evidencia de bloqueo UI | preparación publicada; 0/5 páginas/componentes funcionales | 70% no cumplido. Requiere montaje y revisión manual en Power BI o autorización docente para alternativa |
-| U5 informe final | Borrador integrador de U1–U4 | referencias a artefactos y cifras verificadas; no es informe cerrado de U5 | `docs/Informe_Final_Borrador.md` | borrador publicado en `main` | Aprobación y rúbrica no verificadas |
+| U5 dashboard Power BI | PBIP original actualizado; cinco tablas cargadas y cuatro páginas con datos | Refresh Desktop: FactDashboard 2,111; dimensión 7; métricas 5; perfiles 9; PCA 2. Filtro dimensional 2,111→287→2,111. Suites 3/3,12/12,8/8,2/2. PBIR: 0 errores, 1 aviso de esquema no descargable | `dashboard/ECBD_Integrador_2026/`, capturas `dashboard/evidencias/final_powerbi_2026-11-16_validado/` y evidencia JSON | 5/5 componentes de alto nivel con datos; esta cuenta no equivale a aceptación de todos los subcriterios | Parcial: matrices base no están incrustadas, relación de clusters requiere prueba visual, PBIX no ofrecido por Desktop; revisión/entrega/aprobación pendientes |
+| U5 informe final | Informe técnico actualizado con capturas y resultados U2–U4/U5 verificados | Fuentes y valores contrastados; límites del PBIP/PBIX y matrices reportados sin inferir cierre académico | `docs/Informe_Final_Borrador.md` y PDF asociado | PDF se registra después de renderizar/revisar todas las páginas | Classroom, defensa y aceptación docente no verificadas |
 | U5 storytelling/defensa | Guion y preguntas preparadas | revisión interna solamente | `docs/cierre_2026/guion_defensa.md` | guion publicado en `main` | defensa individual no verificada |
 
 ## Evidencias actuales y límites
@@ -55,8 +55,20 @@ Los programas oficiales señalan U2 AE2 el 13/11 (9 puntos), U3 el 16/11 (25), U
 | U4: K-Means, variables justificadas y estandarización | Confirmado, ejecutado | Ocho predictores documentados; etiqueta excluida; StandardScaler. |
 | U4: elección k, codo/Silhouette e interpretación | Parcial | Tabla/gráfica real k=2–9; máximo 0.172636 en k=9, límite del rango; decisión exploratoria requiere discusión humana/sensibilidad. |
 | U4: PCA, varianza explicada y gráfica | Confirmado, ejecutado | PC1+PC2=41.3065%; PDF/notebook/figuras revisados. |
-| U5: KPI y mínimo tres visualizaciones descriptivas en Power BI | Ausente | No hay Power BI Desktop ni PBIX; 0/5 componentes funcionales U5 implementados. Requiere Power BI o autorización docente escrita para alternativa. |
-| U5: fuentes, relaciones, medidas e instrucciones de montaje | Preparación lista; no funcional | Consultas Power Query M, medidas propuestas, modelo y guía en `dashboard/powerbi/`; tests de fuente no prueban Power BI. |
-| U5: resultados de modelos y clustering/PCA integrados en dashboard | Ausente funcionalmente | Datos listos y sensibilidad documentada no equivalen a visualizaciones enlazadas/interactivas; falta montar y revisar en Power BI Desktop. |
-| U5: storytelling, interpretación visible y limitaciones | Parcial | Contenido de narrativa/límites en el borrador y guion; no integrado en dashboard. |
-| U5: informe final y preparación de presentación/defensa | Parcial | Borrador U1–U4 y guion creados; falta dashboard, cierre U5 y revisión/aceptación. |
+| U5: KPI y mínimo tres visualizaciones descriptivas en Power BI | No verificado | La página Panorama contiene definiciones de visuales, pero no se cargaron datos; los valores visibles están vacíos. 0/5 componentes funcionales. |
+| U5: fuentes, relaciones, medidas e instrucciones de montaje | Parcial, definición creada | Cinco tablas, dos relaciones y medidas definidas en PBIP/TMDL; refresh SQL bloqueado, por tanto no verificados en ejecución. |
+| U5: resultados de modelos y clustering/PCA integrados en dashboard | No verificado funcionalmente | Hay definiciones de página y fuentes esperadas; el modelo no confirmó datos ni coincidencia con salidas U3/U4 dentro de Power BI. |
+| U5: storytelling, interpretación visible y limitaciones | Parcial, definiciones creadas | Existe página PBIR con textos y visuales previstos; revisión de contenido final, legibilidad e interacciones pendiente. |
+| U5: informe final y preparación de presentación/defensa | Parcial | Borrador U1–U4 y guion existentes; cerrar la sección de dashboard tras validación; entrega y aceptación no verificadas. |
+
+## Actualización técnica de Unidad V — 17/11/2026
+
+> Esta actualización sustituye los estados iniciales de U5 registrados arriba; conserva las unidades previas sin cambios.
+
+| Componente | Resultado observado | Estado y límite |
+|---|---|---|
+| Fuentes Power Query | FactDashboard 2,111; DimObesityLevel 7; ModelMetrics 5; ClusterProfile 9; PcaVariance 2 | Actualización real en Power BI Desktop 2.159.1231.0, autenticación integrada de Windows. |
+| Integridad e interacción | 2,111 índices U4 únicos; 24 duplicados conservados. Filtro Normal_Weight: 2,111→287→2,111 | Relación de obesidad/hechos probada; interacción de perfil/cluster pendiente. |
+| Páginas | Panorama, modelos, clustering/PCA y conclusiones muestran datos | Cinco componentes de alto nivel funcionales; matrices base aún no están incrustadas en la página 2. |
+| Calidad | Tests dashboard 3/3, U2 12/12, U3 8/8, U4 2/2; SHA raw igual; PBIR 0 errores/1 aviso de esquema no descargable | La interfaz sólo ofreció PBIP y exportación de plantilla/PDF; no hay PBIX. El notebook inicial modificado sigue local y sin incluirse. |
+| Informe y publicación | PDF técnico de seis páginas revisado y capturas finales reales en carpeta `final_powerbi_2026-11-16_validado` | Classroom, defensa y aprobación docente no verificadas. |
