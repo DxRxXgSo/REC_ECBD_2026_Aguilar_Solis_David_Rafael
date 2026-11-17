@@ -70,5 +70,12 @@
     "relationships": "dashboard/powerbi/model_relationships.md",
     "power_query_m": "dashboard/powerbi/queries/",
     "dax_measures": "dashboard/powerbi/measures.dax"
+  },
+  "publication": {
+    "status": "pushed and verified on GitHub",
+    "branch": "main",
+    "commit": "7916f29e44479d71fa9cca91139f41ce4f28a31d",
+    "commit_url": "https://github.com/DxRxXgSo/REC_ECBD_2026_Aguilar_Solis_David_Rafael/commit/7916f29e44479d71fa9cca91139f41ce4f28a31d",
+    "verification": "GitHub commit page and file paths opened after push"
   }
 }
