@@ -1,0 +1,4 @@
+flowchart LR
+    CSV[CSV procesado<br/>2,111 observaciones<br/>17 variables] -->|lectura CSV| STG[(DM.StgObesityObservation<br/>17 columnas de staging)]
+    STG -->|validación y conversión| FACT[(DM.FactObesityObservation<br/>grano: una fila por observación<br/>medidas: Age, Height, Weight,<br/>FCVC, NCP, CH2O, FAF, TUE)]
+    DIM[(DM.DimObesityLevel<br/>PK ObesityLevelKey<br/>7 categorías)] -->|PK 1 : N FK| FACT

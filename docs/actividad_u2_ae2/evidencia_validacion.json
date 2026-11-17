@@ -1,0 +1,74 @@
+{
+  "activity": "Unidad II AE2 — Preparación de datos y Data Mart",
+  "timestamp_local": "2026-11-16T18:06:51-06:00",
+  "environment": {
+    "python": "3.12.14",
+    "pandas": "3.1.0",
+    "numpy": "2.5.4",
+    "sqlcmd": "available; Windows integrated authentication; .\\SQLEXPRESS"
+  },
+  "execution": {
+    "command": "PowerShell: .venv-unit2\\Scripts\\python.exe - with nbclient.NotebookClient(...).execute()",
+    "exit_code": 0,
+    "notebook": {
+      "path": "notebooks/Aguilar_Solis_David_Rafael_U2_AE2_ETL.ipynb",
+      "sha256": "20ce7be79fa64c5f587be3a9cd1f879847f6203321c942407e4d06894e0c7c55",
+      "code_cells": 3,
+      "executed_code_cells": 3,
+      "errors": [],
+      "status": "PASS"
+    },
+    "code_cells": 3
+  },
+  "source_data": {
+    "raw_path": "data/raw/ObesityDataSet_raw_and_data_sinthetic.csv",
+    "raw_sha256_before": "28b6991062855d3d15642e38b1aa9d1b32fb7abbb5abf5b096f1868cd706154b",
+    "raw_sha256_after": "28b6991062855d3d15642e38b1aa9d1b32fb7abbb5abf5b096f1868cd706154b",
+    "raw_integrity": "PASS",
+    "processed_path": "data/processed/obesity_unit_ii.csv",
+    "processed_sha256_before": "64418dcf666d49d832d07fe53dbfd9415662f2537502fde60e8dbe55b8f5218d",
+    "processed_sha256_after": "64418dcf666d49d832d07fe53dbfd9415662f2537502fde60e8dbe55b8f5218d",
+    "rows_raw": 2111,
+    "rows_processed": 2111,
+    "columns": 17,
+    "values_equal": true,
+    "missing_cells": 0,
+    "duplicate_rows_preserved": 24,
+    "serialization": "raw CRLF; processed LF, UTF-8; parsed values equal",
+    "manifest_output_hash_match": true
+  },
+  "sql_read_only_query": {
+    "server": ".\\SQLEXPRESS",
+    "database": "REC_ECBD_Obesidad_2026",
+    "exit_code": 0,
+    "statement": "SELECT counts from DM.StgObesityObservation and DM.FactObesityObservation; group facts by DM.DimObesityLevel.ObesityLevel.",
+    "stdout": "tabla|filas\n-----|-----\nstaging|2111\nfacts|2111\nObesityLevel|filas\n------------|-----\nInsufficient_Weight|272\nNormal_Weight|287\nObesity_Type_I|351\nObesity_Type_II|297\nObesity_Type_III|324\nOverweight_Level_I|290\nOverweight_Level_II|290",
+    "write_operations": false,
+    "status": "PASS"
+  },
+  "generated_files": {
+    "notebooks/Aguilar_Solis_David_Rafael_U2_AE2_ETL.ipynb": {
+      "sha256": "20ce7be79fa64c5f587be3a9cd1f879847f6203321c942407e4d06894e0c7c55"
+    },
+    "docs/unidad_ii/informe_ae2.md": {
+      "sha256": "2a4817cb61c34b425f2df5364c4c9fad8d4607d071bd069e5019222ce50fb851"
+    },
+    "docs/Aguilar_Solis_David_Rafael_U2_AE2_PreparacionDatos.pdf": {
+      "sha256": "b96477584158c439b27e72261a4e2df857de7eb8ba562f7a3ffb02360c9d5faf"
+    },
+    "docs/unidad_ii/diagrama_datamart_ae2.mmd": {
+      "sha256": "d1fa173490db625e7f470b2be01468adec2ba1f340ebbf80cd8da851507cd062"
+    },
+    "docs/unidad_ii/figuras/diagrama_datamart_ae2.png": {
+      "sha256": "1459d7d3e1e53a9b14047dd87e0a369de28dd9291342206deb5e00dcce82df7d"
+    }
+  },
+  "pdf_review": {
+    "pages": 4,
+    "rendered_pages": 4,
+    "all_pages_visually_reviewed": true,
+    "status": "PASS"
+  },
+  "interpretation": "The processed CSV is a value-equivalent serialization; no substantive cleaning, row removal, imputation, or recoding is claimed. Prior evidence documents initial and idempotent loads; this execution only reads SQL.",
+  "academic_acceptance": "NO VERIFICADO: Classroom delivery and teacher approval are not established by this local execution."
+}
