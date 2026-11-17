@@ -1,0 +1,208 @@
+{
+  "task": "Unidad IV — K-Means y PCA",
+  "timestamp_local": "2026-11-16T17:57:16-06:00",
+  "command": "Executed src.unit_iv.analyze() from the project virtual environment; unit tests and notebook are recorded under execution.",
+  "environment": {
+    "python": "3.12.14",
+    "pandas": "3.1.0",
+    "numpy": "2.5.4",
+    "scikit_learn": "1.9.1"
+  },
+  "input": {
+    "path": "data/processed/obesity_unit_ii.csv",
+    "raw_sha256": "28b6991062855d3d15642e38b1aa9d1b32fb7abbb5abf5b096f1868cd706154b",
+    "processed_sha256": "64418dcf666d49d832d07fe53dbfd9415662f2537502fde60e8dbe55b8f5218d",
+    "rows": 2111,
+    "columns": 17,
+    "duplicates_preserved": 24
+  },
+  "design": {
+    "features": [
+      "Age",
+      "Height",
+      "Weight",
+      "FCVC",
+      "NCP",
+      "CH2O",
+      "FAF",
+      "TUE"
+    ],
+    "excluded_target": "NObeyesdad",
+    "random_state": 42,
+    "k_values": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "scaler": "StandardScaler fit over all records for unsupervised descriptive analysis",
+    "silhouette": "full-data silhouette score for each k",
+    "posthoc_label_use": "NObeyesdad is cross-tabulated only after fitting and is not used in scaling, PCA or K-Means"
+  },
+  "k_selection": {
+    "chosen_k": 9,
+    "selection_rule": "largest full-data silhouette score; inertia curve used as secondary elbow diagnostic",
+    "scores": [
+      {
+        "k": 2,
+        "inertia": 14367.973962258031,
+        "silhouette": 0.14532884934481743
+      },
+      {
+        "k": 3,
+        "inertia": 12746.369840052448,
+        "silhouette": 0.14986853947169848
+      },
+      {
+        "k": 4,
+        "inertia": 11451.505258056897,
+        "silhouette": 0.16015723864742293
+      },
+      {
+        "k": 5,
+        "inertia": 10534.862798368602,
+        "silhouette": 0.16911707176245594
+      },
+      {
+        "k": 6,
+        "inertia": 9764.288235948607,
+        "silhouette": 0.16666908585440848
+      },
+      {
+        "k": 7,
+        "inertia": 9210.411214691287,
+        "silhouette": 0.16624851924857725
+      },
+      {
+        "k": 8,
+        "inertia": 8736.342351136915,
+        "silhouette": 0.1678781933930671
+      },
+      {
+        "k": 9,
+        "inertia": 8391.429242492413,
+        "silhouette": 0.1726359919969179
+      }
+    ],
+    "cluster_sizes": {
+      "0": 246,
+      "1": 206,
+      "2": 253,
+      "3": 141,
+      "4": 247,
+      "5": 252,
+      "6": 304,
+      "7": 295,
+      "8": 167
+    }
+  },
+  "pca": {
+    "explained_variance_ratio": [
+      0.22648604188988997,
+      0.18657893338270312
+    ],
+    "cumulative_two_components": 0.4130649752725931
+  },
+  "outputs_sha256": {
+    "data\\processed\\unidad_iv_cluster_assignments.csv": "5f14303be8b203aca5ef68c128f53f5bda6a795c65a96f9832cc336c5de0da48",
+    "docs\\unidad_iv\\resultados\\seleccion_k.csv": "21f122682226bc84248221068cebbcc41b1fec2a11a14c0d4b5bdd7a20718b45",
+    "docs\\unidad_iv\\resultados\\perfil_numerico_clusters.csv": "b72afb3562827c12e357ebe50d0b4d5049f72e1d295e9abcc30fedfd1d581218",
+    "docs\\unidad_iv\\resultados\\distribucion_etiqueta_posthoc.csv": "755f06688b4714b3ee9455c573154e5e9d8eca4564da43bbfa608bc13b4f2c5b",
+    "docs\\unidad_iv\\resultados\\varianza_pca.csv": "fd91e4b1fffbabb8fc67d7bcf6747db03adb62580a9477e0eb97899ebc314abe"
+  },
+  "interpretation_limits": [
+    "The 24 exact duplicate rows remain in the clustering input and contribute repeated weight.",
+    "The dataset includes synthetic records; external population generalization is not established.",
+    "Clusters describe associations and are not causal, clinical or validated subtypes.",
+    "Height and Weight are included as continuous features; clusters may primarily reflect anthropometric scale."
+  ],
+  "execution": {
+    "timestamp_local": "2026-11-16T18:06:52-06:00",
+    "test_command": ".venv-unit2\\Scripts\\python.exe -m unittest discover -s tests/unit_iv -p test*.py -v",
+    "tests": {
+      "passed": 2,
+      "failed": 0,
+      "exit_code": 0
+    },
+    "notebooks": [
+      {
+        "path": "notebooks/Aguilar_Solis_David_Rafael_U4_AnalisisNoSupervisado.ipynb",
+        "sha256": "89ea10c8be63a8432867a6b54cb68a73ea1d57c132c36c811e6efeeb8e8d08ba",
+        "code_cells": 4,
+        "executed_code_cells": 4,
+        "errors": [],
+        "status": "PASS"
+      }
+    ],
+    "notebook_execution_method": "nbclient.NotebookClient(timeout=180,kernel_name=python3,allow_errors=False).execute via the project virtual environment",
+    "analysis_command": "from src.unit_iv import analyze; result=analyze()",
+    "analysis_exit_code": 0,
+    "pdf_render_command": "pdftoppm -png -r 75 docs/Aguilar_Solis_David_Rafael_U4_Informe.pdf",
+    "rendered_pages": 4,
+    "all_pages_visually_reviewed": true,
+    "visual_status": "PASS"
+  },
+  "academic_acceptance": "NO VERIFICADO: docente/Classroom acceptance is not inferred.",
+  "artifact_sha256": {
+    "modelos/unidad_iv/kmeans_pipeline.joblib": "29668881dcf787ef8bd5d16062b121041c0ef7f059dd353ff8b865ff708dba3a",
+    "modelos/unidad_iv/pca_transform.joblib": "8622a1dd5ebf72ba433dfa18df7716d42fc9eb25f1331b6edc0f198854cb6f7b",
+    "docs/unidad_iv/figuras/seleccion_k.png": "6cea577f43bb6c35d7ac49c9655281995342d8fc9a1e077922497a85a986c489",
+    "docs/unidad_iv/figuras/pca_clusters.png": "6e5884a7621639fc780611ff2b29577b8c52f5a0ed9b5d428bece476dafdc70e",
+    "docs/unidad_iv/figuras/perfil_clusters.png": "41cbf9c108e5d8de85d305b51fd35981e944ca5aab6d456b10cb659c764340ff",
+    "docs/Aguilar_Solis_David_Rafael_U4_Informe.pdf": "0b9dad29ec0e420695f442adbe99c45f31b9ec26e9d6a028926b5dede83495c3",
+    "notebooks/Aguilar_Solis_David_Rafael_U4_AnalisisNoSupervisado.ipynb": "89ea10c8be63a8432867a6b54cb68a73ea1d57c132c36c811e6efeeb8e8d08ba"
+  },
+  "raw_integrity_after": "28b6991062855d3d15642e38b1aa9d1b32fb7abbb5abf5b096f1868cd706154b",
+  "raw_integrity_status": "PASS",
+  "acceptance_criteria": [
+    {
+      "id": "AC-IV01",
+      "status": "PASS",
+      "evidence": "Validated raw and processed hashes, shape, equality, null count, and duplicate count."
+    },
+    {
+      "id": "AC-IV02",
+      "status": "PASS",
+      "evidence": "Eight numeric predictors selected and StandardScaler documented."
+    },
+    {
+      "id": "AC-IV03",
+      "status": "PASS",
+      "evidence": "Fixed random_state=42; 2/2 tests including reproducible KMeans labels/scores."
+    },
+    {
+      "id": "AC-IV04",
+      "status": "PASS",
+      "evidence": "Inertia and full-data Silhouette calculated for k=2..9; figures and CSV persisted."
+    },
+    {
+      "id": "AC-IV05",
+      "status": "PARTIAL",
+      "evidence": "Numeric profiles and post-fit label cross-tab persisted; interpretation is exploratory and needs academic review."
+    },
+    {
+      "id": "AC-IV06",
+      "status": "PASS",
+      "evidence": "PCA variance and two-dimensional plot generated."
+    },
+    {
+      "id": "AC-IV07",
+      "status": "PASS",
+      "evidence": "NObeyesdad excluded from FEATURES and only cross-tabulated after fitting."
+    },
+    {
+      "id": "AC-IV08",
+      "status": "PASS",
+      "evidence": "Notebook, outputs, models, tables, figures, and hashes recorded."
+    },
+    {
+      "id": "AC-IV09",
+      "status": "PARTIAL",
+      "evidence": "Four PDF pages rendered and visually reviewed; teacher/Classroom acceptance remains NO VERIFICADO."
+    }
+  ]
+}
