@@ -1,0 +1,17 @@
+-- Tabla: FactDashboard (fuente CSV, con cluster/PC1/PC2 anexados por row_index)
+Observaciones = COUNTROWS(FactDashboard)
+Categorias = DISTINCTCOUNT(FactDashboard[NObeyesdad])
+Edad promedio = AVERAGE(FactDashboard[Age])
+Peso promedio (kg) = AVERAGE(FactDashboard[Weight])
+Estatura promedio (m) = AVERAGE(FactDashboard[Height])
+-- Tabla: ModelMetrics (filtrar task/scenario/model en cada visual)
+Accuracy = MAX(ModelMetrics[test_accuracy])
+Precision macro = MAX(ModelMetrics[test_precision_macro])
+Recall macro = MAX(ModelMetrics[test_recall_macro])
+F1 macro = MAX(ModelMetrics[test_f1_macro])
+MAE = MAX(ModelMetrics[test_mae])
+RMSE = MAX(ModelMetrics[test_rmse])
+R cuadrada = MAX(ModelMetrics[test_r2])
+
+-- Tabla: PcaVariance
+Varianza explicada = SUM(PcaVariance[explained_variance_ratio])

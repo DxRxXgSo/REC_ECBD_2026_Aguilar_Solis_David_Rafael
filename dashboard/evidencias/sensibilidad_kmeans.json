@@ -1,0 +1,35 @@
+{
+  "timestamp_local": "2026-11-16",
+  "purpose": "Diagnostic sensitivity check for the existing exploratory k=9 selection; does not replace Unit IV artifacts or claim an optimum.",
+  "input": {
+    "path": "data/processed/obesity_unit_ii.csv",
+    "sha256": "64418dcf666d49d832d07fe53dbfd9415662f2537502fde60e8dbe55b8f5218d",
+    "rows": 2111,
+    "features": ["Age", "Height", "Weight", "FCVC", "NCP", "CH2O", "FAF", "TUE"],
+    "preprocessing": "StandardScaler over full descriptive dataset, consistent with the Unit IV unsupervised specification",
+    "method": "KMeans(random_state=42, n_init=20); silhouette evaluated for k=2..12",
+    "stability": "k=9 refit for seeds 7, 42, 2026, 1234, 31415; pairwise adjusted Rand index"
+  },
+  "results": {
+    "k_sweep": [
+      {"k": 2, "inertia": 14367.973962258031, "silhouette": 0.14532884934481743},
+      {"k": 3, "inertia": 12746.369840052448, "silhouette": 0.14986853947169848},
+      {"k": 4, "inertia": 11451.505258056897, "silhouette": 0.16015723864742293},
+      {"k": 5, "inertia": 10534.862798368602, "silhouette": 0.16911707176245594},
+      {"k": 6, "inertia": 9764.288235948607, "silhouette": 0.16666908585440848},
+      {"k": 7, "inertia": 9210.411214691288, "silhouette": 0.16624851924857725},
+      {"k": 8, "inertia": 8736.342351136915, "silhouette": 0.1678781933930671},
+      {"k": 9, "inertia": 8391.429242492413, "silhouette": 0.1726359919969179},
+      {"k": 10, "inertia": 8056.621823876208, "silhouette": 0.17861126871188154},
+      {"k": 11, "inertia": 7750.563774375361, "silhouette": 0.18257180600022826},
+      {"k": 12, "inertia": 7505.761186081385, "silhouette": 0.17965735897442808}
+    ],
+    "k9_seed_stability": {
+      "seeds": [7, 42, 2026, 1234, 31415],
+      "pairwise_ari_min": 0.6530419459466819,
+      "pairwise_ari_max": 0.9386599564562139,
+      "interpretation": "Assignments vary by initialization; no strong stability claim is made."
+    }
+  },
+  "interpretation": "The original k=2..9 search had its highest silhouette at the upper bound k=9 (0.172636). In the diagnostic extension to k=10 and k=11 the scores are higher, so k=9 is not established as a global optimum. The scores are modest and seed-dependent. This diagnostic does not modify existing Unit IV outputs."
+}

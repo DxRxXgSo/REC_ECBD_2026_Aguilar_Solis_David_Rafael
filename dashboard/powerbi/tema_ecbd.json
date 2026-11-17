@@ -1,0 +1,7 @@
+{
+  "name": "ECBD 2026",
+  "dataColors": ["#12304A", "#0B7A75", "#E6A23C", "#6A78A8", "#C95F59", "#4E8A62", "#8A6F9E"],
+  "background": "#F5F7FA",
+  "foreground": "#213547",
+  "tableAccent": "#0B7A75"
+}

@@ -142,3 +142,7 @@ Los dos programas oficiales de cierre/continuidad actualizan el calendario anter
 
 - Mendoza Palechor, F., & de la Hoz Manotas, A. (2019). *Dataset for estimation of obesity levels based on eating habits and physical condition in individuals from Colombia, Peru and Mexico*. Data in Brief, 25, 104344. https://doi.org/10.1016/j.dib.2019.104344
 - UCI Machine Learning Repository. (2019). *Estimation of Obesity Levels Based On Eating Habits and Physical Condition* [Dataset]. https://doi.org/10.24432/C5H31Z
+
+## Dashboard de Unidad V
+
+Estado técnico al 16/11/2026: **0/5 componentes funcionales verificados; no hay PBIX ni Power BI Desktop detectado**. Se preparó un paquete de importación con consultas M, relaciones, medidas DAX, tema y guía de montaje en [`dashboard/powerbi/`](dashboard/powerbi/). Fuentes disponibles: Data Mart SQL Server (2,111 hechos y 7 niveles), métricas U3 y tablas U4. Los materiales de preparación no se cuentan como dashboard funcional. La guía de páginas y el bloqueo actual están en [`dashboard/README.md`](dashboard/README.md); la aprobación docente y entrega en Classroom siguen sin verificar.

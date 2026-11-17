@@ -1,0 +1,74 @@
+{
+  "task": "ECBD 2026 dashboard source preparation and integrative review",
+  "timestamp_local": "2026-11-16",
+  "power_bi": {
+    "desktop_available": false,
+    "checks": ["PBIDesktop command lookup", "known executable paths", "Appx package lookup", "uninstall registry lookup", "dashboard PBIX file inventory"],
+    "pbix_created": false,
+    "pages_rendered": 0,
+    "screenshots": [],
+    "functional_components_verified": 0,
+    "functional_components_required": 5,
+    "status": "BLOCKED: Power BI Desktop is unavailable; prepared source queries and documentation are not counted as dashboard functionality."
+  },
+  "sql_server_read_only": {
+    "command_target": ".\\SQLEXPRESS",
+    "database": "REC_ECBD_Obesidad_2026",
+    "version": "Microsoft SQL Server 2025 RTM 17.0.1000.7 Express Edition, 64-bit",
+    "machine": "LAPTOP-O1T564Q8",
+    "instance": "SQLEXPRESS",
+    "integrated_authentication": true,
+    "sysadmin": 1,
+    "system_databases_online": ["master", "model", "msdb", "tempdb"],
+    "project_database_state": "ONLINE",
+    "fact_rows": 2111,
+    "dimension_rows": 7,
+    "category_counts": {
+      "Insufficient_Weight": 272,
+      "Normal_Weight": 287,
+      "Overweight_Level_I": 290,
+      "Overweight_Level_II": 290,
+      "Obesity_Type_I": 351,
+      "Obesity_Type_II": 297,
+      "Obesity_Type_III": 324
+    },
+    "writes_performed": false,
+    "note": "@@SERVERNAME returned NULL; SERVERPROPERTY machine/instance values identify the connected local instance."
+  },
+  "source_files": {
+    "data/raw/ObesityDataSet_raw_and_data_sinthetic.csv": "28b6991062855d3d15642e38b1aa9d1b32fb7abbb5abf5b096f1868cd706154b",
+    "data/processed/obesity_unit_ii.csv": "64418dcf666d49d832d07fe53dbfd9415662f2537502fde60e8dbe55b8f5218d",
+    "docs/unidad_iii/resultados/optimizacion_metricas_test.csv": "450c3f77e2e0c2f8423a5b810a9bce592e7e4a41864ee2d9db7dac631b840c85",
+    "data/processed/unidad_iv_cluster_assignments.csv": "5f14303be8b203aca5ef68c128f53f5bda6a795c65a96f9832cc336c5de0da48",
+    "docs/unidad_iv/resultados/perfil_numerico_clusters.csv": "b72afb3562827c12e357ebee50d0b4d5049f72e1d295e9abcc30fedfd1d581218",
+    "docs/unidad_iv/resultados/varianza_pca.csv": "fd91e4b1fffbabb8fc67d7bcf6747db03adb62580a9477e0eb97899ebc314abe"
+  },
+  "tests": [
+    {"command": ".venv-unit2\\Scripts\\python.exe -m unittest discover -s tests/dashboard -p test*.py -v", "passed": 3, "failed": 0, "exit_code": 0},
+    {"command": ".venv-unit2\\Scripts\\python.exe -m unittest discover -s tests/unit_ii -p test*.py -v", "passed": 12, "failed": 0, "exit_code": 0},
+    {"command": ".venv-unit2\\Scripts\\python.exe -m unittest discover -s tests/unit_iii -p test*.py -v", "passed": 8, "failed": 0, "exit_code": 0},
+    {"command": ".venv-unit2\\Scripts\\python.exe -m unittest discover -s tests/unit_iv -p test*.py -v", "passed": 2, "failed": 0, "exit_code": 0}
+  ],
+  "integrity": {
+    "raw_sha256_before": "28b6991062855d3d15642e38b1aa9d1b32fb7abbb5abf5b096f1868cd706154b",
+    "raw_sha256_after": "28b6991062855d3d15642e38b1aa9d1b32fb7abbb5abf5b096f1868cd706154b",
+    "raw_unchanged": true,
+    "unit_iii_metrics_unchanged": true,
+    "unit_iv_assignments_profile_variance_unchanged": true,
+    "preexisting_unit_i_notebook_change_preserved": true
+  },
+  "limitations": [
+    "Power Query M and DAX could not be executed or visually checked without Power BI Desktop.",
+    "No PBIX, dashboard screenshots, or rendered pages were created.",
+    "The source contract and local files were tested; this does not verify Power BI relationships, refresh, visuals, or interactivity.",
+    "A read-only exploratory SQL query initially referenced a label column absent from the fact table; it was corrected to join the dimension, and the corrected query returned the counts above. No database changes occurred.",
+    "Unit I notebook has a pre-existing user-local execution_count change and was not staged or altered."
+  ],
+  "evidence": {
+    "kmeans_sensitivity": "dashboard/evidencias/sensibilidad_kmeans.json",
+    "import_guide": "dashboard/powerbi/guia_montaje.md",
+    "relationships": "dashboard/powerbi/model_relationships.md",
+    "power_query_m": "dashboard/powerbi/queries/",
+    "dax_measures": "dashboard/powerbi/measures.dax"
+  }
+}
