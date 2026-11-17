@@ -1,6 +1,6 @@
 # Estado del dashboard — Unidad V
 
-**Estado al 16/11/2026: 0/5 componentes funcionales verificados (0%).** Componentes requeridos para esta cuenta: (1) KPI, (2) al menos tres visualizaciones descriptivas, (3) resultados U3, (4) clusters/PCA U4 y (5) interpretación/storytelling integrado. La inspección de comandos, ubicaciones conocidas, paquetes y registros de aplicaciones no encontró Power BI Desktop; tampoco existe `.pbix`, páginas interactivas ni capturas. Los archivos de preparación para importar que se agregan en `dashboard/powerbi/` son insumos y documentación: no equivalen a componentes funcionales.
+**Estado al 17/11/2026: 0/5 componentes funcionales verificados (0%).** Power BI Desktop aparece registrado como aplicación y se inició; la ventana se tituló “Sin título - Power BI Desktop”. La automatización disponible no pudo leer ni controlar su interfaz (`Accessibility state unavailable`), por lo que no se creó PBIX, páginas o capturas. Los archivos de `dashboard/powerbi/` son preparación y documentación, no componentes funcionales.
 
 ## Disponibilidad de datos (no equivale a avance funcional)
 
@@ -20,4 +20,4 @@ Las guías del proyecto requieren Power BI para el dashboard final. No se sustit
 
 La sensibilidad adicional in-memory documentada en `dashboard/evidencias/sensibilidad_kmeans.json` encontró Silhouette más alta para k=10 y k=11 que para k=9 en el rango ampliado 2–12; k=9 permanece elección exploratoria del rango original, no óptimo global demostrado. La variación por semillas también aconseja cautela.
 
-El objetivo conservador para la revisión integradora del 17/11 es al menos 70% funcional; con el estado actual ese criterio **no está cumplido**. Entrega/aceptación docente y Classroom permanecen no verificadas.
+El objetivo conservador para la revisión integradora del 17/11 es al menos 70% funcional; con el estado actual ese criterio **no está cumplido**. Entrega/aceptación docente y Classroom permanecen no verificadas. Véase `dashboard/powerbi/guia_montaje.md` para el montaje manual; hace falta interacción directa en Power BI Desktop para importar las consultas, crear las relaciones/medidas, construir las páginas, refrescar, revisar y guardar `dashboard/ECBD_Integrador_2026.pbix` y capturas reales.

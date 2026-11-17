@@ -1,0 +1,76 @@
+{
+  "task": "Power BI Desktop UI availability and source preflight",
+  "timestamp_local": "2026-11-17",
+  "application": {
+    "registered_start_app": "Power BI Desktop",
+    "app_id": "Microsoft.MicrosoftPowerBIDesktop_8wekyb3d8bbwe!Microsoft.MicrosoftPowerBIDesktop",
+    "launch_result": "running",
+    "window_title": "Sin título - Power BI Desktop",
+    "ui_access": "blocked",
+    "ui_error": "Accessibility state unavailable for window 134836",
+    "screenshots_created": 0,
+    "pbix_created": false,
+    "queries_loaded": false,
+    "pages_verified": 0,
+    "functional_components_verified": 0,
+    "functional_components_required": 5,
+    "note": "Power BI was launched through the supported computer-use app inventory, but the interface could not be inspected or controlled. No PBIX or UI result is claimed."
+  },
+  "source_contract": {
+    "command": ".venv-unit2\\Scripts\\python.exe -c \"from pathlib import Path; from src.powerbi_sources import validate_dashboard_sources; print(validate_dashboard_sources(Path('.')))\"",
+    "python": "3.12.14",
+    "exit_code": 0,
+    "rows": 2111,
+    "columns": 17,
+    "categories": 7,
+    "exact_duplicate_rows_preserved": 24,
+    "cluster_assignments": 2111,
+    "unique_row_index": 2111,
+    "missing_cluster_assignments": 0,
+    "metric_rows": 5,
+    "pca_components": ["PC1", "PC2"]
+  },
+  "sql_read_only": {
+    "server": ".\\SQLEXPRESS",
+    "database": "REC_ECBD_Obesidad_2026",
+    "fact_rows": 2111,
+    "dimension_rows": 7,
+    "category_counts": {
+      "Insufficient_Weight": 272,
+      "Normal_Weight": 287,
+      "Overweight_Level_I": 290,
+      "Overweight_Level_II": 290,
+      "Obesity_Type_I": 351,
+      "Obesity_Type_II": 297,
+      "Obesity_Type_III": 324
+    },
+    "writes_performed": false
+  },
+  "tests": {
+    "command": ".venv-unit2\\Scripts\\python.exe -m unittest discover -s tests/dashboard -p test*.py -v",
+    "passed": 3,
+    "failed": 0,
+    "exit_code": 0,
+    "git_diff_check": "PASS; Git emitted LF-to-CRLF working-copy notices only"
+  },
+  "integrity_sha256": {
+    "data/raw/ObesityDataSet_raw_and_data_sinthetic.csv": "28b6991062855d3d15642e38b1aa9d1b32fb7abbb5abf5b096f1868cd706154b",
+    "data/processed/obesity_unit_ii.csv": "64418dcf666d49d832d07fe53dbfd9415662f2537502fde60e8dbe55b8f5218d",
+    "docs/unidad_iii/resultados/optimizacion_metricas_test.csv": "450c3f77e2e0c2f8423a5b810a9bce592e7e4a41864ee2d9db7dac631b840c85",
+    "data/processed/unidad_iv_cluster_assignments.csv": "5f14303be8b203aca5ef68c128f53f5bda6a795c65a96f9832cc336c5de0da48",
+    "docs/unidad_iv/resultados/perfil_numerico_clusters.csv": "b72afb3562827c12e357ebee50d0b4d5049f72e1d295e9abcc30fedfd1d581218",
+    "docs/unidad_iv/resultados/varianza_pca.csv": "fd91e4b1fffbabb8fc67d7bcf6747db03adb62580a9477e0eb97899ebc314abe"
+  },
+  "preservation": {
+    "unit_i_initial_notebook_modified": false,
+    "preexisting_local_notebook_diff_preserved_and_unstaged": true,
+    "u2_u3_u4_data_or_models_modified": false
+  },
+  "manual_completion": [
+    "Create the five named Power Query queries by pasting the M files from dashboard/powerbi/queries/ into blank queries in Power BI Desktop; adjust ProjectRoot only if this repository moves.",
+    "Refresh FactDashboard from the local CSVs and DimObesityLevel from localhost\\SQLEXPRESS using Windows authentication; do not import the SQL fact table.",
+    "Set the two one-to-many relationships in dashboard/powerbi/model_relationships.md and create measures from dashboard/powerbi/measures.dax.",
+    "Apply dashboard/powerbi/tema_ecbd.json; build and verify four pages following dashboard/powerbi/guia_montaje.md.",
+    "Save dashboard/ECBD_Integrador_2026.pbix and actual page screenshots under dashboard/evidencias/ only after refresh and visual review."
+  ]
+}
