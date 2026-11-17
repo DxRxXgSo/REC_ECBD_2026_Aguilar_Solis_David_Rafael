@@ -1,0 +1,25 @@
+table DimObesityLevel
+	lineageTag: 5209ecd2-578c-4d1e-aa97-dcf1d59ed731
+
+	column ObesityLevelKey
+		dataType: int64
+		lineageTag: 517194f7-e397-4a07-bd65-1d6420f24547
+		summarizeBy: none
+		sourceColumn: ObesityLevelKey
+
+	column ObesityLevel
+		dataType: string
+		lineageTag: 1596728d-3882-498c-be53-4ed40c3b13a9
+		summarizeBy: none
+		sourceColumn: ObesityLevel
+
+	partition DimObesityLevel = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("localhost\SQLEXPRESS", "REC_ECBD_Obesidad_2026", [Query="SELECT ObesityLevelKey, ObesityLevel FROM DM.DimObesityLevel"]),
+				    Typed = Table.TransformColumnTypes(Source, {{"ObesityLevelKey", Int64.Type}, {"ObesityLevel", type text}})
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

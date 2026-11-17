@@ -1,10 +1,13 @@
 -- Tabla: FactDashboard (fuente CSV, con cluster/PC1/PC2 anexados por row_index)
-Observaciones = COUNTROWS(FactDashboard)
+Total observaciones = COUNTROWS(FactDashboard)
+Observaciones = FORMAT([Total observaciones], "#,##0", "en-US")
 Categorias = DISTINCTCOUNT(FactDashboard[NObeyesdad])
 Edad promedio = AVERAGE(FactDashboard[Age])
-Peso promedio (kg) = AVERAGE(FactDashboard[Weight])
+Peso prom. (kg) = AVERAGE(FactDashboard[Weight])
 Estatura promedio (m) = AVERAGE(FactDashboard[Height])
--- Tabla: ModelMetrics (filtrar task/scenario/model en cada visual)
+-- Tabla: ModelMetrics. En la tabla mostrar filas task/scenario/model y métricas
+-- con cuatro decimales. El gráfico de página 2 muestra F1 macro por
+-- escenario y modelo, evitando promediar modelos distintos.
 Accuracy = MAX(ModelMetrics[test_accuracy])
 Precision macro = MAX(ModelMetrics[test_precision_macro])
 Recall macro = MAX(ModelMetrics[test_recall_macro])

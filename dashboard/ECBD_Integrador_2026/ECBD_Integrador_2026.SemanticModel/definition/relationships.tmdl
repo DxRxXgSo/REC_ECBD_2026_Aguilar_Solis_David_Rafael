@@ -1,0 +1,7 @@
+relationship rel_obesitylevel_fact
+	fromColumn: FactDashboard.NObeyesdad
+	toColumn: DimObesityLevel.ObesityLevel
+
+relationship rel_clusterprofile_fact
+	fromColumn: FactDashboard.cluster
+	toColumn: ClusterProfile.cluster

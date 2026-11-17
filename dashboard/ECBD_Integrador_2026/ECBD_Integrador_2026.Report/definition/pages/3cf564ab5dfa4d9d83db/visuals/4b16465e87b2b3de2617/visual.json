@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "4b16465e87b2b3de2617",
+  "position": {
+    "x": 20,
+    "y": 158,
+    "z": 3000,
+    "height": 232,
+    "width": 440,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "barChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimObesityLevel"
+                    }
+                  },
+                  "Property": "ObesityLevel"
+                }
+              },
+              "queryRef": "DimObesityLevel.ObesityLevel",
+              "nativeQueryRef": "ObesityLevel",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactDashboard"
+                    }
+                  },
+                  "Property": "Total observaciones"
+                }
+              },
+              "queryRef": "FactDashboard.Total observaciones",
+              "nativeQueryRef": "Total observaciones"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

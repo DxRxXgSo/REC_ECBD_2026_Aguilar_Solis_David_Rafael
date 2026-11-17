@@ -1,0 +1,103 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "9eab6ee9f21984d1b85e",
+  "position": {
+    "x": 395,
+    "y": 66,
+    "z": 3000,
+    "height": 300,
+    "width": 520,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "scatterChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactDashboard"
+                    }
+                  },
+                  "Property": "row_index"
+                }
+              },
+              "queryRef": "FactDashboard.row_index",
+              "nativeQueryRef": "row_index",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactDashboard"
+                    }
+                  },
+                  "Property": "cluster"
+                }
+              },
+              "queryRef": "FactDashboard.cluster",
+              "nativeQueryRef": "cluster"
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "FactDashboard"
+                        }
+                      },
+                      "Property": "PC1"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "FactDashboard.Avg(PC1)",
+              "nativeQueryRef": "Average of PC1",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "FactDashboard"
+                        }
+                      },
+                      "Property": "PC2"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "FactDashboard.Avg(PC2)",
+              "nativeQueryRef": "Average of PC2"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

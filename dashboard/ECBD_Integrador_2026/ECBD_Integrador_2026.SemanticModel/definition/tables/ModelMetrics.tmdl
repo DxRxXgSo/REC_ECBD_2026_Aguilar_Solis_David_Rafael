@@ -1,0 +1,127 @@
+table ModelMetrics
+	lineageTag: 55ef5c9c-fcc3-4c5f-84b8-06d945546e0f
+
+	measure Accuracy = MAX(ModelMetrics[test_accuracy])
+		formatString: 0.0000
+		lineageTag: 5e746d6a-5538-4afc-82fa-4da60df7d875
+
+	measure 'Precision macro' = MAX(ModelMetrics[test_precision_macro])
+		formatString: 0.0000
+		lineageTag: a7177f72-ce30-426e-ad13-44bac6f01d0e
+
+	measure 'Recall macro' = MAX(ModelMetrics[test_recall_macro])
+		formatString: 0.0000
+		lineageTag: a37e8b86-f97a-4ac0-aedf-ed6a5b9ddc8c
+
+	measure 'F1 macro' = MAX(ModelMetrics[test_f1_macro])
+		formatString: 0.0000
+		lineageTag: 09efbcee-4254-4da1-96e6-5900276f896b
+
+	measure MAE = MAX(ModelMetrics[test_mae])
+		formatString: 0.0000
+		lineageTag: ed6a60e4-bfdc-4581-b81f-7ff97cc76222
+
+	measure RMSE = MAX(ModelMetrics[test_rmse])
+		formatString: 0.0000
+		lineageTag: e3e60076-c1dc-43c4-a8e0-cfd04a982007
+
+	measure 'R cuadrada' = MAX(ModelMetrics[test_r2])
+		formatString: 0.0000
+		lineageTag: 5b7532a4-3a29-4008-b09b-7b07bd925bbf
+
+	column task
+		dataType: string
+		lineageTag: 1532600b-b174-46a7-859c-d80747029121
+		summarizeBy: none
+		sourceColumn: task
+
+	column scenario
+		dataType: string
+		lineageTag: 5d2a3d6c-df15-4135-bfab-764bfbeec731
+		summarizeBy: none
+		sourceColumn: scenario
+
+	column model
+		dataType: string
+		lineageTag: 4291be6d-4835-44c0-afa2-35e76c8432a5
+		summarizeBy: none
+		sourceColumn: model
+
+	column cv_best_score
+		dataType: double
+		lineageTag: 957f5864-442a-483c-96cd-942179823494
+		summarizeBy: average
+		sourceColumn: cv_best_score
+
+	column test_mae
+		dataType: double
+		lineageTag: eb44e68d-76bb-429a-8e49-150c3ca00325
+		summarizeBy: average
+		sourceColumn: test_mae
+
+	column test_rmse
+		dataType: double
+		lineageTag: fc580ecd-c2cc-4044-9e80-acdfe437523d
+		summarizeBy: average
+		sourceColumn: test_rmse
+
+	column test_r2
+		dataType: double
+		lineageTag: d9a03fb0-65be-4ae2-bdbb-78c4669c80c6
+		summarizeBy: average
+		sourceColumn: test_r2
+
+	column test_accuracy
+		dataType: double
+		formatString: 0.0000
+		lineageTag: 4b598bff-2b0a-4efc-a597-b43e6de80f4b
+		summarizeBy: average
+		sourceColumn: test_accuracy
+
+	column test_precision_macro
+		dataType: double
+		formatString: 0.0000
+		lineageTag: b66e1d93-fc53-4ca5-9a46-9e495e57defa
+		summarizeBy: average
+		sourceColumn: test_precision_macro
+
+	column test_recall_macro
+		dataType: double
+		formatString: 0.0000
+		lineageTag: f2d52f06-4cb8-400e-bb4f-3040075387be
+		summarizeBy: average
+		sourceColumn: test_recall_macro
+
+	column test_f1_macro
+		dataType: double
+		formatString: 0.0000
+		lineageTag: 220e425c-2f78-42e8-abd6-43882712c703
+		summarizeBy: average
+		sourceColumn: test_f1_macro
+
+	column best_params
+		dataType: string
+		lineageTag: a5278ff8-e9d0-459f-98c4-92c396a5015c
+		summarizeBy: none
+		sourceColumn: best_params
+
+		annotation SummarizationSetBy = Automatic
+
+	column classes
+		dataType: string
+		lineageTag: 10326086-7170-4eb0-8907-1088a8f49a59
+		summarizeBy: none
+		sourceColumn: classes
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ModelMetrics = m
+		mode: import
+		source =
+				let
+				    ProjectRoot = "C:\Users\rafle\Documents\REC_ECBD_2026_Aguilar_Solis_David_Rafael",
+				    Csv = Csv.Document(File.Contents(ProjectRoot & "\docs\unidad_iii\resultados\optimizacion_metricas_test.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Source = Table.PromoteHeaders(Csv, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Source, {{"task", type text}, {"scenario", type text}, {"model", type text}, {"cv_best_score", type number}, {"test_mae", type number}, {"test_rmse", type number}, {"test_r2", type number}, {"test_accuracy", type number}, {"test_precision_macro", type number}, {"test_recall_macro", type number}, {"test_f1_macro", type number}}, "en-US")
+				in
+				    Typed

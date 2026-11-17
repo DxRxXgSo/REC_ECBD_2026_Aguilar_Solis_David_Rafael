@@ -1,0 +1,152 @@
+{
+  "task": "Dashboard Power BI existente - corte tecnico y revalidacion",
+  "verification_date": "2026-11-17",
+  "project_root": "C:\\Users\\rafle\\Documents\\REC_ECBD_2026_Aguilar_Solis_David_Rafael",
+  "environment": {
+    "power_bi_desktop_version": "2.159.1231.0",
+    "trusted_servers_user_scope": null,
+    "trusted_servers_desktop_process": "localhost\\SQLEXPRESS",
+    "authentication": "Windows integrada",
+    "encrypted_connection": true,
+    "credentials_persisted": false
+  },
+  "sql_read_only": {
+    "command": "sqlcmd -S localhost\\SQLEXPRESS -E -C -Q (lectura de metadatos)",
+    "exit_code": 0,
+    "requested_instance": "localhost\\SQLEXPRESS",
+    "engine_version": "Microsoft SQL Server 2025 (RTM) - 17.0.1000.7 (X64), Express Edition",
+    "servername_query_result": "NULL",
+    "database": "REC_ECBD_Obesidad_2026",
+    "database_state": "ONLINE",
+    "dm_tables": [
+      "DM.DimObesityLevel",
+      "DM.FactObesityObservation",
+      "DM.StgObesityObservation"
+    ],
+    "service_name": "SQLEXPRESS",
+    "server_property_name": "LAPTOP-O1T564Q8\\SQLEXPRESS",
+    "instance_name": "SQLEXPRESS",
+    "sysadmin_confirmed": true,
+    "integrated_login": "[redacted in evidence]"
+  },
+  "desktop_refresh": {
+    "project": "dashboard/ECBD_Integrador_2026/ECBD_Integrador_2026.pbip",
+    "closed_reopened_refreshed": true,
+    "tables": [
+      {
+        "name": "FactDashboard",
+        "rows": 2111
+      },
+      {
+        "name": "DimObesityLevel",
+        "rows": 7
+      },
+      {
+        "name": "ModelMetrics",
+        "rows": 5
+      },
+      {
+        "name": "ClusterProfile",
+        "rows": 9
+      },
+      {
+        "name": "PcaVariance",
+        "rows": 2
+      }
+    ],
+    "filter_interaction": "Normal_Weight: 2111 -> 287 and reset to 2111; 7 categories restored",
+    "obesity_dimension_relationship": "interactively verified",
+    "cluster_profile_relationship": "not interactively verified",
+    "pages_with_data": [
+      "Panorama general",
+      "Modelos supervisados",
+      "Clustering y PCA",
+      "Hallazgos y conclusiones"
+    ],
+    "candidate_metrics_chart": "F1 macro by scenario and model; no candidate averaging",
+    "confusion_matrix": "not embedded; dashboard states source matrices are baseline results",
+    "pbix_created": false,
+    "pbix_reason": "Desktop Save As exposed PBIP only; Export exposed template/PDF"
+  },
+  "screenshot_review": {
+    "directory": "dashboard/evidencias/final_powerbi_2026-11-16_validado",
+    "visual_review": "all four page captures reviewed after reopen and refresh",
+    "files": [
+      {
+        "path": "dashboard/evidencias/final_powerbi_2026-11-16_validado/01 Panorama general.png",
+        "sha256": "4fddc13d0d8a3a58314d7f4f0d4934d7278f25e88a2a0070cfa22b461e6b5b40"
+      },
+      {
+        "path": "dashboard/evidencias/final_powerbi_2026-11-16_validado/02 Modelos supervisados.png",
+        "sha256": "88c5ce6ee8d7ddec3d9c688028369b8954b876f9a9a485336aa536fe740f0a7e"
+      },
+      {
+        "path": "dashboard/evidencias/final_powerbi_2026-11-16_validado/03 Clustering y PCA.png",
+        "sha256": "e8259a80832df52bf857b93f8d938bc9055f6c59a02f2be37d1ec33050077a6d"
+      },
+      {
+        "path": "dashboard/evidencias/final_powerbi_2026-11-16_validado/04 Hallazgos y conclusiones.png",
+        "sha256": "a65f3748ae93524095b236d22824de9fd7d1a8c5a36278335bad0c956fb29d74"
+      }
+    ]
+  },
+  "pbir_validation": {
+    "command": "powerbi-report-author validate dashboard/ECBD_Integrador_2026/ECBD_Integrador_2026.Report --pretty",
+    "result": "succeededWithWarnings",
+    "exit_code": 0,
+    "error_count": 0,
+    "warning_count": 1,
+    "warning": "PBIR_SCHEMA_UNREACHABLE: remote visualContainer 2.14.0 schema could not be fetched; validation skipped for those visuals"
+  },
+  "pdf": {
+    "path": "docs/Informe_Final_Integrador_2026.pdf",
+    "pages": 6,
+    "rendered_and_visually_reviewed": true,
+    "generator": "docs/generar_informe_final_pdf.py",
+    "sha256": "b91d3762cee12c8cf54cf98e0a8ba688c5ae80e0d5aa4d95cde0f5d4e883fe39"
+  },
+  "tests": [
+    {
+      "suite": "dashboard",
+      "command": "python -m unittest discover -s tests/dashboard -v",
+      "tests": 3,
+      "exit_code": 0
+    },
+    {
+      "suite": "unit_ii",
+      "command": "python -m unittest discover -s tests/unit_ii -v",
+      "tests": 12,
+      "exit_code": 0
+    },
+    {
+      "suite": "unit_iii",
+      "command": "python -m unittest discover -s tests/unit_iii -v",
+      "tests": 8,
+      "exit_code": 0
+    },
+    {
+      "suite": "unit_iv",
+      "command": "python -m unittest discover -s tests/unit_iv -v",
+      "tests": 2,
+      "exit_code": 0
+    }
+  ],
+  "raw_dataset": {
+    "path": "data/raw/ObesityDataSet_raw_and_data_sinthetic.csv",
+    "sha256_before": "28b6991062855d3d15642e38b1aa9d1b32fb7abbb5abf5b096f1868cd706154b",
+    "sha256_after": "28b6991062855d3d15642e38b1aa9d1b32fb7abbb5abf5b096f1868cd706154b",
+    "unchanged": true
+  },
+  "repository_checks": {
+    "git_diff_check": "PASS",
+    "notebook_local_change": "preserved and excluded from this task",
+    "commits_created": 0,
+    "push_performed": false
+  },
+  "pending": [
+    "Embed the baseline confusion matrix in the report if rubric requires it; label it baseline, not optimized.",
+    "Interactively verify ClusterProfile-to-FactDashboard filtering.",
+    "PBIX creation unavailable through observed Desktop UI.",
+    "Classroom submission, defense and teacher acceptance are not verified."
+  ]
+}

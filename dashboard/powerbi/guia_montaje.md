@@ -1,14 +1,14 @@
 # Guía de montaje Power BI — ECBD 2026
 
-**Estado:** paquete de importación y diseño listo para montar. No se creó ni probó un PBIX porque Power BI Desktop no está instalado/disponible en este entorno. No hay capturas ni páginas funcionales verificadas.
+**Estado al 17/11/2026:** el PBIP existente se abrió, refrescó, guardó y volvió a abrir en Power BI Desktop 2.159.1231.0. Las cinco tablas cargaron y las cuatro páginas renderizan. La confianza del certificado se limitó al proceso de Desktop mediante `PBI_SQL_TRUSTED_SERVERS=localhost\SQLEXPRESS`, manteniendo cifrado y autenticación integrada. Véanse `../README.md` y `../evidencias/verificacion_powerbi_2026-11-16.json`. No se creó PBIX: la interfaz disponible sólo ofreció guardar PBIP y exportar plantilla/PDF.
 
-## Importar las fuentes
+## Abrir e importar las fuentes
 
-1. Abrir Power BI Desktop y elegir **Obtener datos > Consulta en blanco > Editor avanzado**.
-2. Crear consultas nombradas `FactDashboard`, `DimObesityLevel`, `ModelMetrics`, `ClusterProfile` y `PcaVariance`, copiando el archivo `.m` homónimo desde `queries/`. Cambiar la raíz de proyecto en las cuatro consultas CSV si se mueve la carpeta. La consulta SQL usa autenticación Windows local.
-3. Deshabilitar carga para consultas auxiliares sólo si se agregan; conservar las cinco tablas anteriores.
-4. Configurar relaciones conforme a `model_relationships.md`; importar únicamente la dimensión desde SQL, no los hechos SQL.
-5. Crear las medidas incluidas en `measures.dax`. Confirmar que las métricas filtren exactamente una fila y que `PcaVariance` use porcentaje decimal.
+1. Abrir en Power BI Desktop `dashboard/ECBD_Integrador_2026/ECBD_Integrador_2026.pbip`. El proyecto ya define consultas, tablas, relaciones, medidas y páginas; no recrearlas en paralelo.
+2. Si se trabaja desde un PBIX en blanco como recuperación, crear las cinco consultas nombradas con los `.m` homónimos desde `queries/`. Cambiar `ProjectRoot` si cambia la ubicación del repositorio.
+3. La consulta SQL es de sólo lectura y usa autenticación integrada. Si el certificado local no es confiable, configurar confianza limitada al host local `localhost\sqlexpress` y conservar cifrado; no aceptar la opción de conexión sin cifrado ni guardar credenciales.
+4. Importar sólo `DM.DimObesityLevel` desde SQL. `FactDashboard` se construye desde CSV; no cargar también los hechos de SQL.
+5. Confirmar las dos relaciones definidas en `model_relationships.md`, y que las tablas de métricas/PCA permanezcan desconectadas. Probar las medidas según `measures.dax`; una definición presente no prueba que calcule correctamente.
 
 ## Página 1 — Panorama general
 
@@ -20,8 +20,8 @@
 
 ## Página 2 — Modelos predictivos
 
-- Matriz de métricas desde `ModelMetrics`: filas modelo, columnas MAE/RMSE/R² para regresión; accuracy/precision macro/recall macro/F1 macro para clasificación. Filtrar `task`, `scenario`, `model`; no mezclar escenarios.
-- Gráfico comparativo A/B: columnas agrupadas para Accuracy y F1 macro con dos series por escenario y leyenda de modelo. Mostrar regresión en visual separado.
+- Matriz de métricas desde `ModelMetrics`: filas modelo, columnas MAE/RMSE/R² para regresión; accuracy/precision macro/recall macro/F1 macro para clasificación. Filtrar `task`, `scenario`, `model`; no promediar métricas entre candidatos.
+- Gráfico comparativo: F1 macro por escenario y modelo; cada combinación corresponde a una fila fuente. Mostrar regresión en visual separado.
 - Insertar `docs/unidad_iii/figuras/clasificacion_matrices_confusion_base.png` como imagen sólo si la ruta local se selecciona manualmente; rotular explícitamente “matrices de modelos base”. No presentar como matriz optimizada.
 - Cuadro de advertencia visible: “Escenario A incluye Height y Weight, variables directamente relacionadas con la etiqueta antropométrica; su alto desempeño puede reflejar circularidad. Escenario B excluye ambas medidas y es una comparación exploratoria, no evidencia causal ni validación clínica.”
 
@@ -41,4 +41,4 @@ Pie visible en esta página y, en forma breve, en todas: datos UCI con component
 
 ## Revisión y evidencia manual requerida
 
-Al disponer de Power BI Desktop, guardar el PBIX en `dashboard/`, refrescar todas las consultas, comprobar 2,111 filas y 7 categorías, navegar cada página y revisar títulos, filtros, interacciones y legibilidad. Exportar capturas completas de las cuatro páginas a `dashboard/evidencias/` y registrar versión, fecha, PBIX y resultados de comprobación. Sólo entonces actualizar el avance funcional; fuentes y guía por sí solas no son componentes funcionales.
+La actualización de las cinco consultas, las cuatro páginas y el filtro de `DimObesityLevel` ya se verificaron en Desktop. Antes del cierre, el estudiante debe revisar las capturas finales y completar el montaje/visualización de las matrices de confusión base si la guía lo exige en el propio dashboard. Revisar también la relación `ClusterProfile`–`FactDashboard`, reabrir el PBIP para comprobar persistencia y decidir si entrega PBIP o solicita una exportación PBIX por un flujo soportado. Entrega en Classroom y aprobación docente se registran por separado.

@@ -1,0 +1,79 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "2a230285a92ec4ff7121",
+  "position": {
+    "x": 20,
+    "y": 58,
+    "z": 2000,
+    "height": 88,
+    "width": 900,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactDashboard"
+                    }
+                  },
+                  "Property": "Observaciones"
+                }
+              },
+              "queryRef": "FactDashboard.Observaciones",
+              "nativeQueryRef": "Observaciones"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactDashboard"
+                    }
+                  },
+                  "Property": "Categorias"
+                }
+              },
+              "queryRef": "FactDashboard.Categorias",
+              "nativeQueryRef": "Categorias"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactDashboard"
+                    }
+                  },
+                  "Property": "Edad promedio"
+                }
+              },
+              "queryRef": "FactDashboard.Edad promedio",
+              "nativeQueryRef": "Edad promedio"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactDashboard"
+                    }
+                  },
+                  "Property": "Peso prom. (kg)"
+                }
+              },
+              "queryRef": "FactDashboard.Peso prom. (kg)",
+              "nativeQueryRef": "Peso prom. (kg)"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

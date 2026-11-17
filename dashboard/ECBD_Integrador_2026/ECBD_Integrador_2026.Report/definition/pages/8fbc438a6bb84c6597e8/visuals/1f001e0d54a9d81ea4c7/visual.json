@@ -1,0 +1,80 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "1f001e0d54a9d81ea4c7",
+  "position": {
+    "x": 650,
+    "y": 58,
+    "z": 4000,
+    "height": 260,
+    "width": 610,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ModelMetrics"
+                    }
+                  },
+                  "Property": "scenario"
+                }
+              },
+              "queryRef": "ModelMetrics.scenario",
+              "nativeQueryRef": "scenario",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ModelMetrics"
+                        }
+                      },
+                      "Property": "test_f1_macro"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "ModelMetrics.Avg(test_f1_macro)",
+              "nativeQueryRef": "Average of test_f1_macro"
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ModelMetrics"
+                    }
+                  },
+                  "Property": "model"
+                }
+              },
+              "queryRef": "ModelMetrics.model",
+              "nativeQueryRef": "model",
+              "active": true
+            }
+          ]
+        }
+      }
+    }
+  }
+}

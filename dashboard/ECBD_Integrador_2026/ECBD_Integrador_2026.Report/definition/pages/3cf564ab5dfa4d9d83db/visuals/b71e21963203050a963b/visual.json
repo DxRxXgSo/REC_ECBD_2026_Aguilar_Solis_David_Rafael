@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "b71e21963203050a963b",
+  "position": {
+    "x": 475,
+    "y": 404,
+    "z": 6000,
+    "height": 255,
+    "width": 445,
+    "tabOrder": 5
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactDashboard"
+                    }
+                  },
+                  "Property": "FAVC"
+                }
+              },
+              "queryRef": "FactDashboard.FAVC",
+              "nativeQueryRef": "FAVC",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactDashboard"
+                    }
+                  },
+                  "Property": "CAEC"
+                }
+              },
+              "queryRef": "FactDashboard.CAEC",
+              "nativeQueryRef": "CAEC"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactDashboard"
+                    }
+                  },
+                  "Property": "Total observaciones"
+                }
+              },
+              "queryRef": "FactDashboard.Total observaciones",
+              "nativeQueryRef": "Total observaciones"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "cb9a06f576944d2464b2",
+  "position": {
+    "x": 940,
+    "y": 156,
+    "z": 8000,
+    "height": 105,
+    "width": 320,
+    "tabOrder": 7
+  },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimObesityLevel"
+                    }
+                  },
+                  "Property": "ObesityLevel"
+                }
+              },
+              "queryRef": "DimObesityLevel.ObesityLevel",
+              "nativeQueryRef": "ObesityLevel",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "general": [
+        {
+          "properties": {}
+        }
+      ]
+    }
+  }
+}

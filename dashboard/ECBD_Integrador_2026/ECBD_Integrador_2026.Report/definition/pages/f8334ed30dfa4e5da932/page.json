@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "f8334ed30dfa4e5da932",
+  "displayName": "03 Clustering y PCA",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280
+}

@@ -1,0 +1,67 @@
+table ClusterProfile
+	lineageTag: 34d70bd5-1b71-4c39-89be-e9730c56f738
+
+	column cluster
+		dataType: int64
+		lineageTag: 5dc612ce-dd4a-4aaf-a3a7-de0084cb33e9
+		summarizeBy: none
+		sourceColumn: cluster
+
+	column Age
+		dataType: double
+		lineageTag: 674b5d80-30fa-497b-81b3-79b6eca26c4b
+		summarizeBy: average
+		sourceColumn: Age
+
+	column Height
+		dataType: double
+		lineageTag: 95de85ba-17ae-4313-ad0e-54feb18c7613
+		summarizeBy: average
+		sourceColumn: Height
+
+	column Weight
+		dataType: double
+		lineageTag: e639db7b-e947-4946-9e65-7b173e5d69cb
+		summarizeBy: average
+		sourceColumn: Weight
+
+	column FCVC
+		dataType: double
+		lineageTag: d3e90272-1d92-4e69-8391-c99b80b62f42
+		summarizeBy: average
+		sourceColumn: FCVC
+
+	column NCP
+		dataType: double
+		lineageTag: 970d129d-2624-403b-b387-58eb83288145
+		summarizeBy: average
+		sourceColumn: NCP
+
+	column CH2O
+		dataType: double
+		lineageTag: 5d78f930-1a8b-4a9d-a7d2-dd5fcd16cbd6
+		summarizeBy: average
+		sourceColumn: CH2O
+
+	column FAF
+		dataType: double
+		lineageTag: 0ad4fb49-4ace-4b58-9e85-0587d13cc7e5
+		summarizeBy: average
+		sourceColumn: FAF
+
+	column TUE
+		dataType: double
+		lineageTag: fffaf655-ecc4-44bc-94dc-ef560bca37d0
+		summarizeBy: average
+		sourceColumn: TUE
+
+	partition ClusterProfile = m
+		mode: import
+		source =
+				let
+				    ProjectRoot = "C:\Users\rafle\Documents\REC_ECBD_2026_Aguilar_Solis_David_Rafael",
+				    Csv = Csv.Document(File.Contents(ProjectRoot & "\docs\unidad_iv\resultados\perfil_numerico_clusters.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Source = Table.PromoteHeaders(Csv, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Source, {{"cluster", Int64.Type}, {"Age", type number}, {"Height", type number}, {"Weight", type number}, {"FCVC", type number}, {"NCP", type number}, {"CH2O", type number}, {"FAF", type number}, {"TUE", type number}}, "en-US")
+				in
+				    Typed

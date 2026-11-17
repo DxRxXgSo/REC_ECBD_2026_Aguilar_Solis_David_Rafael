@@ -1,0 +1,178 @@
+table FactDashboard
+	lineageTag: 5f6b18d6-45e3-4c18-a6d1-fbbaa2048151
+
+	measure Observaciones = FORMAT([Total observaciones], "#,##0", "en-US")
+		lineageTag: 53b2ffe9-5368-4208-8c09-9e285baa59e9
+
+	measure Categorias = DISTINCTCOUNT(FactDashboard[NObeyesdad])
+		formatString: #,##0
+		lineageTag: 02675ef4-194d-4c85-9466-e43bddf73483
+
+	measure 'Edad promedio' = AVERAGE(FactDashboard[Age])
+		formatString: 0.0
+		lineageTag: b4926227-a76f-4126-8de8-df9784da1f84
+
+	measure 'Peso prom. (kg)' = AVERAGE(FactDashboard[Weight])
+		formatString: 0.0
+		lineageTag: 11e58070-2e0d-4250-911a-328861e470c2
+
+	measure 'Estatura promedio (m)' = AVERAGE(FactDashboard[Height])
+		formatString: 0.00
+		lineageTag: 469c151a-f27a-4ebb-8532-c2e35c2d1c6e
+
+	measure 'Total observaciones' = COUNTROWS(FactDashboard)
+		formatString: #,##0
+		lineageTag: 5b322ec4-059a-49c0-a57c-535c7bc7f166
+
+	measure 'Observaciones (texto)' = FORMAT([Observaciones], "#,##0", "en-US")
+		lineageTag: d985ce10-6f51-49d3-ba4b-8eb7ccbe9c4b
+
+	column Gender
+		dataType: string
+		lineageTag: 10765db1-ecb6-4632-bce2-5cc02f19d359
+		summarizeBy: none
+		sourceColumn: Gender
+
+	column Age
+		dataType: double
+		lineageTag: 4f6b0944-aa61-4dae-abe4-e39e08758fd5
+		summarizeBy: average
+		sourceColumn: Age
+
+	column Height
+		dataType: double
+		lineageTag: 4008903f-57b8-40ea-bcf3-3defbbe47c32
+		summarizeBy: average
+		sourceColumn: Height
+
+	column Weight
+		dataType: double
+		lineageTag: d3a86f03-318a-48e6-a31c-0a91d45b60ae
+		summarizeBy: average
+		sourceColumn: Weight
+
+	column family_history_with_overweight
+		dataType: string
+		lineageTag: f41bac4e-f284-42c2-8cdc-80eee1ddc728
+		summarizeBy: none
+		sourceColumn: family_history_with_overweight
+
+	column FAVC
+		dataType: string
+		lineageTag: 558bc509-6feb-48e4-947d-421d383a6136
+		summarizeBy: none
+		sourceColumn: FAVC
+
+	column FCVC
+		dataType: double
+		lineageTag: 874a881a-9c1e-4a6f-a354-cc9d04960bdd
+		summarizeBy: average
+		sourceColumn: FCVC
+
+	column NCP
+		dataType: double
+		lineageTag: 6393d872-180c-436b-9790-cab1a426fc99
+		summarizeBy: average
+		sourceColumn: NCP
+
+	column CAEC
+		dataType: string
+		lineageTag: 7df2a997-6209-4680-966c-e0bcbfb9945e
+		summarizeBy: none
+		sourceColumn: CAEC
+
+	column SMOKE
+		dataType: string
+		lineageTag: 02a1d8b8-83f4-47a9-a150-e2f4087ba0c5
+		summarizeBy: none
+		sourceColumn: SMOKE
+
+	column CH2O
+		dataType: double
+		lineageTag: 78afb3ff-cac9-40f5-b2cf-0635cae1cb28
+		summarizeBy: average
+		sourceColumn: CH2O
+
+	column SCC
+		dataType: string
+		lineageTag: 6bf68f1a-80fa-4b00-b9f4-d94bca696bb6
+		summarizeBy: none
+		sourceColumn: SCC
+
+	column FAF
+		dataType: double
+		lineageTag: e319359c-401f-4366-8639-b6f7e98a6075
+		summarizeBy: average
+		sourceColumn: FAF
+
+	column TUE
+		dataType: double
+		lineageTag: 364e3b7b-be6b-480f-8578-b46c5e9583c1
+		summarizeBy: average
+		sourceColumn: TUE
+
+	column CALC
+		dataType: string
+		lineageTag: d5f8a305-8c3a-4ded-94fb-0edfe0221cb2
+		summarizeBy: none
+		sourceColumn: CALC
+
+	column MTRANS
+		dataType: string
+		lineageTag: a5f0e09f-a167-4e2d-bb27-0cb696faba35
+		summarizeBy: none
+		sourceColumn: MTRANS
+
+	column NObeyesdad
+		dataType: string
+		lineageTag: 263c1ff4-d60a-4db2-b3a5-6a8413f2744f
+		summarizeBy: none
+		sourceColumn: NObeyesdad
+
+	column row_index
+		dataType: int64
+		lineageTag: eaba06b6-d318-4b79-80da-dbf108e69d3c
+		summarizeBy: none
+		sourceColumn: row_index
+
+	column cluster
+		dataType: int64
+		lineageTag: 6aec48db-65bb-4a0c-b305-6847d9c0eb03
+		summarizeBy: none
+		sourceColumn: cluster
+
+	column PC1
+		dataType: double
+		lineageTag: 80025881-5f3e-4095-87b4-67192cadca6e
+		summarizeBy: average
+		sourceColumn: PC1
+
+	column PC2
+		dataType: double
+		lineageTag: 36e50fc9-68d5-49b4-913e-4c5dc9be2481
+		summarizeBy: average
+		sourceColumn: PC2
+
+	partition FactDashboard = m
+		mode: import
+		source =
+				let
+				    ProjectRoot = "C:\Users\rafle\Documents\REC_ECBD_2026_Aguilar_Solis_David_Rafael",
+				    Csv = Csv.Document(File.Contents(ProjectRoot & "\data\processed\obesity_unit_ii.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Source = Table.PromoteHeaders(Csv, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Source, {
+				        {"Gender", type text}, {"Age", type number}, {"Height", type number}, {"Weight", type number},
+				        {"family_history_with_overweight", type text}, {"FAVC", type text}, {"FCVC", type number},
+				        {"NCP", type number}, {"CAEC", type text}, {"SMOKE", type text}, {"CH2O", type number},
+				        {"SCC", type text}, {"FAF", type number}, {"TUE", type number}, {"CALC", type text},
+				        {"MTRANS", type text}, {"NObeyesdad", type text}
+				    }, "en-US"),
+				    AddRowIndex = Table.AddIndexColumn(Typed, "row_index", 0, 1, Int64.Type),
+				    AssignCsv = Csv.Document(File.Contents(ProjectRoot & "\data\processed\unidad_iv_cluster_assignments.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    AssignHeaders = Table.PromoteHeaders(AssignCsv, [PromoteAllScalars=true]),
+				    AssignTypes = Table.TransformColumnTypes(AssignHeaders, {{"row_index", Int64.Type}, {"cluster", Int64.Type}, {"PC1", type number}, {"PC2", type number}}, "en-US"),
+				    Merge = Table.NestedJoin(AddRowIndex, {"row_index"}, AssignTypes, {"row_index"}, "U4", JoinKind.LeftOuter),
+				    Expand = Table.ExpandTableColumn(Merge, "U4", {"cluster", "PC1", "PC2"}, {"cluster", "PC1", "PC2"}),
+				    ValidateNoMissing = if Table.RowCount(Expand) <> 2111 or List.NonNullCount(Expand[cluster]) <> 2111 then error "Source rows or cluster assignments differ from the validated 2,111 row contract" else Expand
+				in
+				    ValidateNoMissing

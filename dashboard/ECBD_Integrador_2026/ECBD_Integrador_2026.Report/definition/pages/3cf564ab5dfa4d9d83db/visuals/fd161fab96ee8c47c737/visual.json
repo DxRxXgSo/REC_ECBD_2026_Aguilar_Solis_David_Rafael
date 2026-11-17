@@ -1,0 +1,103 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "fd161fab96ee8c47c737",
+  "position": {
+    "x": 20,
+    "y": 404,
+    "z": 5000,
+    "height": 255,
+    "width": 440,
+    "tabOrder": 4
+  },
+  "visual": {
+    "visualType": "scatterChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactDashboard"
+                    }
+                  },
+                  "Property": "row_index"
+                }
+              },
+              "queryRef": "FactDashboard.row_index",
+              "nativeQueryRef": "row_index",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimObesityLevel"
+                    }
+                  },
+                  "Property": "ObesityLevel"
+                }
+              },
+              "queryRef": "DimObesityLevel.ObesityLevel",
+              "nativeQueryRef": "ObesityLevel"
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "FactDashboard"
+                        }
+                      },
+                      "Property": "Height"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "FactDashboard.Avg(Height)",
+              "nativeQueryRef": "Average of Height",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "FactDashboard"
+                        }
+                      },
+                      "Property": "Weight"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "FactDashboard.Avg(Weight)",
+              "nativeQueryRef": "Average of Weight"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

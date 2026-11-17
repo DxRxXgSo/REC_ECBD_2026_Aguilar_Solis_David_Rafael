@@ -1,0 +1,39 @@
+{
+  "project": "ECBD_Integrador_2026",
+  "created_by": "Microsoft Power BI PBIP scaffold plus PBIR/TMDL authored with Microsoft-published schemas and CLI catalog",
+  "powerbi_desktop_version": "2.159.1231.0",
+  "semantic_model_tables": [
+    "FactDashboard",
+    "DimObesityLevel",
+    "ModelMetrics",
+    "ClusterProfile",
+    "PcaVariance"
+  ],
+  "relationships": [
+    {
+      "from": "FactDashboard[NObeyesdad]",
+      "to": "DimObesityLevel[ObesityLevel]",
+      "cardinality": "many-to-one",
+      "cross_filter": "single"
+    },
+    {
+      "from": "FactDashboard[cluster]",
+      "to": "ClusterProfile[cluster]",
+      "cardinality": "many-to-one",
+      "cross_filter": "single"
+    }
+  ],
+  "pages": [
+    "01 Panorama general",
+    "02 Modelos supervisados",
+    "03 Clustering y PCA",
+    "04 Hallazgos y conclusiones"
+  ],
+  "visual_counts": {
+    "3cf564ab5dfa4d9d83db": 10,
+    "8fbc438a6bb84c6597e8": 7,
+    "f8334ed30dfa4e5da932": 6,
+    "01d9ff3b2d354551b730": 14
+  },
+  "data_refresh": "validated in Power BI Desktop 2.159.1231.0 on 2026-11-17; 5 tables loaded (2111, 7, 5, 9, 2 rows); PBIP reopened and refreshed"
+}

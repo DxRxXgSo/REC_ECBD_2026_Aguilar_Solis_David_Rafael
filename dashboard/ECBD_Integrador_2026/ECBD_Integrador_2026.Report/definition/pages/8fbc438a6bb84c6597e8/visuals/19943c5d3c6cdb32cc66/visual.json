@@ -1,0 +1,65 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "19943c5d3c6cdb32cc66",
+  "position": {
+    "x": 20,
+    "y": 92,
+    "z": 3000,
+    "height": 82,
+    "width": 610,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ModelMetrics"
+                    }
+                  },
+                  "Property": "MAE"
+                }
+              },
+              "queryRef": "ModelMetrics.MAE",
+              "nativeQueryRef": "MAE"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ModelMetrics"
+                    }
+                  },
+                  "Property": "RMSE"
+                }
+              },
+              "queryRef": "ModelMetrics.RMSE",
+              "nativeQueryRef": "RMSE"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ModelMetrics"
+                    }
+                  },
+                  "Property": "R cuadrada"
+                }
+              },
+              "queryRef": "ModelMetrics.R cuadrada",
+              "nativeQueryRef": "R cuadrada"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

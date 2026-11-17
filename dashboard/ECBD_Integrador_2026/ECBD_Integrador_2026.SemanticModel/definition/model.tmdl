@@ -1,0 +1,20 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	discourageImplicitMeasures
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["FactDashboard","DimObesityLevel","ModelMetrics","ClusterProfile","PcaVariance"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table FactDashboard
+ref table DimObesityLevel
+ref table ModelMetrics
+ref table ClusterProfile
+ref table PcaVariance

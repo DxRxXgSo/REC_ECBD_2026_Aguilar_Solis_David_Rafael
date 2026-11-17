@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "7ad303fd3e16e2fd6d41",
+  "position": {
+    "x": 930,
+    "y": 66,
+    "z": 4000,
+    "height": 250,
+    "width": 330,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "columnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PcaVariance"
+                    }
+                  },
+                  "Property": "component"
+                }
+              },
+              "queryRef": "PcaVariance.component",
+              "nativeQueryRef": "component",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PcaVariance"
+                    }
+                  },
+                  "Property": "Varianza explicada"
+                }
+              },
+              "queryRef": "PcaVariance.Varianza explicada",
+              "nativeQueryRef": "Varianza explicada"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

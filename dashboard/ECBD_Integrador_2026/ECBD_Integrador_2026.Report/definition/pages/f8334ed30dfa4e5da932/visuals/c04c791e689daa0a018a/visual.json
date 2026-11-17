@@ -1,0 +1,147 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "c04c791e689daa0a018a",
+  "position": {
+    "x": 20,
+    "y": 390,
+    "z": 5000,
+    "height": 270,
+    "width": 895,
+    "tabOrder": 4
+  },
+  "visual": {
+    "visualType": "table",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ClusterProfile"
+                    }
+                  },
+                  "Property": "cluster"
+                }
+              },
+              "queryRef": "ClusterProfile.cluster",
+              "nativeQueryRef": "cluster"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ClusterProfile"
+                        }
+                      },
+                      "Property": "Age"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "ClusterProfile.Avg(Age)",
+              "nativeQueryRef": "Average of Age"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ClusterProfile"
+                        }
+                      },
+                      "Property": "Weight"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "ClusterProfile.Avg(Weight)",
+              "nativeQueryRef": "Average of Weight"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ClusterProfile"
+                        }
+                      },
+                      "Property": "Height"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "ClusterProfile.Avg(Height)",
+              "nativeQueryRef": "Average of Height"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ClusterProfile"
+                        }
+                      },
+                      "Property": "FCVC"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "ClusterProfile.Avg(FCVC)",
+              "nativeQueryRef": "Average of FCVC"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ClusterProfile"
+                        }
+                      },
+                      "Property": "FAF"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "ClusterProfile.Avg(FAF)",
+              "nativeQueryRef": "Average of FAF"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

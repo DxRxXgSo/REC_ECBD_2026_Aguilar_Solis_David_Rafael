@@ -1,23 +1,34 @@
-# Estado del dashboard — Unidad V
+# Dashboard Power BI — Unidad V
 
-**Estado al 17/11/2026: 0/5 componentes funcionales verificados (0%).** Power BI Desktop aparece registrado como aplicación y se inició; la ventana se tituló “Sin título - Power BI Desktop”. La automatización disponible no pudo leer ni controlar su interfaz (`Accessibility state unavailable`), por lo que no se creó PBIX, páginas o capturas. Los archivos de `dashboard/powerbi/` son preparación y documentación, no componentes funcionales.
+**Corte técnico: 16/11/2026; reapertura verificada: 17/11/2026.** Se abrió, actualizó, guardó, cerró y reabrió el PBIP existente en Power BI Desktop 2.159.1231.0. La conexión fue a `localhost\SQLEXPRESS` / `REC_ECBD_Obesidad_2026` con autenticación integrada de Windows. El error inicial fue de confianza del certificado local; se aplicó `PBI_SQL_TRUSTED_SERVERS=localhost\SQLEXPRESS` sólo al proceso de Desktop. La variable de usuario permanece vacía, no se desactivó el cifrado y no se guardaron credenciales. Microsoft documenta esta excepción limitada para certificados SQL locales autofirmados ([conector SQL Server de Power Query](https://learn.microsoft.com/en-us/power-query/connectors/sqlserver)).
 
-## Disponibilidad de datos (no equivale a avance funcional)
+## Fuentes actualizadas y comprobadas
 
-Los datos y salidas para conectar/consultar sí están disponibles: Data Mart SQL Server con 2,111 hechos y siete niveles; métricas supervisadas U3; asignaciones/tabla de perfiles U4 y resultados PCA. `dashboard/powerbi/queries/` contiene consultas M para leer estas fuentes, `model_relationships.md` define relaciones y `measures.dax` propone medidas. `guia_montaje.md` documenta páginas y verificaciones manuales. Esto es preparación de fuentes y no se contabiliza como visualizaciones del dashboard. El helper `src/powerbi_sources.py` y `tests/dashboard/` validan por código las tablas locales y su cruce 1:1 por índice de fila.
+Power Query cargó las cinco tablas sin errores visibles:
 
-## Herramienta requerida y bloqueo
+| Tabla | Filas cargadas / esperadas |
+|---|---:|
+| `FactDashboard` | 2,111 |
+| `DimObesityLevel` | 7 |
+| `ModelMetrics` | 5 |
+| `ClusterProfile` | 9 |
+| `PcaVariance` | 2 |
 
-Las guías del proyecto requieren Power BI para el dashboard final. No se sustituye por Streamlit, notebook u otra herramienta sin autorización docente expresa. Se requiere instalar/usar Power BI Desktop en el equipo autorizado o conseguir autorización docente escrita para alternativa compatible.
+La unión U4 por `row_index` tiene 2,111 filas, índices únicos y asignaciones completas en los CSV fuente; el M de `FactDashboard` también impone el contrato de 2,111 filas y cero clusters nulos. Se conservaron las 24 filas exactas duplicadas. Los conteos de clases corresponden a los datos originales. El segmento `Normal_Weight` filtró los KPI a 287 filas y una categoría; al limpiar el filtro se restauraron 2,111 y siete categorías. La relación de la dimensión de obesidad con la tabla de hechos queda probada por este filtro. La relación de perfiles de cluster no se probó mediante interacción.
 
-## Backlog para llegar a revisión
+## Páginas y evidencia visual
 
-1. Abrir Power BI Desktop, importar las consultas M desde `dashboard/powerbi/queries/` y actualizar la ruta de proyecto si es necesario.
-2. Configurar relaciones y medidas según `model_relationships.md` y `measures.dax`; comprobar 2,111 observaciones, siete categorías y los conteos de U4.
-3. Montar las cuatro páginas usando `guia_montaje.md` y aplicar `tema_ecbd.json`.
-4. Validar comparaciones U3 A/B, advertencia de circularidad, matriz base correctamente rotulada, PCA y límites del clustering.
-5. Guardar el PBIX en `dashboard/`, revisar visualmente filtros e interacciones y guardar capturas/exportación verificables en `dashboard/evidencias/`.
+Las cuatro páginas del PBIP existente muestran datos reales: Panorama general; Modelos supervisados; Clustering y PCA; Hallazgos y conclusiones. El PBIP se cerró, se reabrió y se volvió a actualizar; las capturas verificadas están en [`evidencias/final_powerbi_2026-11-16_validado/`](evidencias/final_powerbi_2026-11-16_validado/). La página de modelos muestra regresión RF (MAE 4.7501, RMSE 8.1428, R² 0.9005), tabla de cuatro resultados de clasificación con cuatro decimales y F1 macro por escenario/modelo; así se evita promediar candidatos. La leyenda del escenario A advierte circularidad por `Height` y `Weight`. La página de clustering presenta nueve grupos, dispersión PC1/PC2 y varianza explicada acumulada de 41.31%, con la advertencia de Silhouette modesto y sensibilidad de k.
 
-La sensibilidad adicional in-memory documentada en `dashboard/evidencias/sensibilidad_kmeans.json` encontró Silhouette más alta para k=10 y k=11 que para k=9 en el rango ampliado 2–12; k=9 permanece elección exploratoria del rango original, no óptimo global demostrado. La variación por semillas también aconseja cautela.
+**Límite visible:** el dashboard menciona que las matrices de confusión disponibles corresponden a modelos base, pero no incrusta la imagen de esas matrices. No se atribuyen matrices base a los resultados optimizados. Requiere revisión antes de considerar esta subparte completa.
 
-El objetivo conservador para la revisión integradora del 17/11 es al menos 70% funcional; con el estado actual ese criterio **no está cumplido**. Entrega/aceptación docente y Classroom permanecen no verificadas. Véase `dashboard/powerbi/guia_montaje.md` para el montaje manual; hace falta interacción directa en Power BI Desktop para importar las consultas, crear las relaciones/medidas, construir las páginas, refrescar, revisar y guardar `dashboard/ECBD_Integrador_2026.pbix` y capturas reales.
+## Archivos y verificación
+
+- Proyecto actual: [`ECBD_Integrador_2026/ECBD_Integrador_2026.pbip`](ECBD_Integrador_2026/ECBD_Integrador_2026.pbip). Se guardó en Desktop después de cargar datos y guardar el PBIR/TMDL actualizado.
+- PBIX: no creado. En la interfaz, “Guardar como” sólo ofreció PBIP y “Exportar” ofreció plantilla o PDF; no se presentó una conversión PBIX disponible.
+- Validación PBIR: cero errores; un aviso porque el CLI no pudo descargar el esquema visual 2.14.0. El esquema faltante de los archivos `.pbip` y `definition.pbir` se restauró después de guardar desde Desktop.
+- Suites `unittest`: dashboard 3/3, U2 12/12, U3 8/8, U4 2/2 PASS.
+- SHA-256 de `data/raw/ObesityDataSet_raw_and_data_sinthetic.csv`, antes y después: `28b6991062855d3d15642e38b1aa9d1b32fb7abbb5abf5b096f1868cd706154b`.
+- `git diff --check`: PASS; Git sólo avisó sobre normalización LF/CRLF en archivos Markdown.
+
+Se consideran funcionales cinco componentes de alto nivel: refresco de fuentes, panorama, modelos supervisados, clustering/PCA y hallazgos. Esto no equivale a aceptación académica ni cierre completo: faltan la matriz de confusión en la página, un PBIX exportable, cierre de revisión visual por el estudiante, entrega en Classroom y aprobación docente. No se realizaron cambios en datos originales ni modelos U2–U4.

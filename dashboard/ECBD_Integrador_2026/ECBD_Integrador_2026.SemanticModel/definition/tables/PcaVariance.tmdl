@@ -1,0 +1,35 @@
+table PcaVariance
+	lineageTag: 72927c88-5e25-4f44-88de-5214936a1dc5
+
+	measure 'Varianza explicada' = SUM(PcaVariance[explained_variance_ratio])
+		formatString: 0.00%
+		lineageTag: 8d2ddf95-5e3b-4bed-aa5a-015e69699114
+
+	column component
+		dataType: string
+		lineageTag: f7994d62-9394-41e8-bafd-e8f00dd9ea2a
+		summarizeBy: none
+		sourceColumn: component
+
+	column explained_variance_ratio
+		dataType: double
+		lineageTag: 79a1de25-3a35-435a-99ab-713091aa9478
+		summarizeBy: average
+		sourceColumn: explained_variance_ratio
+
+	column cumulative_variance_ratio
+		dataType: double
+		lineageTag: 9c8fd4d8-56c5-4234-88eb-e1439ba649da
+		summarizeBy: average
+		sourceColumn: cumulative_variance_ratio
+
+	partition PcaVariance = m
+		mode: import
+		source =
+				let
+				    ProjectRoot = "C:\Users\rafle\Documents\REC_ECBD_2026_Aguilar_Solis_David_Rafael",
+				    Csv = Csv.Document(File.Contents(ProjectRoot & "\docs\unidad_iv\resultados\varianza_pca.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Source = Table.PromoteHeaders(Csv, [PromoteAllScalars=true]),
+				    Typed = Table.TransformColumnTypes(Source, {{"component", type text}, {"explained_variance_ratio", Percentage.Type}, {"cumulative_variance_ratio", Percentage.Type}}, "en-US")
+				in
+				    Typed

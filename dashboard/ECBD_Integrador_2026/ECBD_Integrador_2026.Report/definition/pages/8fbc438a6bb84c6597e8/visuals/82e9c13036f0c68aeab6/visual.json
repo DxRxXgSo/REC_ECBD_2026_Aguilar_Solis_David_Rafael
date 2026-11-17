@@ -1,0 +1,142 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "82e9c13036f0c68aeab6",
+  "position": {
+    "x": 20,
+    "y": 342,
+    "z": 5000,
+    "height": 205,
+    "width": 1220,
+    "tabOrder": 4
+  },
+  "visual": {
+    "visualType": "table",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ModelMetrics"
+                    }
+                  },
+                  "Property": "scenario"
+                }
+              },
+              "queryRef": "ModelMetrics.scenario",
+              "nativeQueryRef": "scenario"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ModelMetrics"
+                    }
+                  },
+                  "Property": "model"
+                }
+              },
+              "queryRef": "ModelMetrics.model",
+              "nativeQueryRef": "model"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ModelMetrics"
+                        }
+                      },
+                      "Property": "test_accuracy"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "ModelMetrics.Avg(test_accuracy)",
+              "nativeQueryRef": "Average of test_accuracy"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ModelMetrics"
+                        }
+                      },
+                      "Property": "test_precision_macro"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "ModelMetrics.Avg(test_precision_macro)",
+              "nativeQueryRef": "Average of test_precision_macro"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ModelMetrics"
+                        }
+                      },
+                      "Property": "test_recall_macro"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "ModelMetrics.Avg(test_recall_macro)",
+              "nativeQueryRef": "Average of test_recall_macro"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "ModelMetrics"
+                        }
+                      },
+                      "Property": "test_f1_macro"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "ModelMetrics.Avg(test_f1_macro)",
+              "nativeQueryRef": "Average of test_f1_macro"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
