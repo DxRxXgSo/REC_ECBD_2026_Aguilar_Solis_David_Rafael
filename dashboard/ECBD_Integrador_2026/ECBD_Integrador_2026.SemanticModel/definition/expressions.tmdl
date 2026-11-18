@@ -1,0 +1,5 @@
+expression ProjectRoot = "C:\Users\rafle\Documents\REC_ECBD_2026_Aguilar_Solis_David_Rafael" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+
+expression SqlInstance = "localhost\SQLEXPRESS" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+
+expression SqlDatabase = "REC_ECBD_Obesidad_2026" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]

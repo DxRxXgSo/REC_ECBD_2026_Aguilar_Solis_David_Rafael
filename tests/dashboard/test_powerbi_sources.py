@@ -42,7 +42,7 @@ class PowerBISourceContractTests(unittest.TestCase):
         query_dir = ROOT / "dashboard/powerbi/queries"
         expected = {
             "FactDashboard.m": ["obesity_unit_ii.csv", "unidad_iv_cluster_assignments.csv", "ValidateNoMissing"],
-            "DimObesityLevel.m": ["REC_ECBD_Obesidad_2026", "DM.DimObesityLevel"],
+            "DimObesityLevel.m": ["SqlDatabase", "DM.DimObesityLevel"],
             "ModelMetrics.m": ["optimizacion_metricas_test.csv"],
             "ClusterProfile.m": ["perfil_numerico_clusters.csv"],
             "PcaVariance.m": ["varianza_pca.csv"],
@@ -52,6 +52,9 @@ class PowerBISourceContractTests(unittest.TestCase):
                 text = (query_dir / name).read_text(encoding="utf-8")
                 for fragment in fragments:
                     self.assertIn(fragment, text)
+        parameters = (ROOT / "dashboard/ECBD_Integrador_2026/ECBD_Integrador_2026.SemanticModel/definition/expressions.tmdl").read_text(encoding="utf-8")
+        for parameter in ["ProjectRoot", "SqlInstance", "SqlDatabase", "localhost\\SQLEXPRESS", "REC_ECBD_Obesidad_2026"]:
+            self.assertIn(parameter, parameters)
         dax = (ROOT / "dashboard/powerbi/measures.dax").read_text(encoding="utf-8")
         for measure in ["Observaciones =", "Accuracy =", "Precision macro =", "Recall macro =", "F1 macro =", "MAE =", "RMSE =", "R cuadrada ="]:
             self.assertIn(measure, dax)

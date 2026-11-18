@@ -1,5 +1,4 @@
 let
-    ProjectRoot = "C:\Users\rafle\Documents\REC_ECBD_2026_Aguilar_Solis_David_Rafael",
     Csv = Csv.Document(File.Contents(ProjectRoot & "\data\processed\obesity_unit_ii.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
     Source = Table.PromoteHeaders(Csv, [PromoteAllScalars=true]),
     Typed = Table.TransformColumnTypes(Source, {

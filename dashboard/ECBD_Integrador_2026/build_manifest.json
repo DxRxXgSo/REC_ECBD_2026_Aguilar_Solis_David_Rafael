@@ -35,5 +35,5 @@
     "f8334ed30dfa4e5da932": 6,
     "01d9ff3b2d354551b730": 14
   },
-  "data_refresh": "validated in Power BI Desktop 2.159.1231.0 on 2026-11-17; 5 tables loaded (2111, 7, 5, 9, 2 rows); PBIP reopened and refreshed"
+  "data_refresh": "validated in Power BI Desktop 2.159.1231.0 on 2026-11-18; 5 tables loaded (2111, 7, 5, 9, 2 rows); PBIP reopened and refreshed; Normal_Weight=287 then 2111 after clear; ClusterProfile cluster 0 filters FactDashboard to 246 rows and full range restores all 2111 rows"
 }
