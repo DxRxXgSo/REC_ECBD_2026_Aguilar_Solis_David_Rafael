@@ -1,0 +1,9 @@
+{
+  "zip": "dashboard/entrega/ECBD_Entrega_Final_2026-11-20.zip",
+  "bytes": 2375840,
+  "file_count": 90,
+  "capture_count": 4,
+  "testzip": "PASS",
+  "extraction_hash_comparison": "PASS against current local sources",
+  "excluded": "Power BI .pbi caches, credentials, backups, temporary files, old screenshots"
+}

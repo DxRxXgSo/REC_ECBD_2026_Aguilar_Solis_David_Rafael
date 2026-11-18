@@ -1,0 +1,11 @@
+Proyecto ECBD 2026 — reproducción del dashboard
+
+Formato: Power BI Project (PBIP), no PBIX. Abrir dashboard/ECBD_Integrador_2026/ECBD_Integrador_2026.pbip en Power BI Desktop.
+
+Fuentes incluidas: CSV procesado U2, asignaciones de clusters U4, métricas optimizadas U3, perfiles de cluster y varianza PCA U4. La tabla DimObesityLevel se consulta en SQL Server. No se incluyen credenciales ni cachés.
+
+Requisitos: Power BI Desktop; archivos fuente incluidos en la carpeta data/ y SQL Server con base REC_ECBD_Obesidad_2026 y esquema DM, incluyendo DM.DimObesityLevel. Usar autenticación autorizada local; no se distribuyen secretos.
+
+En Power BI Desktop, en Transformar datos > Administrar parámetros, configurar ProjectRoot, SqlInstance y SqlDatabase para el equipo destino; después actualizar las cinco consultas. No importar una segunda tabla de hechos SQL: FactDashboard ya usa el CSV procesado.
+
+El ZIP contiene cuatro capturas finales de las cuatro páginas. La evidencia de interacción temporal del filtro ClusterProfile se conserva aparte en el repositorio y no forma parte de estas capturas finales.
