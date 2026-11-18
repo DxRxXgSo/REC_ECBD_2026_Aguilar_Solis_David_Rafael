@@ -1,0 +1,75 @@
+{
+  "audit_date": "2026-11-18",
+  "branch": "main",
+  "starting_commit": "6b2a5ea43a8b3524cb9f261147071e15a0992e31",
+  "git": {
+    "diff_check": "PASS; only Git LF-to-CRLF advisory warnings",
+    "preexisting_local_changes_preserved_and_excluded": ["README.md", "notebooks/00_revision_inicial_dataset.ipynb"],
+    "publication_status_at_evidence_generation": "pending commit and push"
+  },
+  "raw_dataset": {
+    "path": "data/raw/ObesityDataSet_raw_and_data_sinthetic.csv",
+    "bytes": 263646,
+    "sha256_before_and_after": "28b6991062855d3d15642e38b1aa9d1b32fb7abbb5abf5b096f1868cd706154b",
+    "status": "PASS"
+  },
+  "automated_tests": {
+    "python": ".venv-unit2/Scripts/python.exe",
+    "dashboard": {"command": "-m unittest discover -s tests/dashboard -v", "passed": 3, "failed": 0, "status": "PASS"},
+    "unit_ii": {"command": "-m unittest discover -s tests/unit_ii -v", "passed": 12, "failed": 0, "status": "PASS"},
+    "unit_iii": {"command": "-m unittest discover -s tests/unit_iii -v", "passed": 8, "failed": 0, "status": "PASS"},
+    "unit_iv": {"command": "-m unittest discover -s tests/unit_iv -v", "passed": 2, "failed": 0, "status": "PASS"},
+    "total": {"passed": 25, "failed": 0, "status": "PASS"}
+  },
+  "dashboard": {
+    "existing_pbip_opened_in_power_bi_desktop": true,
+    "desktop_refresh_and_apply_changes": "PASS",
+    "tables_verified": {
+      "FactDashboard": 2111,
+      "DimObesityLevel": 7,
+      "ModelMetrics": 5,
+      "ClusterProfile": 9,
+      "PcaVariance": 2
+    },
+    "parameters_in_model": ["ProjectRoot", "SqlInstance", "SqlDatabase"],
+    "parameterized_sources": "configured in PBIP; refresh applied in Desktop using project sources",
+    "cluster_profile_to_factdashboard": {
+      "relationship": "active 1:*; single direction ClusterProfile to FactDashboard",
+      "interaction": "PASS: temporary ClusterProfile cluster selector isolated cluster 0 in dashboard visuals; clearing it restored the full view",
+      "cluster_0_source_rows": 246,
+      "evidence": "dashboard/evidencias/cluster_interaction_2026-11-18.png",
+      "qualification": "246 is independently verified from the row-level assignments CSV; the temporary slicer was not saved into the PBIP"
+    },
+    "normal_weight_filter": {"count": 287, "cleared_count": 2111, "status": "PASS"},
+    "confusion_matrix": "visible on page 2 and labeled as base-model result",
+    "pages": {"count": 4, "refreshed_and_reviewed": "PASS"},
+    "captures": [
+      "dashboard/evidencias/final_powerbi_2026-11-18/pagina_01_panorama.png",
+      "dashboard/evidencias/final_powerbi_2026-11-18/pagina_02_modelos.png",
+      "dashboard/evidencias/final_powerbi_2026-11-18/pagina_03_clustering_pca.png",
+      "dashboard/evidencias/final_powerbi_2026-11-18/pagina_04_conclusiones.png"
+    ]
+  },
+  "final_report": {
+    "markdown": "docs/Informe_Final_Integrador_2026.md",
+    "pdf": "docs/Informe_Final_Integrador_2026.pdf",
+    "builder": "docs/generar_informe_final_pdf.py",
+    "page_count": 12,
+    "visual_review": "PASS: all 12 rendered pages reviewed; four refreshed dashboard page captures are included in the appendix",
+    "metric_attribution": "corrected: Logistic Regression A macro-F1 0.9615; Random Forest B 0.8666; same-algorithm comparison Random Forest A 0.9465 vs B 0.8666",
+    "raw_csv_path": "data/raw/ObesityDataSet_raw_and_data_sinthetic.csv"
+  },
+  "delivery": {
+    "zip": "dashboard/entrega/ECBD_Entrega_Final_2026-11-20.zip",
+    "zip_entries": 90,
+    "zip_integrity": "PASS; testzip returned None; extracted package was checked",
+    "final_capture_files_in_zip": 4,
+    "excluded_power_bi_caches_and_local_credentials": true,
+    "reproduction_requirements_documented": "Power BI Desktop, project CSV sources, and SQL Server Data Mart connection/configuration",
+    "commit_and_push": "pending"
+  },
+  "academic_acceptance": {
+    "teacher_approval": "NOT VERIFIED",
+    "classroom_submission": "NOT VERIFIED"
+  }
+}
